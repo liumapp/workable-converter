@@ -2,13 +2,16 @@ version: "2"
 
 services:
   libreoffice:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: libreoffice/online:master
     container_name: libreoffice
-    restart: always
     environment:
       domain: localhost
       username: liumapp
       password: liumapp
     ports:
-      - 9980:9980
-      - 443:443
+      - 9980:9980/tcp
+    restart: always
+

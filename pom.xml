@@ -33,6 +33,31 @@
       <version>4.7</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>juh</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>jurt</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>ridl</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>unoil</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>officebean</artifactId>
+      <version>6.2.3</version>
+    </dependency>
   </dependencies>
 
   <build>
