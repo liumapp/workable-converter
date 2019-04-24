@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="footer">
+    <div class="layui-footer footer footer-demo">
+        <div class="layui-main">
+            <p>
+                <a th:href="@{/}">
+                    Copyright ©2017 My Company v1.0 All Rights Reserved.
+                </a>
+            </p>
+        </div>
+    </div>
+    <th:block th:include="common/script::script"></th:block>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header::header(title='Demo测试')"></head>
+<body>
+
+<div th:text="'welcome ' + ${name} + ', are you a ' + ${sex} + '?'"></div>
+
+<th:block th:include="common/footer::footer"></th:block>
+
+</body>
+</html>
