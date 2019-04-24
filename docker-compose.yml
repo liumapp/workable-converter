@@ -6,7 +6,9 @@ services:
     container_name: libreoffice
     restart: always
     environment:
+      domain: localhost
       username: liumapp
       password: liumapp
     ports:
       - 9980:9980
+      - 443:443
