@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  libreoffice:
+    image: libreoffice/online:master
+    container_name: libreoffice
+    restart: always
+    environment:
+      username: liumapp
+      password: liumapp
+    ports:
+      - 9980:9980
