@@ -10,17 +10,18 @@ import org.jodconverter.office.OfficeManager;
 import java.io.File;
 
 /**
- * file SimpleConverter.java
+ * file ConvertByFilePathdemo.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/4/26
  */
-public class SimpleConverter {
+public class ConvertByFilePathdemo {
 
     public static void main (String[] args) {
 
+        //convert by file path
         File inputFile = new File("./data/test.doc");
         File outputFile = new File("./data/test.pdf");
 
