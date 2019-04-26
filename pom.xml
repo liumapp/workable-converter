@@ -34,28 +34,23 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.libreoffice</groupId>
-      <artifactId>juh</artifactId>
-      <version>6.2.3</version>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-local</artifactId>
+      <version>4.2.2</version>
     </dependency>
     <dependency>
-      <groupId>org.libreoffice</groupId>
-      <artifactId>jurt</artifactId>
-      <version>6.2.3</version>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-core</artifactId>
+      <version>4.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-online</artifactId>
+      <version>4.2.2</version>
     </dependency>
     <dependency>
       <groupId>org.libreoffice</groupId>
       <artifactId>ridl</artifactId>
-      <version>6.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.libreoffice</groupId>
-      <artifactId>unoil</artifactId>
-      <version>6.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.libreoffice</groupId>
-      <artifactId>officebean</artifactId>
       <version>6.2.3</version>
     </dependency>
   </dependencies>
