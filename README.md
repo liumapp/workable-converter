@@ -3,19 +3,17 @@
 
 ## 技术栈
 
-* libreoffice-online:v6.2
+* libreoffice:v6.2.3
 
-*
+* jodconverter:4.2.2
 
 ## 功能
 
 * doc、docx、html转PDF
 
-* doc、docx、html转png
+* doc、docx转每一页的png
 
 * 多个png按照顺序合并为一个PDF文件
-
- 
 
 ## 参考链接
 
