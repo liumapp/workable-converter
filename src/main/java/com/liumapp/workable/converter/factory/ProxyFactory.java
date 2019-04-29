@@ -1,4 +1,4 @@
-package com.liumapp.workable.converter;
+package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.invoker.ObjectInvoker;
 

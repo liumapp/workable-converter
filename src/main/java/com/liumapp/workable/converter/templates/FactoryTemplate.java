@@ -1,6 +1,6 @@
 package com.liumapp.workable.converter.templates;
 
-import com.liumapp.workable.converter.ProxyFactory;
+import com.liumapp.workable.converter.factory.ProxyFactory;
 import com.liumapp.workable.converter.invoker.ObjectInvoker;
 
 /**
