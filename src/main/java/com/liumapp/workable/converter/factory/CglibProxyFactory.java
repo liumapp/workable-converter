@@ -5,14 +5,14 @@ import com.liumapp.workable.converter.templates.SubClassFactoryTemplate;
 import net.sf.cglib.proxy.Enhancer;
 
 /**
- * file CglibFactory.java
+ * file CglibProxyFactory.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/4/29
  */
-public class CglibFactory extends SubClassFactoryTemplate {
+public class CglibProxyFactory extends SubClassFactoryTemplate {
 
     /**
      * 创建具体cglib的enhancer对象
@@ -22,7 +22,10 @@ public class CglibFactory extends SubClassFactoryTemplate {
         Enhancer enhancer = new Enhancer();
         enhancer.setClassLoader(classLoader);
         enhancer.setInterfaces(toInterfaces(proxiedClasses));
-        enhancer.setSuperclass();
+        enhancer.setSuperclass(getSuperClass(proxiedClasses));
+
         return null;
     }
+
+
 }
