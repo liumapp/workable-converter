@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.workable.converter.invoker.ObjectInvoker;
+
 /**
  * file ProxyFactory.java
  * author liumapp
@@ -10,6 +12,8 @@ package com.liumapp.workable.converter;
  */
 public interface ProxyFactory {
 
-    <T> T createInvokerProxy();
+    <T> T createInvokerProxy (ObjectInvoker invoker, Class<?>... proxiedClasses);
+
+    <T> T createInvokerProxy (ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxyClasses);
 
 }
