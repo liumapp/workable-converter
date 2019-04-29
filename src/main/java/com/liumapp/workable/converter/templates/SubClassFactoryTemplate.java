@@ -3,6 +3,7 @@ package com.liumapp.workable.converter.templates;
 import com.google.common.collect.Sets;
 
 import java.io.Serializable;
+import java.lang.reflect.Modifier;
 import java.util.Set;
 
 /**
@@ -16,7 +17,17 @@ import java.util.Set;
 public abstract class SubClassFactoryTemplate extends FactoryTemplate {
 
     public static Class<?> getSuperClass (Class<?>[] proxiedClasses) {
-//        final Class<?>[] superClasses =
+        final Class<?>[] superClasses = toNonInterfaces(proxiedClasses);
+        switch (superClasses.length) {
+            case 0:
+                return Object.class;
+            case 1:
+                Class<?> superClass = superClasses[0];
+                if (Modifier.isFinal(superClass.getModifiers())) {
+//                    throw new Pro
+                }
+
+        }
     }
 
     /**
