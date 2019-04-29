@@ -1,8 +1,10 @@
 package com.liumapp.workable.converter.templates;
 
 import com.google.common.collect.Sets;
+import com.liumapp.workable.converter.exceptions.ProxyFactoryException;
 
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.util.Set;
 
@@ -24,9 +26,27 @@ public abstract class SubClassFactoryTemplate extends FactoryTemplate {
             case 1:
                 Class<?> superClass = superClasses[0];
                 if (Modifier.isFinal(superClass.getModifiers())) {
-//                    throw new Pro
+                    throw new ProxyFactoryException(
+                            "Cannot proxy " + superClass.getName() + " as it is final"
+                    );
                 }
-
+                if (!hasDefaultConstructor(superClass)) {
+                    throw new ProxyFactoryException(
+                            "Cannot proxy " + superClass.getName() + " as it has no visible default constructor."
+                    );
+                }
+                return superClass;
+            default:
+                StringBuilder errorMessage = new StringBuilder("Canot proxy ");
+                for (int i = 0; i < superClasses.length; i++) {
+                    Class<?> cl = superClasses[i];
+                    errorMessage.append(cl.getName());
+                    if (i != superClasses.length - 1) {
+                        errorMessage.append(", ");
+                    }
+                }
+                errorMessage.append(" as multiple inheritance can not be allowed");
+                throw new ProxyFactoryException(errorMessage.toString());
         }
     }
 
@@ -50,6 +70,20 @@ public abstract class SubClassFactoryTemplate extends FactoryTemplate {
         for (Class<?> proxiedClass : proxiedClasses) {
             superClasses.add(proxiedClass);
         }
+
+        return superClasses.toArray(new Class[superClasses.size()]);
+    }
+
+    private static boolean hasDefaultConstructor (Class<?> superClass) {
+        final Constructor<?>[] declaredConstructors = superClass.getDeclaredConstructors();
+        for (int i = 0; i < declaredConstructors.length; i++) {
+            Constructor<?> constructor = declaredConstructors[i];
+            if (constructor.getParameterTypes().length == 0 &&
+                    (Modifier.isPublic(constructor.getModifiers()) || Modifier.isProtected(constructor.getModifiers()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
