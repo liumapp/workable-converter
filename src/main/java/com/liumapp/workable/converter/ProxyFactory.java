@@ -14,6 +14,6 @@ public interface ProxyFactory {
 
     <T> T createInvokerProxy (ObjectInvoker invoker, Class<?>... proxiedClasses);
 
-    <T> T createInvokerProxy (ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxyClasses);
+    <T> T createInvokerProxy (ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxiedClasses);
 
 }
