@@ -15,6 +15,10 @@ import java.util.Set;
  */
 public abstract class SubClassFactoryTemplate extends FactoryTemplate {
 
+    public static Class<?> getSuperClass (Class<?>[] proxiedClasses) {
+//        final Class<?>[] superClasses =
+    }
+
     /**
      * 必须是接口才可以代理
      */
@@ -28,6 +32,13 @@ public abstract class SubClassFactoryTemplate extends FactoryTemplate {
 
         interfaces.add(Serializable.class);
         return interfaces.toArray(new Class[interfaces.size()]);
+    }
+
+    private static Class<?>[] toNonInterfaces (Class<?>[] proxiedClasses) {
+        Set<Class<?>> superClasses = Sets.newLinkedHashSet();
+        for (Class<?> proxiedClass : proxiedClasses) {
+            superClasses.add(proxiedClass);
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.invoker.ObjectInvoker;
 import com.liumapp.workable.converter.templates.SubClassFactoryTemplate;
+import net.sf.cglib.proxy.Enhancer;
 
 /**
  * file CglibFactory.java
@@ -18,7 +19,10 @@ public class CglibFactory extends SubClassFactoryTemplate {
      */
     @Override
     public <T> T createInvokerProxy(ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxiedClasses) {
-        
+        Enhancer enhancer = new Enhancer();
+        enhancer.setClassLoader(classLoader);
+        enhancer.setInterfaces(toInterfaces(proxiedClasses));
+        enhancer.setSuperclass();
         return null;
     }
 }
