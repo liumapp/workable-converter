@@ -20,11 +20,19 @@ public class DefaultProxyFactory implements ProxyFactory {
 
     @Override
     public <T> T createInvokerProxy(ObjectInvoker invoker, Class<?>... proxiedClasses) {
+        @SuppressWarnings("unchecked")
+        T result = (T)
         return null;
     }
 
     @Override
     public <T> T createInvokerProxy(ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxiedClasses) {
         return null;
+    }
+
+    private ProxyFactory getCapableProxyFactory (Class<?>... proxiedClasses) {
+        for (ProxyFactory proxyFactory : SERVICES) {
+//            if (proxyFactory.c)
+        }
     }
 }
