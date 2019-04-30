@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.utils;
 
 import com.google.common.collect.Maps;
+import com.liumapp.workable.converter.factory.DefaultProxyFactory;
 import com.liumapp.workable.converter.factory.ProxyFactory;
 
 import java.lang.reflect.Method;
@@ -67,7 +68,7 @@ public class ProxyUtil {
     }
 
     public static ProxyFactory getInstance() {
-        return DefaultProxyCreator.INSTANCE;
+        return DefaultProxyFactory.INSTANCE;
     }
 
     public static boolean isHashCode(Method method) {

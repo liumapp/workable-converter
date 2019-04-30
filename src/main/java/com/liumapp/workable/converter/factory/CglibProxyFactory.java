@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.workable.converter.filters.DefaultCglibProxyFactoryCallbackFilter;
 import com.liumapp.workable.converter.invoker.DefaultInvokerBridge;
 import com.liumapp.workable.converter.invoker.ObjectInvoker;
 import com.liumapp.workable.converter.templates.SubClassFactoryTemplate;
@@ -28,7 +29,7 @@ public class CglibProxyFactory extends SubClassFactoryTemplate {
         enhancer.setClassLoader(classLoader);
         enhancer.setInterfaces(toInterfaces(proxiedClasses));
         enhancer.setSuperclass(getSuperClass(proxiedClasses));
-        enhancer.setCallbackFilter();
+        enhancer.setCallbackFilter(new DefaultCglibProxyFactoryCallbackFilter());
         enhancer.setCallbacks(new Callback[] {
                 new DefaultInvokerBridge(invoker)
         });
