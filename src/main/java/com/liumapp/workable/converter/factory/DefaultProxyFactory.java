@@ -1,7 +1,9 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.workable.converter.exceptions.ProxyFactoryException;
 import com.liumapp.workable.converter.invoker.ObjectInvoker;
 
+import java.util.Arrays;
 import java.util.ServiceLoader;
 
 /**
@@ -19,20 +21,36 @@ public class DefaultProxyFactory implements ProxyFactory {
     private static final ServiceLoader<ProxyFactory> SERVICES = ServiceLoader.load(ProxyFactory.class);
 
     @Override
+    public boolean canProxy(Class<?>... proxiedClasses) {
+        for (ProxyFactory proxyFactory : SERVICES) {
+            if (proxyFactory.canProxy(proxiedClasses)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
     public <T> T createInvokerProxy(ObjectInvoker invoker, Class<?>... proxiedClasses) {
         @SuppressWarnings("unchecked")
-        T result = (T)
-        return null;
+        T result = (T) getCapableProxyFactory(proxiedClasses).createInvokerProxy(invoker, proxiedClasses);
+        return result;
     }
 
     @Override
     public <T> T createInvokerProxy(ClassLoader classLoader, ObjectInvoker invoker, Class<?>... proxiedClasses) {
-        return null;
+        @SuppressWarnings("unchecked")
+        T result = (T) getCapableProxyFactory(proxiedClasses).createInvokerProxy(classLoader, invoker, proxiedClasses);
+        return result;
     }
 
     private ProxyFactory getCapableProxyFactory (Class<?>... proxiedClasses) {
         for (ProxyFactory proxyFactory : SERVICES) {
-//            if (proxyFactory.c)
+            if (proxyFactory.canProxy(proxiedClasses)) {
+                return proxyFactory;
+            }
         }
+        throw new ProxyFactoryException("can not proxy " + Arrays.toString(proxiedClasses));
     }
 }
