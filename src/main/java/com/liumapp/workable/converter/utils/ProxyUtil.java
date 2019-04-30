@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.utils;
 
 import com.google.common.collect.Maps;
+import com.liumapp.workable.converter.factory.ProxyFactory;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
@@ -65,7 +66,7 @@ public class ProxyUtil {
         return result;
     }
 
-    public static ProxyCreator getInstance() {
+    public static ProxyFactory getInstance() {
         return DefaultProxyCreator.INSTANCE;
     }
 
