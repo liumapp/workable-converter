@@ -18,6 +18,19 @@ import java.util.Set;
  */
 public abstract class SubClassFactoryTemplate extends FactoryTemplate {
 
+    @Override
+    public boolean canProxy(Class<?>... proxiedClasses) {
+        try {
+            getSuperClass(proxiedClasses);
+            return true;
+        } catch (ProxyFactoryException e) {
+            // effective in java 不推荐使用这种写法（在exception的catch中进行逻辑的处理）
+            // 后续有时间进行改造
+            // todo
+            return false;
+        }
+    }
+
     public static Class<?> getSuperClass (Class<?>[] proxiedClasses) {
         final Class<?>[] superClasses = toNonInterfaces(proxiedClasses);
         switch (superClasses.length) {

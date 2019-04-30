@@ -12,7 +12,7 @@ import com.liumapp.workable.converter.invoker.ObjectInvoker;
  */
 public interface ProxyFactory {
 
-
+    boolean canProxy (Class<?>... proxiedClasses);
 
     <T> T createInvokerProxy (ObjectInvoker invoker, Class<?>... proxiedClasses);
 
