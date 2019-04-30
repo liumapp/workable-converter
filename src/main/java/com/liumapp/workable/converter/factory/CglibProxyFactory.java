@@ -23,7 +23,7 @@ public class CglibProxyFactory extends SubClassFactoryTemplate {
         enhancer.setClassLoader(classLoader);
         enhancer.setInterfaces(toInterfaces(proxiedClasses));
         enhancer.setSuperclass(getSuperClass(proxiedClasses));
-
+        enhancer.setCallbackFilter();
         return null;
     }
 
