@@ -7,19 +7,20 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 
 /**
- * file EqualsHandler.java
+ * file HashCodeHandler.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/4/30
  */
-public class EqualsHandler implements MethodInterceptor, Serializable {
+public class HashCodeHandler implements MethodInterceptor, Serializable {
 
-    private static final long serialVersionUID = -1118031901763468558L;
+    private static final long serialVersionUID = -4472787665047197669L;
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        return Boolean.valueOf(o == objects[0]);
+        return Integer.valueOf(System.identityHashCode(o));
     }
+
 }
