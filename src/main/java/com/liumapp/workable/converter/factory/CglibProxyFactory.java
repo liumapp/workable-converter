@@ -19,8 +19,6 @@ import java.lang.reflect.Method;
  */
 public class CglibProxyFactory extends SubClassFactoryTemplate {
 
-    private static final CallbackFilter CALLBACK_FILTERk =
-
     /**
      * 创建具体cglib的enhancer对象
      */
@@ -36,13 +34,5 @@ public class CglibProxyFactory extends SubClassFactoryTemplate {
         });
         return null;
     }
-
-    private static class CglibProxyFactoryCallBackFilter implements CallbackFilter {
-        @Override
-        public int accept(Method method) {
-            if ()
-        }
-    }
-
 
 }
