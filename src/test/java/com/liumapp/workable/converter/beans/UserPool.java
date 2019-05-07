@@ -12,6 +12,10 @@ import java.util.HashMap;
  */
 public class UserPool {
 
-    public static HashMap<Integer, User> userHashMap;
+    private static HashMap<Integer, User> userHashMap = new HashMap<>();
+
+    public static HashMap<Integer, User> getInstance () {
+        return userHashMap;
+    }
 
 }

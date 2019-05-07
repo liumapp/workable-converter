@@ -16,19 +16,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean add(User user) {
-        UserPool.userHashMap.put(user.getId(), user);
+        UserPool.getInstance().put(user.getId(), user);
         return true;
     }
 
     @Override
     public boolean delete(int id) {
-        UserPool.userHashMap.remove(id);
+        UserPool.getInstance().remove(id);
         return true;
     }
 
     @Override
     public User get(int id) {
-        return UserPool.userHashMap.get(id);
+        return UserPool.getInstance().get(id);
     }
 
 }
