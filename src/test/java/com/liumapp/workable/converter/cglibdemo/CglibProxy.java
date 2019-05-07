@@ -24,29 +24,37 @@ public class CglibProxy implements MethodInterceptor {
 
     private static Logger logger = LoggerFactory.getLogger(CglibProxy.class);
 
+    private static CglibProxy cglibProxy = new CglibProxy();
+
+    private CglibProxy() {
+    }
+
+    public static CglibProxy getInstance() {
+        return cglibProxy;
+    }
+
     public <T> T getProxy(Class<T> cls) {
         return (T) Enhancer.create(cls, this);
     }
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        before();
+        before(method.getName());
         Object result = methodProxy.invokeSuper(o, objects);
-        after();
+        after(method.getName());
         return result;
     }
 
-    public void before () {
-        logger.info("before method begin...");
+    public void before (String methodName) {
+        logger.info("before " + methodName + " method begin...");
     }
 
-    public void after () {
-        logger.info("after method done...");
+    public void after (String methodName) {
+        logger.info("after " + methodName + " method done...");
     }
 
     public static void main (String[] args) {
-        CglibProxy cglibProxy = new CglibProxy();
-        UserService userService = cglibProxy.getProxy(UserServiceImpl.class);
+        UserService userService = CglibProxy.getInstance().getProxy(UserServiceImpl.class);
         User user = new User();
         user.setSex("girl");
         user.setName("mary");
