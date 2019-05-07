@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.services.impl;
 
 import com.liumapp.workable.converter.beans.User;
+import com.liumapp.workable.converter.beans.UserPool;
 import com.liumapp.workable.converter.services.UserService;
 
 /**
@@ -14,12 +15,14 @@ import com.liumapp.workable.converter.services.UserService;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public boolean add(User name) {
-        return false;
+    public boolean add(User user) {
+        UserPool.userHashMap.put(user.getId(), user);
+        return true;
     }
 
     @Override
     public boolean delete(User name) {
+
         return false;
     }
 
