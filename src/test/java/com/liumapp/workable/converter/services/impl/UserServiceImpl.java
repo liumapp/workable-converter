@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delete(User name) {
+    public boolean delete(int id) {
 
         return false;
     }

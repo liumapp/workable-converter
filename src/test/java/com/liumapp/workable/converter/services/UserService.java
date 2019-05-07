@@ -14,7 +14,7 @@ public interface UserService {
 
     public boolean add (User name);
 
-    public boolean delete (User name);
+    public boolean delete (int id);
 
     public User get (int id);
 
