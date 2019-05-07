@@ -22,13 +22,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean delete(int id) {
-
-        return false;
+        UserPool.userHashMap.remove(id);
+        return true;
     }
 
     @Override
     public User get(int id) {
-        return null;
+        return UserPool.userHashMap.get(id);
     }
 
 }

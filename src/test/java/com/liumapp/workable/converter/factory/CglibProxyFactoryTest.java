@@ -8,6 +8,7 @@ public class CglibProxyFactoryTest {
 
     @Test
     public void createInvokerProxy() {
+        ProxyFactory proxyFactory = new CglibProxyFactory();
 
     }
 }
