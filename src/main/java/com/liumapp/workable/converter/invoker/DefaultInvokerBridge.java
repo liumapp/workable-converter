@@ -17,14 +17,14 @@ public class DefaultInvokerBridge implements InvocationHandler, Serializable {
 
     private static final long serialVersionUID = -2445951530794450396L;
 
-    private final ObjectInvoker invoker;
+    private final ObjectInvoker original;
 
     public DefaultInvokerBridge(ObjectInvoker invoker) {
-        this.invoker = invoker;
+        this.original = invoker;
     }
 
     @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-        return invoker.invoke(o, method, objects);
+        return original.invoke(o, method, objects);
     }
 }

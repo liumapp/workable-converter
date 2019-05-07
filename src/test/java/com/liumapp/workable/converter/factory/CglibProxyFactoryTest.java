@@ -22,11 +22,11 @@ public class CglibProxyFactoryTest {
         ObjectInvoker logInvoker = new ObjectInvoker() {
             @Override
             public Object invoke(Object proxy, Method method, Object... arguments) throws Throwable {
-                logger.info("the proxy :" + proxy.toString() + " has called " + method + " with arguments :" + arguments.toString());
+                logger.info("the proxy has called " + method + " with arguments :" + arguments.toString());
                 return null;
             }
         };
-        UserService service = proxyFactory.createInvokerProxy(logInvoker, UserServiceImpl.class);
+        UserService service = proxyFactory.createInvokerProxy(logInvoker, UserService.class);
         User user = new User();
         user.setId(1);
         user.setAge(19);

@@ -79,12 +79,14 @@ public abstract class SubClassFactoryTemplate extends FactoryTemplate {
     }
 
     private static Class<?>[] toNonInterfaces (Class<?>[] proxiedClasses) {
-        Set<Class<?>> superClasses = Sets.newLinkedHashSet();
-        for (Class<?> proxiedClass : proxiedClasses) {
-            superClasses.add(proxiedClass);
+        Set<Class<?>> superclasses = Sets.newLinkedHashSet();
+        for (Class<?> proxyClass : proxiedClasses) {
+            if (!proxyClass.isInterface()) {
+                superclasses.add(proxyClass);
+            }
         }
 
-        return superClasses.toArray(new Class[superClasses.size()]);
+        return superclasses.toArray(new Class[superclasses.size()]);
     }
 
     private static boolean hasDefaultConstructor (Class<?> superClass) {

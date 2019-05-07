@@ -12,7 +12,7 @@ import com.liumapp.workable.converter.beans.User;
  */
 public interface UserService {
 
-    public boolean add (User name);
+    public boolean add (User user);
 
     public boolean delete (int id);
 
