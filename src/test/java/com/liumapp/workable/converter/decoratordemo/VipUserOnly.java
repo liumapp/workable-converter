@@ -1,26 +1,32 @@
 package com.liumapp.workable.converter.decoratordemo;
 
+import com.liumapp.workable.converter.beans.RoleEnums;
 import com.liumapp.workable.converter.beans.User;
 import com.liumapp.workable.converter.services.UserService;
 
 /**
  * 执行get之前，需要校验口令
- * file UserWithToken.java
+ * file VipUserOnly.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/8
  */
-public class UserWithToken extends UserDecorator {
+public class VipUserOnly extends UserDecorator {
 
-    public UserWithToken(UserService userService) {
+    public VipUserOnly(UserService userService) {
         super(userService);
     }
 
     @Override
     public boolean add(User user) {
-        return super.add(user);
+        if (this.check(user.getRole())) {
+            return super.add(user);
+        } else {
+            return false;
+        }
+
     }
 
     @Override
@@ -30,14 +36,13 @@ public class UserWithToken extends UserDecorator {
 
     @Override
     public User get(int id) {
-        if (this.check()) {
-            return super.get(id);
-        } else {
-            return null;
-        }
+        return super.get(id);
     }
 
-    private boolean check () {
+    public boolean check (RoleEnums role) {
+        if (!role.getRole().equals(RoleEnums.FREE_USER.getRole())) {
+            return true;
+        }
         return false;
     }
 
