@@ -30,9 +30,15 @@ public class UserWithToken extends UserDecorator {
 
     @Override
     public User get(int id) {
-        return super.get(id);
+        if (this.check()) {
+            return super.get(id);
+        } else {
+            return null;
+        }
     }
 
-
+    private boolean check () {
+        return false;
+    }
 
 }
