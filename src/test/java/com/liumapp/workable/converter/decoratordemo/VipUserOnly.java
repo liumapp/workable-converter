@@ -40,7 +40,7 @@ public class VipUserOnly extends UserDecorator {
     }
 
     public boolean check (RoleEnums role) {
-        if (!role.getRole().equals(RoleEnums.FREE_USER.getRole())) {
+        if (role.getRole() != null && !role.getRole().equals(RoleEnums.FREE_USER.getRole()) && role.getRole().length() != 0) {
             return true;
         }
         return false;
