@@ -17,11 +17,6 @@ public class LoggerProxy extends DefaultProxyTemplate {
 
     private static Logger logger = LoggerFactory.getLogger(LoggerFactory.class);
 
-    @Override
-    public void begin() {
-        
-        super.begin();
-    }
 
     @Override
     public void before(Class<?> cls, Method method, Object[] params) {
@@ -33,8 +28,4 @@ public class LoggerProxy extends DefaultProxyTemplate {
         super.after(cls, method, params);
     }
 
-    @Override
-    public void end() {
-        super.end();
-    }
 }
