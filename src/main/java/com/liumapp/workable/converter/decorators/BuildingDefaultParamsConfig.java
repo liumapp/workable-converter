@@ -21,7 +21,7 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
     }
 
     @Override
-    public ConverterConfig loadConfig(URL url) {
+    public ConverterConfig loadConfig(URL url) throws Throwable {
         return super.loadConfig(url);
     }
 }

@@ -24,7 +24,7 @@ public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoade
      * @return
      */
     @Override
-    public URL loadURL() {
+    public URL loadURL() throws Throwable {
         URL url1 = getClass().getResource("application.yml");
         URL url2 = getClass().getResource("bootstrap.yml");
         if (url1 == null && url2 == null) {

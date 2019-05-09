@@ -17,11 +17,11 @@ public interface LoadingConfig {
     /**
      * read yml file URL from resource folder, can be application.yml or bootstrap.yml or workable-converter.yml
      */
-    URL loadURL ();
+    URL loadURL () throws Throwable;
 
     /**
      * loading config params from resource
      */
-    ConverterConfig loadConfig (URL url);
+    ConverterConfig loadConfig (URL url) throws Throwable;
 
 }

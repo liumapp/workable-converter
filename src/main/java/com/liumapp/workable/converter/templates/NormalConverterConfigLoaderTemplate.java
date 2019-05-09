@@ -22,12 +22,12 @@ public class NormalConverterConfigLoaderTemplate implements LoadingConfig {
     }
 
     @Override
-    public URL loadURL() {
+    public URL loadURL() throws Throwable {
         return loadingConfig.loadURL();
     }
 
     @Override
-    public ConverterConfig loadConfig(URL url) {
+    public ConverterConfig loadConfig(URL url) throws Throwable {
         return loadingConfig.loadConfig(url);
     }
 

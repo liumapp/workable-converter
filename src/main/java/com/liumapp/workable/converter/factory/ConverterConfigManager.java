@@ -23,7 +23,7 @@ public class ConverterConfigManager {
     private ConverterConfigManager () {
     }
 
-    public static ConverterConfigManager getInstance() {
+    public static ConverterConfigManager getInstance() throws Throwable {
         if (INSTANCE == null) {
             INSTANCE = new ConverterConfigManager();
             buildingConverterConfig(INSTANCE);
@@ -35,7 +35,7 @@ public class ConverterConfigManager {
         return params;
     }
 
-    private static void buildingConverterConfig (ConverterConfigManager INSTANCE) {
+    private static void buildingConverterConfig (ConverterConfigManager INSTANCE) throws Throwable {
         LoadingConfig service = new CheckingUrlSourceForParamsConfig(new BuildingDefaultParamsConfig(new BasicLoadingConfigService()));
         INSTANCE.params = service.loadConfig(service.loadURL());
     }
