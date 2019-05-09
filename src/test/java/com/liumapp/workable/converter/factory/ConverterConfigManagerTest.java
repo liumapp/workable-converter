@@ -9,7 +9,12 @@ public class ConverterConfigManagerTest {
 
     @Test
     public void getParams() {
-        ConverterConfig params = ConverterConfigManager.getInstance().getParams();
+        ConverterConfig params = null;
+        try {
+            params = ConverterConfigManager.getInstance().getParams();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
         assertEquals("C:\\Program Files\\LibreOffice", params.getLibreofficePath());
         assertEquals("./data/pdf/", params.getPdfSavePath());
         assertEquals("./data/pic/", params.getPicSavePath());

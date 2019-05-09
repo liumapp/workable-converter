@@ -24,20 +24,19 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
 
     @Override
     public ConverterConfig loadConfig(ConfigurationNode node) throws Throwable {
-
         if (node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue() == null) {
             throw new NotFoundLibreofficeHome("libreoffice home path must be setted");
         }
 
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "pdfSavePath"), "./data/pdf/");
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "picSavePath"), "./data/pic/");
-        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "waitedSavePath"), "./data/waiting");
+        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "waitedSavePath"), "./data/waiting/");
 
         return super.loadConfig(node);
     }
 
     private void buildingDefaultValueIfEmpty (ConfigurationNode node, String defaultValue) {
-        if (node.getValue() != null) {
+        if (node.getValue() == null) {
             node.setValue(defaultValue);
         }
     }

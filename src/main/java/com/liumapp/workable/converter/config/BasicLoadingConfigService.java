@@ -39,10 +39,10 @@ public class BasicLoadingConfigService implements LoadingConfig {
     @Override
     public ConverterConfig loadConfig(ConfigurationNode node) throws NullPointerException {
         ConverterConfig converterConfig = new ConverterConfig(
-                node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString(),
                 node.getNode("com", "liumapp", "workable-converter", "pdfSavePath").getValue().toString(),
                 node.getNode("com", "liumapp", "workable-converter", "picSavePath").getValue().toString(),
-                node.getNode("com", "liumapp", "workable-converter", "waitedSavePath").getValue().toString()
+                node.getNode("com", "liumapp", "workable-converter", "waitedSavePath").getValue().toString(),
+                node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString()
         );
         return converterConfig;
     }
