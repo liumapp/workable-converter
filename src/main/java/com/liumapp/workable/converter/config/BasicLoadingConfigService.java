@@ -6,6 +6,7 @@ import com.liumapp.qtools.property.yaml.YAMLConfigurationLoader;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.exceptions.NotFoundConfigFileException;
 import com.liumapp.workable.converter.exceptions.NotFoundLibreofficeHome;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.net.URL;
 
@@ -34,8 +35,9 @@ public class BasicLoadingConfigService implements LoadingConfig {
         return node;
     }
 
+    @Nullable
     @Override
-    public ConverterConfig loadConfig(ConfigurationNode node) {
+    public ConverterConfig loadConfig(ConfigurationNode node) throws NullPointerException {
         ConverterConfig converterConfig = new ConverterConfig(
                 node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString(),
                 node.getNode("com", "liumapp", "workable-converter", "pdfSavePath").getValue().toString(),
