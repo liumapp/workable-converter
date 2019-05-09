@@ -14,19 +14,20 @@ public class ConverterConfigManager {
 
     private static ConverterConfigManager INSTANCE;
 
-    private static ConverterConfig converterConfig;
+    private static ConverterConfig params;
 
-    private ConverterConfigManager() {
+    private ConverterConfigManager () {
     }
 
     public static ConverterConfigManager getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ConverterConfigManager();
-            converterConfig = new ConverterConfig();
+            INSTANCE.params = new ConverterConfig();
         }
         return INSTANCE;
     }
 
-
-
+    public static ConverterConfig getParams() {
+        return params;
+    }
 }
