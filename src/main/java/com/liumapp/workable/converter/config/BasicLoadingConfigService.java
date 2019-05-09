@@ -1,8 +1,11 @@
 package com.liumapp.workable.converter.config;
 
 import com.liumapp.qtools.property.core.ConfigurationNode;
+import com.liumapp.qtools.property.core.loader.ConfigurationLoader;
+import com.liumapp.qtools.property.yaml.YAMLConfigurationLoader;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.exceptions.NotFoundConfigFileException;
+import com.liumapp.workable.converter.exceptions.NotFoundLibreofficeHome;
 
 import java.net.URL;
 
@@ -22,7 +25,13 @@ public class BasicLoadingConfigService implements LoadingConfig {
         if (url == null) {
             throw new NotFoundConfigFileException("workable-converter.yml file not found in your resource folder");
         }
-        return url;
+        ConfigurationLoader loader = YAMLConfigurationLoader.builder()
+                .setURL(url).build();
+        ConfigurationNode node = loader.load();
+        if (node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue() == null) {
+            throw new NotFoundLibreofficeHome("libreoffice home path must need");
+        }
+        return node;
     }
 
     @Override

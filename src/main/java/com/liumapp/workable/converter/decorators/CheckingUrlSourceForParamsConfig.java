@@ -22,7 +22,7 @@ public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoade
 
     /**
      * check application.yml and bootstrap.yml, if it has the config that i need .
-     * @return
+     * it no application.yml and no bootstrap.yml i need , check if there is a file named workable-converter.yml
      */
     @Override
     public ConfigurationNode loadURL() throws Throwable {
