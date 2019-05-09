@@ -15,7 +15,6 @@ import java.util.List;
  * homepage http://www.liumapp.com
  * date 2019/5/8
  */
-@Data
 public class ProxyChain {
 
     private List<Proxy> proxyList;
@@ -43,6 +42,38 @@ public class ProxyChain {
         this.methodResult = methodResult;
     }
 
+    public List<Proxy> getProxyList() {
+        return proxyList;
+    }
+
+    public int getCurrentProxyIndex() {
+        return currentProxyIndex;
+    }
+
+    public Class<?> getTargetClass() {
+        return targetClass;
+    }
+
+    public Object getTargetObject() {
+        return targetObject;
+    }
+
+    public Method getTargetMethod() {
+        return targetMethod;
+    }
+
+    public Object[] getMethodParams() {
+        return methodParams;
+    }
+
+    public MethodProxy getMethodProxy() {
+        return methodProxy;
+    }
+
+    public Object getMethodResult() {
+        return methodResult;
+    }
+
     public void doProxyChain () {
         if (currentProxyIndex < proxyList.size()) {
             proxyList.get(currentProxyIndex++).doProxy(this);
@@ -50,7 +81,7 @@ public class ProxyChain {
             try {
                 methodResult = methodProxy.invokeSuper(targetObject, methodParams);
             } catch (Throwable throwable) {
-                throwable.printStackTrace();
+                throw new RuntimeException(throwable);
             }
         }
     }

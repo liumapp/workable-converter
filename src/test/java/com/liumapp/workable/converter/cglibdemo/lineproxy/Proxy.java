@@ -10,6 +10,6 @@ package com.liumapp.workable.converter.cglibdemo.lineproxy;
  */
 public interface Proxy {
 
-    public void doProxy (ProxyChain proxyChain);
+    void doProxy (ProxyChain proxyChain);
 
 }
