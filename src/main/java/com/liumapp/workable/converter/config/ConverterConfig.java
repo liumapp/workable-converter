@@ -24,10 +24,14 @@ public class ConverterConfig {
     private String picSavePath;
 
     /**
+     * the save path for the file which is waiting to be converted
+     */
+    private String waitedSavePath;
+
+    /**
      * libreoffice home
      * example: C:\Program Files\LibreOffice
      */
     private String libreofficePath;
 
-    
 }
