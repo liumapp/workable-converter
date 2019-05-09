@@ -1,4 +1,4 @@
-package com.liumapp.workable.converter.factory;
+package com.liumapp.workable.converter.core;
 
 /**
  * file Manager.java

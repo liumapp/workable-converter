@@ -3,6 +3,7 @@ package com.liumapp.workable.converter.factory;
 import com.liumapp.workable.converter.config.BasicLoadingConfigService;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
+import com.liumapp.workable.converter.core.Manager;
 import com.liumapp.workable.converter.decorators.BuildingDefaultParamsConfig;
 import com.liumapp.workable.converter.decorators.CheckingUrlSourceForParamsConfig;
 

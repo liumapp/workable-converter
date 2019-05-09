@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.workable.converter.core.Manager;
+
 /**
  * file WorkableConverterManager.java
  * author liumapp
