@@ -36,7 +36,7 @@ public class BasicLoadingConfigService implements LoadingConfig {
 
     @Override
     public ConverterConfig loadConfig(ConfigurationNode node) {
-
+        ConverterConfig converterConfig = new ConverterConfig();
         return null;
     }
 

@@ -34,4 +34,10 @@ public class ConverterConfig {
      */
     private String libreofficePath;
 
+    public ConverterConfig(String pdfSavePath, String picSavePath, String waitedSavePath, String libreofficePath) {
+        this.pdfSavePath = pdfSavePath;
+        this.picSavePath = picSavePath;
+        this.waitedSavePath = waitedSavePath;
+        this.libreofficePath = libreofficePath;
+    }
 }
