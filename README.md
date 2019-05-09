@@ -19,6 +19,8 @@
 
 * https://www.libreoffice.org/download/download/?type=rpm-x86_64&version=6.2.3&lang=zh-CN
 
-* https://api.libreoffice.org/examples/examples.html
+* https://api.libreoffice.org/
+
+
 
 
