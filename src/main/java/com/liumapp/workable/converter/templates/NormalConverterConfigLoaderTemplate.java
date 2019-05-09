@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 
 import java.net.URL;
@@ -23,5 +24,14 @@ public class NormalConverterConfigLoaderTemplate implements LoadingConfig {
     @Override
     public URL loadURL() {
         return loadingConfig.loadURL();
+    }
+
+    @Override
+    public ConverterConfig loadConfig() {
+        return loadingConfig.loadConfig();
+    }
+
+    public LoadingConfig getLoadingConfig() {
+        return loadingConfig;
     }
 }

@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
@@ -17,7 +18,10 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
         super(loadingConfig);
     }
 
-    
+    @Override
+    public ConverterConfig loadConfig() {
+        return super.loadConfig();
 
-
+        
+    }
 }

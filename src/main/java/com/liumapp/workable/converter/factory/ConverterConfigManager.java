@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.workable.converter.config.BasicLoadingConfigService;
 import com.liumapp.workable.converter.config.ConverterConfig;
 
 /**
@@ -33,6 +34,6 @@ public class ConverterConfigManager {
 
     private static void buildingConverterConfig (ConverterConfigManager INSTANCE) {
         INSTANCE.params = new ConverterConfig();
-        
+
     }
 }
