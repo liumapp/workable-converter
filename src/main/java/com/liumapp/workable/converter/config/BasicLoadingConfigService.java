@@ -17,6 +17,7 @@ public class BasicLoadingConfigService implements LoadingConfig {
     @Override
     public URL loadURL() {
         URL url = getClass().getResource("/workable-converter.yml");
+
         return url;
     }
 
