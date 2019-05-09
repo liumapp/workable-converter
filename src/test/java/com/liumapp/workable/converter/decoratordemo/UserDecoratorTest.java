@@ -2,9 +2,12 @@ package com.liumapp.workable.converter.decoratordemo;
 
 import com.liumapp.workable.converter.beans.RoleEnums;
 import com.liumapp.workable.converter.beans.User;
+import com.liumapp.workable.converter.beans.UserPool;
 import com.liumapp.workable.converter.services.UserService;
 import com.liumapp.workable.converter.services.impl.UserServiceImpl;
 import org.junit.Test;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 /**
@@ -38,6 +41,9 @@ public class UserDecoratorTest {
         assertEquals(false, service.add(normalGirlUser));
         assertEquals(false, service.add(vipBoyUser));
         assertEquals(true, service.add(vipGirlUser));
+        HashMap<Integer, User> userHashMap = UserPool.getInstance();
+        assertEquals(1, userHashMap.size());
+
     }
 
 }
