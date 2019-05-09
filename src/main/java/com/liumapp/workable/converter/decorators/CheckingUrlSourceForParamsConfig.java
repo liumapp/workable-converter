@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
@@ -24,7 +25,7 @@ public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoade
      * @return
      */
     @Override
-    public URL loadURL() throws Throwable {
+    public ConfigurationNode loadURL() throws Throwable {
         URL url1 = getClass().getResource("application.yml");
         URL url2 = getClass().getResource("bootstrap.yml");
         if (url1 == null && url2 == null) {

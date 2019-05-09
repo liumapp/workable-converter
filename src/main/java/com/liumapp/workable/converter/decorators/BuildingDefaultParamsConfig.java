@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
@@ -21,7 +22,7 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
     }
 
     @Override
-    public ConverterConfig loadConfig(URL url) throws Throwable {
-        return super.loadConfig(url);
+    public ConverterConfig loadConfig(ConfigurationNode node) throws Throwable {
+        return super.loadConfig(node);
     }
 }

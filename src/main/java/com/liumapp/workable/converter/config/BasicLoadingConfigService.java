@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.config;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.exceptions.NotFoundConfigFileException;
 
@@ -16,7 +17,7 @@ import java.net.URL;
 public class BasicLoadingConfigService implements LoadingConfig {
 
     @Override
-    public URL loadURL() throws Throwable {
+    public ConfigurationNode loadURL() throws Throwable {
         URL url = getClass().getResource("/workable-converter.yml");
         if (url == null) {
             throw new NotFoundConfigFileException("workable-converter.yml file not found in your resource folder");
@@ -25,7 +26,7 @@ public class BasicLoadingConfigService implements LoadingConfig {
     }
 
     @Override
-    public ConverterConfig loadConfig(URL url) {
+    public ConverterConfig loadConfig(ConfigurationNode node) {
         return null;
     }
 

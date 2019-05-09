@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.core;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.config.ConverterConfig;
 
 import java.net.URL;
@@ -17,11 +18,11 @@ public interface LoadingConfig {
     /**
      * read yml file URL from resource folder, can be application.yml or bootstrap.yml or workable-converter.yml
      */
-    URL loadURL () throws Throwable;
+    ConfigurationNode loadURL () throws Throwable;
 
     /**
      * loading config params from resource
      */
-    ConverterConfig loadConfig (URL url) throws Throwable;
+    ConverterConfig loadConfig (ConfigurationNode node) throws Throwable;
 
 }

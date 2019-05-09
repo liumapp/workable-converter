@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 
@@ -22,13 +23,13 @@ public class NormalConverterConfigLoaderTemplate implements LoadingConfig {
     }
 
     @Override
-    public URL loadURL() throws Throwable {
+    public ConfigurationNode loadURL() throws Throwable {
         return loadingConfig.loadURL();
     }
 
     @Override
-    public ConverterConfig loadConfig(URL url) throws Throwable {
-        return loadingConfig.loadConfig(url);
+    public ConverterConfig loadConfig(ConfigurationNode node) throws Throwable {
+        return loadingConfig.loadConfig(node);
     }
 
 
