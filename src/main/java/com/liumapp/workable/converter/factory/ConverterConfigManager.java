@@ -22,12 +22,17 @@ public class ConverterConfigManager {
     public static ConverterConfigManager getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ConverterConfigManager();
-            INSTANCE.params = new ConverterConfig();
+            buildingConverterConfig(INSTANCE);
         }
         return INSTANCE;
     }
 
     public static ConverterConfig getParams() {
         return params;
+    }
+
+    private static void buildingConverterConfig (ConverterConfigManager INSTANCE) {
+        INSTANCE.params = new ConverterConfig();
+        
     }
 }
