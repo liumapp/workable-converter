@@ -7,6 +7,8 @@
 
 * jodconverter:4.2.2
 
+* cglib动态代理
+
 ## 功能
 
 * doc、docx、html转PDF
@@ -14,6 +16,10 @@
 * doc、docx转每一页的png
 
 * 多个png按照顺序合并为一个PDF文件
+
+## 使用
+
+* 
 
 ## 参考链接
 
