@@ -1,9 +1,12 @@
 package com.liumapp.workable.converter.decorators;
 
 import com.liumapp.qtools.property.core.ConfigurationNode;
+import com.liumapp.qtools.property.core.loader.ConfigurationLoader;
+import com.liumapp.qtools.property.yaml.YAMLConfigurationLoader;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
+import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -31,6 +34,30 @@ public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoade
         if (url1 == null && url2 == null) {
             return super.loadURL();
         }
+
+        ConfigurationNode node1 = buildingNode(url1);
+        if (checkOfficeHome(node1))
+            return node1;
+
+        ConfigurationNode node2 = buildingNode(url2);
+        if (checkOfficeHome(node2))
+            return node2;
+
         return super.loadURL();
     }
+
+    private boolean checkOfficeHome (ConfigurationNode node) throws IOException {
+        if (node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue() == null) {
+            return false;
+        }
+        return true;
+    }
+
+    private ConfigurationNode buildingNode (URL url) throws IOException {
+        ConfigurationLoader loader = YAMLConfigurationLoader.builder()
+                .setURL(url).build();
+        ConfigurationNode node = loader.load();
+        return node;
+    }
+
 }
