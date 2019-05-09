@@ -8,7 +8,7 @@ package com.liumapp.workable.converter.factory;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class WorkableConverterManager {
+public class WorkableConverterManager implements Manager {
 
     private static WorkableConverterManager INSTANCE;
 

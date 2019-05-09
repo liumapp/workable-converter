@@ -14,7 +14,7 @@ import com.liumapp.workable.converter.decorators.CheckingUrlSourceForParamsConfi
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class ConverterConfigManager {
+public class ConverterConfigManager implements Manager {
 
     private static ConverterConfigManager INSTANCE;
 
