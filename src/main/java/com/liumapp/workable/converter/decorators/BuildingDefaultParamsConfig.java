@@ -4,6 +4,8 @@ import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
+import java.net.URL;
+
 /**
  * file BuildingDefaultParamsConfig.java
  * author liumapp
@@ -19,9 +21,7 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
     }
 
     @Override
-    public ConverterConfig loadConfig() {
-        return super.loadConfig();
-
-        
+    public ConverterConfig loadConfig(URL url) {
+        return super.loadConfig(url);
     }
 }

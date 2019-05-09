@@ -22,6 +22,6 @@ public interface LoadingConfig {
     /**
      * loading config params from resource
      */
-    ConverterConfig loadConfig ();
+    ConverterConfig loadConfig (URL url);
 
 }

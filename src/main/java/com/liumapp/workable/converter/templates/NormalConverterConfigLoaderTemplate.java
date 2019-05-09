@@ -27,11 +27,9 @@ public class NormalConverterConfigLoaderTemplate implements LoadingConfig {
     }
 
     @Override
-    public ConverterConfig loadConfig() {
-        return loadingConfig.loadConfig();
+    public ConverterConfig loadConfig(URL url) {
+        return loadingConfig.loadConfig(url);
     }
 
-    public LoadingConfig getLoadingConfig() {
-        return loadingConfig;
-    }
+
 }
