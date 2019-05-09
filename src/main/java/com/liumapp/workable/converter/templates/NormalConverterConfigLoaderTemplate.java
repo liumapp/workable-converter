@@ -1,5 +1,9 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.workable.converter.core.LoadingConfig;
+
+import java.net.URL;
+
 /**
  * file NormalConverterConfigLoaderTemplate.java
  * author liumapp
@@ -8,8 +12,16 @@ package com.liumapp.workable.converter.templates;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class NormalConverterConfigLoaderTemplate {
+public class NormalConverterConfigLoaderTemplate implements LoadingConfig {
 
+    private LoadingConfig loadingConfig;
 
+    public NormalConverterConfigLoaderTemplate(LoadingConfig loadingConfig) {
+        this.loadingConfig = loadingConfig;
+    }
 
+    @Override
+    public URL loadURL() {
+        return loadingConfig.loadURL();
+    }
 }
