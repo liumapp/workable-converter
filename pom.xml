@@ -69,6 +69,11 @@
       <artifactId>guava</artifactId>
       <version>18.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.property</groupId>
+      <artifactId>qtools-property</artifactId>
+      <version>v1.3.8</version>
+    </dependency>
 
     <!--framework core-->
     <dependency>
