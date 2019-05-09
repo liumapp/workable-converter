@@ -31,7 +31,7 @@ public class ConverterConfigManager {
         return INSTANCE;
     }
 
-    public static ConverterConfig getParams() {
+    public ConverterConfig getParams() {
         return params;
     }
 
