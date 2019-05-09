@@ -19,8 +19,17 @@ public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoade
         super(loadingConfig);
     }
 
+    /**
+     * check application.yml and bootstrap.yml, if it has the config that i need .
+     * @return
+     */
     @Override
     public URL loadURL() {
+        URL url1 = getClass().getResource("application.yml");
+        URL url2 = getClass().getResource("bootstrap.yml");
+        if (url1 == null && url2 == null) {
+            return super.loadURL();
+        }
         return super.loadURL();
     }
 }
