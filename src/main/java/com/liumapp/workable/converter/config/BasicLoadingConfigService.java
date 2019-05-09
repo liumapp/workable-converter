@@ -36,8 +36,13 @@ public class BasicLoadingConfigService implements LoadingConfig {
 
     @Override
     public ConverterConfig loadConfig(ConfigurationNode node) {
-        ConverterConfig converterConfig = new ConverterConfig();
-        return null;
+        ConverterConfig converterConfig = new ConverterConfig(
+                node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString(),
+                node.getNode("com", "liumapp", "workable-converter", "pdfSavePath").getValue().toString(),
+                node.getNode("com", "liumapp", "workable-converter", "picSavePath").getValue().toString(),
+                node.getNode("com", "liumapp", "workable-converter", "waitedSavePath").getValue().toString()
+        );
+        return converterConfig;
     }
 
 
