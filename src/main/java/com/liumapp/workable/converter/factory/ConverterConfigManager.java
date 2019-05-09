@@ -37,7 +37,6 @@ public class ConverterConfigManager {
 
     private static void buildingConverterConfig (ConverterConfigManager INSTANCE) {
         LoadingConfig service = new CheckingUrlSourceForParamsConfig(new BuildingDefaultParamsConfig(new BasicLoadingConfigService()));
-        service.loadURL();
-        INSTANCE.params = service.loadConfig();
+        INSTANCE.params = service.loadConfig(service.loadURL());
     }
 }
