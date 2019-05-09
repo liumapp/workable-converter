@@ -17,24 +17,23 @@ import java.util.List;
  */
 public class ProxyManager {
 
-    private Class<?> targetClass;
+    private static ProxyManager instance = null;
 
-    private List<Proxy> proxyList;
+    private ProxyManager() {
+    }
 
-    public ProxyManager(Class<?> targetClass, List<Proxy> proxyList) {
-        this.targetClass = targetClass;
-        this.proxyList = proxyList;
+    public static ProxyManager getInstance() {
+        if (instance == null) {
+            instance = new ProxyManager();
+        }
+        return instance;
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T createProxy () {
-        return (T) Enhancer.create(targetClass, new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                ProxyChain proxyChain = new ProxyChain(targetClass, o, method, objects, methodProxy, proxyList);
-                proxyChain.doProxyChain();
-                return proxyChain.getMethodResult();
-            }
+    public <T> T createProxy(final Class<?> targetClass, final List<Proxy> proxyList) {
+        return (T) Enhancer.create(targetClass, (MethodInterceptor) (target, method, args, proxy) -> {
+            ProxyChain proxyChain = new ProxyChain(targetClass, target, method, args, proxy, proxyList);
+            return proxyChain.getMethodResult();
         });
     }
 }

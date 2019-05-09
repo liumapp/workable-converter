@@ -4,7 +4,6 @@ import com.liumapp.workable.converter.beans.RoleEnums;
 import com.liumapp.workable.converter.beans.User;
 import com.liumapp.workable.converter.services.impl.UserServiceImpl;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +26,8 @@ public class ProxyLineTest {
         proxyList.add(new OnlyGirlCanBeAddedProxy());
         proxyList.add(new OnlyVipCanBeAddedProxy());
         proxyList.add(new LoggerProxy());
-        ProxyManager proxyManager = new ProxyManager(UserServiceImpl.class, proxyList);
-        UserServiceImpl userProxies = proxyManager.createProxy();
+
+        UserServiceImpl userProxies = ProxyManager.getInstance().createProxy(UserServiceImpl.class, proxyList);
 
         User normalGirlUser = new User();
         normalGirlUser.setName("mary");
