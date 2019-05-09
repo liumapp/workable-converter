@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.core;
 
+import com.liumapp.workable.converter.config.ConverterConfig;
+
 import java.net.URL;
 
 /**
@@ -17,4 +19,8 @@ public interface LoadingConfig {
      */
     URL loadURL ();
 
+    /**
+     * loading config params from resource
+     */
+    ConverterConfig loadConfig ();
 }
