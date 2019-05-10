@@ -1,5 +1,8 @@
 package com.liumapp.workable.converter.proxies;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * file ConverterProxy.java
  * author liumapp
@@ -10,6 +13,16 @@ package com.liumapp.workable.converter.proxies;
  */
 public class ConverterProxy {
 
-    
+    private static Logger LOGGER = LoggerFactory.getLogger(ConverterProxy.class);
+
+    private static ConverterProxy converterProxy = new ConverterProxy();
+
+    private ConverterProxy() {
+    }
+
+    public static ConverterProxy getInstance() {
+        return converterProxy;
+    }
+
 
 }
