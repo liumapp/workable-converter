@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.proxies;
 
+import com.liumapp.workable.converter.core.Proxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,17 +12,21 @@ import org.slf4j.LoggerFactory;
  * homepage http://www.liumapp.com
  * date 2019/5/10
  */
-public class ConverterProxy {
+public class ConverterProxy implements Proxy {
 
     private static Logger LOGGER = LoggerFactory.getLogger(ConverterProxy.class);
 
     private static ConverterProxy converterProxy = new ConverterProxy();
 
+    private static class ConverterProxyHolder {
+        private static final ConverterProxy INSTANCE = new ConverterProxy();
+    }
+
     private ConverterProxy() {
     }
 
     public static ConverterProxy getInstance() {
-        return converterProxy;
+        return ConverterProxyHolder.INSTANCE;
     }
 
 
