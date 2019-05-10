@@ -7,7 +7,9 @@
 
 * jodconverter:4.2.2
 
-* cglib动态代理
+* cglib动态代理 + 懒汉工厂模式 + 策略模式 + 装饰器模式
+
+* qtools-property管理配置文件(application.yml、bootstrap.yml、workable-converter.yml三种命名的配置文件任意包含一种即可)
 
 ## 功能
 
