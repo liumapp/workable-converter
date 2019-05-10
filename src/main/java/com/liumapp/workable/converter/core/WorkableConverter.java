@@ -1,4 +1,4 @@
-package com.liumapp.workable.converter;
+package com.liumapp.workable.converter.core;
 
 /**
  * file WorkableConverter.java
@@ -9,4 +9,7 @@ package com.liumapp.workable.converter;
  * date 2019/5/9
  */
 public interface WorkableConverter {
+
+    <T> T convert();
+
 }
