@@ -15,6 +15,8 @@
 
 * doc、docx转每一页的png
 
+* pdf转每一页的png
+
 * 多个png按照顺序合并为一个PDF文件
 
 ## 使用
