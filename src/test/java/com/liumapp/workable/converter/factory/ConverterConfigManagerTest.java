@@ -19,5 +19,6 @@ public class ConverterConfigManagerTest {
         assertEquals("./data/pdf/", params.getPdfSavePath());
         assertEquals("./data/pic/", params.getPicSavePath());
         assertEquals("./data/waiting/", params.getWaitedSavePath());
+        assertEquals(2002, params.getLibreofficePort());
     }
 }

@@ -31,11 +31,11 @@ public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemp
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "pdfSavePath"), "./data/pdf/");
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "picSavePath"), "./data/pic/");
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "waitedSavePath"), "./data/waiting/");
-
+        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "libreofficePort"), 2002);
         return super.loadConfig(node);
     }
 
-    private void buildingDefaultValueIfEmpty (ConfigurationNode node, String defaultValue) {
+    private void buildingDefaultValueIfEmpty (ConfigurationNode node, Object defaultValue) {
         if (node.getValue() == null) {
             node.setValue(defaultValue);
         }
