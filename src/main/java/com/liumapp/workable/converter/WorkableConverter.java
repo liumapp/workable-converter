@@ -1,8 +1,12 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.workable.converter.config.ConverterConfig;
+import com.liumapp.workable.converter.core.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * file WorkableConverter.java
@@ -12,11 +16,32 @@ import lombok.Data;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-@Data
 public class WorkableConverter {
 
+    @Getter
+    @Setter
     private Converter convert;
 
-    private ConverterConfigManager converterConfigManager;
+    @Getter
+    private ConverterConfig params = ConverterConfigManager.getInstance().getParams();
+
+    @Getter
+    @Setter
+    private ConvertRequire require;
+
+    public WorkableConverter() throws Throwable {
+    }
+
+    public void ConvertByFilePath () {
+        convert.convert();
+    }
+
+    public void ConvertByStream () {
+        convert.convert();
+    }
+
+    public void ConvertByBase64 () {
+        convert.convert();
+    }
 
 }
