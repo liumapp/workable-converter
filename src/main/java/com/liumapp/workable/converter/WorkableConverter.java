@@ -17,7 +17,7 @@ import lombok.Setter;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class WorkableConverter {
+public class WorkableConverter implements Converter {
 
     @Getter
     @Setter
@@ -45,4 +45,11 @@ public class WorkableConverter {
         convert.convert();
     }
 
+    /**
+     * auto convert according the data of require
+     */
+    @Override
+    public <T> T convert() throws ConvertFailedException {
+        return null;
+    }
 }
