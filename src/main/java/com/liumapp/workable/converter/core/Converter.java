@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.core;
 
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+
 /**
  * file Convert.java
  * author liumapp
@@ -10,6 +12,6 @@ package com.liumapp.workable.converter.core;
  */
 public interface Converter {
 
-    <T> T convert ();
+    <T> T convert () throws ConvertFailedException;
 
 }

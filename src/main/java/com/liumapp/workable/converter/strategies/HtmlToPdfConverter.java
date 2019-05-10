@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+
 /**
  * file HtmlToPdfConverter.java
  * author liumapp
@@ -10,7 +12,7 @@ package com.liumapp.workable.converter.strategies;
  */
 public class HtmlToPdfConverter extends ConverterStrategy {
     @Override
-    public <T> T convert() {
+    public <T> T convert() throws ConvertFailedException {
         return null;
     }
 }

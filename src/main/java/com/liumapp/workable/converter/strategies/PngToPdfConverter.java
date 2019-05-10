@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+
 /**
  * file PngToPdfConverter.java
  * author liumapp
@@ -9,10 +11,8 @@ package com.liumapp.workable.converter.strategies;
  * date 2019/5/10
  */
 public class PngToPdfConverter extends ConverterStrategy {
-
     @Override
-    public <T> T convert() {
+    public <T> T convert() throws ConvertFailedException {
         return null;
     }
-
 }
