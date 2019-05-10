@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.config;
 
+import com.liumapp.workable.converter.core.Parameter;
 import lombok.Data;
 
 /**
@@ -11,7 +12,7 @@ import lombok.Data;
  * date 2019/5/9
  */
 @Data
-public class ConverterConfig {
+public class ConverterConfig implements Parameter {
 
     /**
      * the save path for converted pdf file

@@ -1,5 +1,6 @@
-package com.liumapp.workable.converter.core;
+package com.liumapp.workable.converter.config;
 
+import com.liumapp.workable.converter.core.Parameter;
 import lombok.Data;
 
 import java.io.File;
@@ -16,7 +17,7 @@ import java.util.List;
  * date 2019/5/10
  */
 @Data
-public class ConvertRequire {
+public class ConvertRequire implements Parameter {
 
     /**
      * the file path waiting to convert
