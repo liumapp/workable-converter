@@ -1,17 +1,17 @@
 package com.liumapp.workable.converter.templates;
 
-import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.core.Convert;
 
-public class NormalConverterTemplates implements Converter {
+public abstract class NormalConverterTemplates implements Convert {
 
-    private Converter converter;
+    private Convert convert;
 
-    public NormalConverterTemplates(Converter converter) {
-        this.converter = converter;
+    public NormalConverterTemplates(Convert convert) {
+        this.convert = convert;
     }
 
     @Override
-    public void convert() {
-        converter.convert();
+    public <T> T convert() {
+        return convert.convert();
     }
 }

@@ -1,15 +1,15 @@
-package com.liumapp.workable.converter.core;
+package com.liumapp.workable.converter;
 
 /**
- * file Converter.java
+ * file WorkableConverter.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public interface Converter {
+public interface WorkableConverter {
 
-    void convert ();
+    <T> T convert();
 
 }
