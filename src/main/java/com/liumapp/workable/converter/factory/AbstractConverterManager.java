@@ -11,10 +11,10 @@ import com.liumapp.workable.converter.core.Manager;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public abstract class WorkableConverterManager implements Manager {
+public abstract class AbstractConverterManager implements Manager {
 
     protected Converter converter;
 
-    public abstract Converter getInstance ();
+    public abstract Converter getConverter ();
 
 }

@@ -18,8 +18,9 @@ public class WorkableConverter {
 
     private ConverterConfigManager converterConfigManager;
 
-    public WorkableConverter(Converter convert) {
-        this.convert = convert;
+    public WorkableConverter() {
     }
+
+    
 
 }

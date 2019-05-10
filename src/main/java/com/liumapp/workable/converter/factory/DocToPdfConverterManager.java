@@ -11,7 +11,7 @@ import com.liumapp.workable.converter.strategies.DocToPdfConverter;
  * homepage http://www.liumapp.com
  * date 2019/5/10
  */
-public class DocToPdfConverterManager extends WorkableConverterManager {
+public class DocToPdfConverterManager extends AbstractConverterManager {
 
     private static class DocToPdfConverterManagerHolder {
         private static final DocToPdfConverterManager INSTANCE = new DocToPdfConverterManager();
@@ -21,8 +21,12 @@ public class DocToPdfConverterManager extends WorkableConverterManager {
 
     }
 
+    public static Converter getInstance () {
+        return DocToPdfConverterManagerHolder.INSTANCE.getConverter();
+    }
+
     @Override
-    public Converter getInstance() {
+    public Converter getConverter() {
         if (this.converter == null) {
             this.converter = new DocToPdfConverter();
         }
