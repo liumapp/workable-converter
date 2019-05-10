@@ -2,6 +2,7 @@ package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
+import lombok.Data;
 
 /**
  * file WorkableConverter.java
@@ -11,14 +12,11 @@ import com.liumapp.workable.converter.factory.ConverterConfigManager;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
+@Data
 public class WorkableConverter {
 
     private Converter convert;
 
     private ConverterConfigManager converterConfigManager;
-
-    public WorkableConverter() {
-    }
-
 
 }
