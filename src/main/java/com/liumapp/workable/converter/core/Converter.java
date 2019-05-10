@@ -8,7 +8,7 @@ package com.liumapp.workable.converter.core;
  * homepage http://www.liumapp.com
  * date 2019/5/10
  */
-public interface Convert {
+public interface Converter {
 
     <T> T convert ();
 

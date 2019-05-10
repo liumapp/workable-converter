@@ -1,7 +1,6 @@
 package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.WorkableConverter;
-import com.liumapp.workable.converter.core.Convert;
 import com.liumapp.workable.converter.core.Converter;
 
 /**
@@ -12,7 +11,7 @@ import com.liumapp.workable.converter.core.Converter;
  * homepage http://www.liumapp.com
  * date 2019/5/10
  */
-public class FilePathWorkableConverter implements Convert {
+public class FilePathWorkableConverter implements Converter {
 
     @Override
     public <T> T convert() {
