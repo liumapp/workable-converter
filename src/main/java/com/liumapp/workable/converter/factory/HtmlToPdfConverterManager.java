@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.strategies.HtmlToPdfConverter;
 
 /**
  * file HtmlToPdfConverterManager.java
@@ -25,6 +26,9 @@ public class HtmlToPdfConverterManager extends AbstractConverterManager {
 
     @Override
     public Converter getConverter() {
-        return null;
+        if (this.converter == null) {
+            this.converter = new HtmlToPdfConverter();
+        }
+        return this.converter;
     }
 }
