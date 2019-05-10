@@ -19,7 +19,10 @@ public class ConverterConfigManager implements Manager {
 
     private static ConverterConfigManager INSTANCE;
 
-    public ConverterConfig params;
+    /**
+     * the params can not be changed , setting by config file
+     */
+    private ConverterConfig params;
 
     private ConverterConfigManager () {
     }
@@ -36,6 +39,9 @@ public class ConverterConfigManager implements Manager {
         return params;
     }
 
+    /**
+     * building config params by decorator mode .
+     */
     private static void buildingConverterConfig (ConverterConfigManager INSTANCE) throws Throwable {
         LoadingConfig service = new CheckingUrlSourceForParamsConfig(new BuildingDefaultParamsConfig(new BasicLoadingConfigService()));
         INSTANCE.params = service.loadConfig(service.loadURL());
