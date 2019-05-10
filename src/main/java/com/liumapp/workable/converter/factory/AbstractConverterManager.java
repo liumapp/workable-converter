@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Manager;
+import com.liumapp.workable.converter.core.Templates;
 
 /**
  * file WorkableConverterManager.java
