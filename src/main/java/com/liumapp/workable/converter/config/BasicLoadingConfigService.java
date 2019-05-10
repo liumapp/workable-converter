@@ -42,7 +42,8 @@ public class BasicLoadingConfigService implements LoadingConfig {
                 node.getNode("com", "liumapp", "workable-converter", "pdfSavePath").getValue().toString(),
                 node.getNode("com", "liumapp", "workable-converter", "picSavePath").getValue().toString(),
                 node.getNode("com", "liumapp", "workable-converter", "waitedSavePath").getValue().toString(),
-                node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString()
+                node.getNode("com", "liumapp", "workable-converter", "libreofficePath").getValue().toString(),
+                node.getNode("com", "liumapp", "workable-converter", "libreofficePort").getInt()
         );
         return converterConfig;
     }
