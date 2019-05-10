@@ -14,6 +14,6 @@ public abstract class NormalConverterTemplates implements Converter, Templates {
 
     @Override
     public <T> T convert() throws ConvertFailedException {
-        return null;
+        return converter.convert();
     }
 }
