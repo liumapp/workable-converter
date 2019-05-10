@@ -19,7 +19,7 @@ public class ConverterConfigManager implements Manager {
 
     private static ConverterConfigManager INSTANCE;
 
-    private static ConverterConfig params;
+    public ConverterConfig params;
 
     private ConverterConfigManager () {
     }
