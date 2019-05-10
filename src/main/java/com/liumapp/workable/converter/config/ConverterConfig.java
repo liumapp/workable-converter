@@ -34,13 +34,20 @@ public class ConverterConfig {
      */
     private String libreofficePath;
 
+    /**
+     * libreoffice listen port
+     * default: 2002
+     */
+    private int libreofficePort;
+
     public ConverterConfig() {
     }
 
-    public ConverterConfig(String pdfSavePath, String picSavePath, String waitedSavePath, String libreofficePath) {
+    public ConverterConfig(String pdfSavePath, String picSavePath, String waitedSavePath, String libreofficePath, int libreofficePort) {
         this.pdfSavePath = pdfSavePath;
         this.picSavePath = picSavePath;
         this.waitedSavePath = waitedSavePath;
         this.libreofficePath = libreofficePath;
+        this.libreofficePort = libreofficePort;
     }
 }
