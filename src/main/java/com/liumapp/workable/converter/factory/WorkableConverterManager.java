@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Manager;
 
 /**
@@ -10,17 +11,10 @@ import com.liumapp.workable.converter.core.Manager;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class WorkableConverterManager implements Manager {
+public abstract class WorkableConverterManager implements Manager {
 
-    private static WorkableConverterManager INSTANCE;
+    protected Converter converter;
 
-    private WorkableConverterManager() {
-    }
+    public abstract Converter getInstance ();
 
-    public WorkableConverterManager getInstance () {
-        if (INSTANCE == null) {
-            INSTANCE = new WorkableConverterManager();
-        }
-        return INSTANCE;
-    }
 }

@@ -1,6 +1,8 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.factory.ConverterConfigManager;
+import com.liumapp.workable.converter.factory.WorkableConverterManager;
 
 /**
  * file WorkableConverter.java
@@ -13,5 +15,11 @@ import com.liumapp.workable.converter.core.Converter;
 public class WorkableConverter {
 
     private Converter convert;
+
+    private ConverterConfigManager converterConfigManager;
+
+    public WorkableConverter(Converter convert) {
+        this.convert = convert;
+    }
 
 }
