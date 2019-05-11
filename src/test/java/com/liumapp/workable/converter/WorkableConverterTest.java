@@ -26,8 +26,8 @@ public class WorkableConverterTest {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
         ConvertRequire require = new ConvertRequire();
-        require.setWaitingFilePath("./data/test.doc");
-        require.setResultFilePath("./data/pdf/test.pdf");
+//        require.setWaitingFilePath("./data/test.doc");
+//        require.setResultFilePath("./data/pdf/test.pdf");
 
         converter.setConverterType(DocToPdfConverterManager.getInstance());
         converter.convertByFilePath(require);
