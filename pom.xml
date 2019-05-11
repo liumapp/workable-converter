@@ -74,7 +74,11 @@
       <artifactId>qtools-property</artifactId>
       <version>v1.3.8</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.liumapp.qtools.file</groupId>
+      <artifactId>qtools-file</artifactId>
+      <version>v1.3.8</version>
+    </dependency>
     <!--framework core-->
     <dependency>
       <groupId>cglib</groupId>
