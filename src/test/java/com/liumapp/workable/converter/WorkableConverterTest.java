@@ -26,6 +26,7 @@ public class WorkableConverterTest {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
         ConvertRequire require = new ConvertRequire();
+//        require.
 //        require.setWaitingFilePath("./data/test.doc");
 //        require.setResultFilePath("./data/pdf/test.pdf");
 
