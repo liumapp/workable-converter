@@ -25,6 +25,11 @@ public class ConvertRequire implements Parameter {
     private String waitingFilePath;
 
     /**
+     * the file name list waiting to be convert
+     */
+    private List<String> waitingFileNameList;
+
+    /**
      * the File object waiting to convert
      */
     private File waitingFile;
