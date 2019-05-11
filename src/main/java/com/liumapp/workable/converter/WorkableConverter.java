@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
+import com.liumapp.workable.converter.decorators.ConnectAndStartLocalLibreOfficeDecorator;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
 import lombok.Getter;
@@ -30,8 +31,8 @@ public class WorkableConverter implements Converter {
     }
 
     public void convertByFilePath (Parameter require) throws ConvertFailedException {
-//        Converter byFilePathConverter = new ByFilePathConverterDecorator(converterType);
-//        byFilePathConverter.convert(require);
+        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
+        converter.convert(require);
     }
 
     public void convertByStream (Parameter require) throws ConvertFailedException {
