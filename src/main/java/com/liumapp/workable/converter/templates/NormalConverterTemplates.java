@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.templates;
 
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 
@@ -21,7 +22,7 @@ public abstract class NormalConverterTemplates implements Converter, Templates {
     }
 
     @Override
-    public <T> T convert() throws ConvertFailedException {
-        return converter.convert();
+    public <T> T convert(Parameter require) throws ConvertFailedException {
+        return converter.convert(require);
     }
 }
