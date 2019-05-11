@@ -1,8 +1,10 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
+import com.liumapp.workable.converter.exceptions.NotFoundLibreofficeHome;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
 /**
@@ -23,7 +25,13 @@ public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderT
         //get all config params
         ConverterConfig config = super.loadConfig(node);
         //check config and init necessary folder files
+        if (!checkingFolderIsExist(config.getLibreofficePath()))
+            throw new NotFoundLibreofficeHome("your libreoffice home can not be found : " + config.getLibreofficePath());
 
         return config;
+    }
+
+    private boolean checkingFolderIsExist (String folderPath) {
+        return FileTool.isDirectory(folderPath);
     }
 }
