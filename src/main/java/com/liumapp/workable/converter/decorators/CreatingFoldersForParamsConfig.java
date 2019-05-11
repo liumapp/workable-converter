@@ -7,6 +7,9 @@ import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.exceptions.NotFoundLibreofficeHome;
 import com.liumapp.workable.converter.templates.NormalConverterConfigLoaderTemplate;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * file CreatingFoldersForParamsConfig.java
  * author liumapp
@@ -37,8 +40,8 @@ public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderT
         return FileTool.isDirectory(folderPath);
     }
 
-    private void createNecessaryFolder (String folderPath) {
-        FileTool.createDestFolder(folderPath);
+    private void createNecessaryFolder (String folderPath) throws IOException {
+        FileTool.createDir(new File(folderPath));
     }
 
 }
