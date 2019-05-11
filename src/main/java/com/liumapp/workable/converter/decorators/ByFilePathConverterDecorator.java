@@ -21,7 +21,7 @@ public class ByFilePathConverterDecorator extends NormalConverterTemplates {
 
     @Override
     public <T> T convert(Parameter require) throws ConvertFailedException {
-
+        
         return super.convert(require);
     }
 
