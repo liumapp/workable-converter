@@ -31,6 +31,8 @@ public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderT
             createNecessaryFolder(config.getPdfSavePath());
         if (!checkingFolderIsExist(config.getPicSavePath()))
             createNecessaryFolder(config.getPicSavePath());
+        if (!checkingFolderIsExist(config.getWaitedSavePath()))
+            createNecessaryFolder(config.getWaitedSavePath());
 
         return config;
     }
