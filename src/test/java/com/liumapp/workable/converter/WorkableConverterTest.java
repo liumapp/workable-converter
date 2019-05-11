@@ -5,6 +5,7 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
+import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,6 +37,24 @@ public class WorkableConverterTest {
 
     @Test
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+
+        ConvertRequire require = new ConvertRequire();
+        require.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
+
+        converter.setConverterType(HtmlToPdfConverterManager.getInstance());
+        converter.convertByFilePath(require);
+
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result2.pdf"));
+    }
+
+    @Test
+    public void convertDocToPngByFilePath() throws ConvertFailedException {
+
+    }
+
+    @Test
+    public void convertPngToPdfByFilePath() throws ConvertFailedException {
 
     }
 
