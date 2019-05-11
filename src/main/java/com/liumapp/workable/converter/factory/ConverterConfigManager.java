@@ -28,10 +28,14 @@ public class ConverterConfigManager implements Manager {
     private ConverterConfigManager () {
     }
 
-    public static ConverterConfigManager getInstance() throws Throwable {
+    public static ConverterConfigManager getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ConverterConfigManager();
-            buildingConverterConfig(INSTANCE);
+            try {
+                buildingConverterConfig(INSTANCE);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
         }
         return INSTANCE;
     }

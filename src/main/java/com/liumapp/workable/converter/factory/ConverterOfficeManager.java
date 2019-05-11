@@ -18,9 +18,15 @@ public class ConverterOfficeManager implements Manager {
         private static final OfficeManager INSTANCE = LocalOfficeManager.builder()
                 .install()
                 .portNumbers(ConverterConfigManager.getInstance().getParams().getLibreofficePort())
-                .officeHome("C:\\Program Files\\LibreOffice")
+                .officeHome(ConverterConfigManager.getInstance().getParams().getLibreofficePath())
                 .build();
     }
 
+    private ConverterOfficeManager() {
+    }
+
+    public static OfficeManager getInstance () {
+        return ConverterOfficeManagerHolder.INSTANCE;
+    }
 
 }
