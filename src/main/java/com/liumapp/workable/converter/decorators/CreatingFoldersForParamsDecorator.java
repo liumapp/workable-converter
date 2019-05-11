@@ -11,15 +11,15 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * file CreatingFoldersForParamsConfig.java
+ * file CreatingFoldersForParamsDecorator.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/11
  */
-public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderTemplate {
-    public CreatingFoldersForParamsConfig(LoadingConfig loadingConfig) {
+public class CreatingFoldersForParamsDecorator extends NormalConverterConfigLoaderTemplate {
+    public CreatingFoldersForParamsDecorator(LoadingConfig loadingConfig) {
         super(loadingConfig);
     }
 

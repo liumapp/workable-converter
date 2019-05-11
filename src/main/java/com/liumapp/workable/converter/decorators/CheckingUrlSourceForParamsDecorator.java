@@ -10,16 +10,16 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * file CheckingUrlSourceForParamsConfig.java
+ * file CreatingFoldersForParamsDecorator.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class CheckingUrlSourceForParamsConfig extends NormalConverterConfigLoaderTemplate {
+public class CheckingUrlSourceForParamsDecorator extends NormalConverterConfigLoaderTemplate {
 
-    public CheckingUrlSourceForParamsConfig(LoadingConfig loadingConfig) {
+    public CheckingUrlSourceForParamsDecorator(LoadingConfig loadingConfig) {
         super(loadingConfig);
     }
 
