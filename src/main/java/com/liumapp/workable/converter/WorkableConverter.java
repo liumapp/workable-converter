@@ -20,7 +20,7 @@ public class WorkableConverter implements Converter {
 
     @Getter
     @Setter
-    private Converter converter;
+    private Converter converterType;
 
     @Getter
     private ConverterConfig params = ConverterConfigManager.getInstance().getParams();
@@ -33,15 +33,15 @@ public class WorkableConverter implements Converter {
     }
 
     public void convertByFilePath () throws ConvertFailedException {
-        converter.convert();
+        converterType.convert();
     }
 
     public void convertByStream () throws ConvertFailedException {
-        converter.convert();
+        converterType.convert();
     }
 
     public void convertByBase64 () throws ConvertFailedException {
-        converter.convert();
+        converterType.convert();
     }
 
     /**

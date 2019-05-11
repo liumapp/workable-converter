@@ -23,7 +23,7 @@ public class WorkableConverterTest {
     @Test
     public void convertByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-        converter.setConverter(DocToPdfConverterManager.getInstance());
+        converter.setConverterType(DocToPdfConverterManager.getInstance());
         converter.setRequire(initRequireInfo());
         converter.convertByFilePath();
     }
