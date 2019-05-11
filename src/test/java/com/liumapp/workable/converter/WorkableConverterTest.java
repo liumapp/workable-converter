@@ -25,15 +25,21 @@ public class WorkableConverterTest {
     }
 
     @Test
-    public void convertByStream() {
+    public void convertByStream() throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        converter.convertByStream();
     }
 
     @Test
-    public void convertByBase64() {
+    public void convertByBase64() throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        converter.convertByBase64();
     }
 
     @Test
-    public void convert() {
+    public void convert() throws ConvertFailedException {
+        Converter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        converter.convert();
 
     }
 }
