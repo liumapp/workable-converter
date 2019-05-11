@@ -16,9 +16,9 @@ import java.net.URL;
  * homepage http://www.liumapp.com
  * date 2019/5/9
  */
-public class BuildingDefaultParamsConfig extends NormalConverterConfigLoaderTemplate {
+public class BuildingDefaultParamsDecorator extends NormalConverterConfigLoaderTemplate {
 
-    public BuildingDefaultParamsConfig(LoadingConfig loadingConfig) {
+    public BuildingDefaultParamsDecorator(LoadingConfig loadingConfig) {
         super(loadingConfig);
     }
 
