@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.core.Manager;
 import org.jodconverter.office.LocalOfficeManager;
+import org.jodconverter.office.OfficeException;
 import org.jodconverter.office.OfficeManager;
 
 /**
@@ -28,5 +29,7 @@ public class ConverterOfficeManager implements Manager {
     public static OfficeManager getInstance () {
         return ConverterOfficeManagerHolder.INSTANCE;
     }
+
+
 
 }
