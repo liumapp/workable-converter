@@ -2,6 +2,7 @@ package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.junit.Test;
 
@@ -20,6 +21,7 @@ public class WorkableConverterTest {
     @Test
     public void convertByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        converter.setConverter(DocToPdfConverterManager.getInstance());
         converter.convertByFilePath();
 
     }
