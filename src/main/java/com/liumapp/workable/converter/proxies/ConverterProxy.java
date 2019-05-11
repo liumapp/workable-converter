@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
+import java.time.LocalDateTime;
 
 /**
  * file ConverterProxy.java
@@ -47,11 +48,11 @@ public class ConverterProxy implements Proxy, MethodInterceptor {
     }
 
     protected void before (Method method) {
-
+        LOGGER.info("the method : " + method.getName() + " begin at " + LocalDateTime.now());
     }
 
     protected void after (Method method) {
-
+        LOGGER.info("the method : " + method.getName() + " ended at " + LocalDateTime.now());
     }
 
 
