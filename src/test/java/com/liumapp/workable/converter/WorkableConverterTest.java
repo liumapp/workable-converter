@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 public class WorkableConverterTest {
 
     @Test
-    public void convertByFilePath() throws ConvertFailedException {
+    public void convertDocToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
         ConvertRequire require = new ConvertRequire();
@@ -33,6 +33,11 @@ public class WorkableConverterTest {
         converter.setRequire(require);
         converter.convertByFilePath();
         assertEquals(true, FileTool.isFileExists("./data/pdf/test.pdf"));
+    }
+
+    @Test
+    public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
+
     }
 
     @Test
