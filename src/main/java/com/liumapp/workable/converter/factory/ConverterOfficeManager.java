@@ -1,6 +1,8 @@
 package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.core.Manager;
+import org.jodconverter.office.LocalOfficeManager;
+import org.jodconverter.office.OfficeManager;
 
 /**
  * file ConverterOfficeManager.java
@@ -12,7 +14,13 @@ import com.liumapp.workable.converter.core.Manager;
  */
 public class ConverterOfficeManager implements Manager {
 
-
+    private static class ConverterOfficeManagerHolder {
+        private static final OfficeManager INSTANCE = LocalOfficeManager.builder()
+                .install()
+                .portNumbers(ConverterConfigManager.getInstance().getParams().getLibreofficePort())
+                .officeHome("C:\\Program Files\\LibreOffice")
+                .build();
+    }
 
 
 }

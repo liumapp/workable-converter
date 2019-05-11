@@ -4,9 +4,9 @@ import com.liumapp.workable.converter.config.BasicLoadingConfigService;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
 import com.liumapp.workable.converter.core.Manager;
-import com.liumapp.workable.converter.decorators.BuildingDefaultParamsConfig;
-import com.liumapp.workable.converter.decorators.CheckingUrlSourceForParamsConfig;
-import com.liumapp.workable.converter.decorators.CreatingFoldersForParamsConfig;
+import com.liumapp.workable.converter.decorators.BuildingDefaultParamsDecorator;
+import com.liumapp.workable.converter.decorators.CheckingUrlSourceForParamsDecorator;
+import com.liumapp.workable.converter.decorators.CreatingFoldersForParamsDecorator;
 
 /**
  * file ConverterConfigManager.java
@@ -44,7 +44,7 @@ public class ConverterConfigManager implements Manager {
      * building config params by decorator mode .
      */
     private static void buildingConverterConfig (ConverterConfigManager INSTANCE) throws Throwable {
-        LoadingConfig service = new CreatingFoldersForParamsConfig(new CheckingUrlSourceForParamsConfig(new BuildingDefaultParamsConfig(new BasicLoadingConfigService())));
+        LoadingConfig service = new CreatingFoldersForParamsDecorator(new CheckingUrlSourceForParamsDecorator(new BuildingDefaultParamsDecorator(new BasicLoadingConfigService())));
         INSTANCE.params = service.loadConfig(service.loadURL());
     }
 }
