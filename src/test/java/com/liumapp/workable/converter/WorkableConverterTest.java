@@ -26,13 +26,12 @@ public class WorkableConverterTest {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
         ConvertRequire require = new ConvertRequire();
-//        require.
-//        require.setWaitingFilePath("./data/test.doc");
-//        require.setResultFilePath("./data/pdf/test.pdf");
+        require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
 
         converter.setConverterType(DocToPdfConverterManager.getInstance());
         converter.convertByFilePath(require);
-        assertEquals(true, FileTool.isFileExists("./data/pdf/test.pdf"));
+
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
 
     @Test
