@@ -25,4 +25,5 @@ public abstract class NormalConverterTemplates implements Converter, Templates {
     public <T> T convert(Parameter require) throws ConvertFailedException {
         return converter.convert(require);
     }
+
 }

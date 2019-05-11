@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
@@ -21,7 +22,7 @@ public class ByFilePathConverterDecorator extends NormalConverterTemplates {
 
     @Override
     public <T> T convert(Parameter require) throws ConvertFailedException {
-        
+//        ConvertRequire convertRequire = (ConvertRequire) require;
         return super.convert(require);
     }
 
