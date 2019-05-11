@@ -5,6 +5,7 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
+import com.liumapp.workable.converter.factory.DocToPngConverterManager;
 import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.junit.Before;
@@ -50,7 +51,17 @@ public class WorkableConverterTest {
 
     @Test
     public void convertDocToPngByFilePath() throws ConvertFailedException {
-        
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+
+        ConvertRequire require = new ConvertRequire();
+        require.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
+
+        converter.setConverterType(DocToPngConverterManager.getInstance());
+        converter.convertByFilePath(require);
+
+        assertEquals(true, FileTool.isFileExists("./data/pic/test1.png"));
+        assertEquals(true, FileTool.isFileExists("./data/pic/test2.png"));
+        assertEquals(true, FileTool.isFileExists("./data/pic/test3.png"));
     }
 
     @Test
