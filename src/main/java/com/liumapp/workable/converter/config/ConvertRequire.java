@@ -6,6 +6,7 @@ import lombok.Data;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,8 +17,9 @@ import java.util.List;
  * homepage http://www.liumapp.com
  * date 2019/5/10
  */
-@Data
-public class ConvertRequire implements Parameter {
+public class ConvertRequire implements Parameter, Serializable {
+
+    private static final long serialVersionUID = 4920538182932714034L;
 
     /**
      * the file path waiting to convert
@@ -68,5 +70,7 @@ public class ConvertRequire implements Parameter {
      * the file save path which had been converted.
      */
     private String resultFilePath;
+
+
 
 }
