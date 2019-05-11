@@ -64,4 +64,9 @@ public class ConvertRequire implements Parameter {
      */
     private String waitingBase64;
 
+    /**
+     * the file save path which had been converted.
+     */
+    private String resultFilePath;
+
 }

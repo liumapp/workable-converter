@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
@@ -23,9 +24,15 @@ public class WorkableConverterTest {
     @Test
     public void convertByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+
+        ConvertRequire require = new ConvertRequire();
+        require.setWaitingFilePath("./data/test.doc");
+        require.setResultFilePath("./data/pdf/test.pdf");
+
         converter.setConverterType(DocToPdfConverterManager.getInstance());
-        converter.setRequire(initRequireInfo());
+        converter.setRequire(require);
         converter.convertByFilePath();
+        assertEquals(true, FileTool.isFileExists("./data/pdf/test.pdf"));
     }
 
     @Test
@@ -46,9 +53,4 @@ public class WorkableConverterTest {
         converter.convert();
     }
 
-    private ConvertRequire initRequireInfo () {
-        ConvertRequire require = new ConvertRequire();
-        require.setWaitingFilePath("");
-        return require;
-    }
 }
