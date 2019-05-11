@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 
 /**
@@ -11,8 +12,9 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  * date 2019/5/10
  */
 public class HtmlToPdfConverter extends ConverterStrategy {
+
     @Override
-    public <T> T convert() throws ConvertFailedException {
+    public <T> T convert(Parameter require) throws ConvertFailedException {
         return null;
     }
 }

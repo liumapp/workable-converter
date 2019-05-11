@@ -3,6 +3,7 @@ package com.liumapp.workable.converter;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
 import lombok.Getter;
@@ -28,23 +29,23 @@ public class WorkableConverter implements Converter {
     public WorkableConverter() throws Throwable {
     }
 
-    public void convertByFilePath () throws ConvertFailedException {
-        converterType.convert();
+    public void convertByFilePath (Parameter require) throws ConvertFailedException {
+        converterType.convert(require);
     }
 
-    public void convertByStream () throws ConvertFailedException {
-        converterType.convert();
+    public void convertByStream (Parameter require) throws ConvertFailedException {
+        converterType.convert(require);
     }
 
-    public void convertByBase64 () throws ConvertFailedException {
-        converterType.convert();
+    public void convertByBase64 (Parameter require) throws ConvertFailedException {
+        converterType.convert(require);
     }
 
     /**
      * auto convert according the data of require
      */
     @Override
-    public <T> T convert() throws ConvertFailedException {
+    public <T> T convert(Parameter require) throws ConvertFailedException {
         return null;
     }
 }

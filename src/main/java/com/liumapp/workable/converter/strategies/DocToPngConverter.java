@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 
 /**
@@ -13,7 +14,7 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 public class DocToPngConverter extends ConverterStrategy {
 
     @Override
-    public <T> T convert() throws ConvertFailedException {
+    public <T> T convert(Parameter require) throws ConvertFailedException {
         return null;
     }
 }
