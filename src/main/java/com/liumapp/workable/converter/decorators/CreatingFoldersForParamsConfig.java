@@ -23,6 +23,7 @@ public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderT
         //get all config params
         ConverterConfig config = super.loadConfig(node);
         //check config and init necessary folder files
+
         return config;
     }
 }
