@@ -32,15 +32,15 @@ public class WorkableConverter implements Converter {
     public WorkableConverter() throws Throwable {
     }
 
-    public void ConvertByFilePath () throws ConvertFailedException {
+    public void convertByFilePath () throws ConvertFailedException {
         convert.convert();
     }
 
-    public void ConvertByStream () throws ConvertFailedException {
+    public void convertByStream () throws ConvertFailedException {
         convert.convert();
     }
 
-    public void ConvertByBase64 () throws ConvertFailedException {
+    public void convertByBase64 () throws ConvertFailedException {
         convert.convert();
     }
 

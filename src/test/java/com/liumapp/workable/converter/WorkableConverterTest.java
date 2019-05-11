@@ -1,5 +1,8 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,7 +18,10 @@ import static org.junit.Assert.*;
 public class WorkableConverterTest {
 
     @Test
-    public void convertByFilePath() {
+    public void convertByFilePath() throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        converter.convertByFilePath();
+
     }
 
     @Test
