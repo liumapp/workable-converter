@@ -27,13 +27,9 @@ public class CreatingFoldersForParamsConfig extends NormalConverterConfigLoaderT
         //check config and init necessary folder files
         if (!checkingFolderIsExist(config.getLibreofficePath()))
             throw new NotFoundLibreofficeHome("your libreoffice home can not be found : " + config.getLibreofficePath());
-        if (!checkingFolderIsExist(config.getPdfSavePath()))
-            createNecessaryFolder(config.getPdfSavePath());
-        if (!checkingFolderIsExist(config.getPicSavePath()))
-            createNecessaryFolder(config.getPicSavePath());
-        if (!checkingFolderIsExist(config.getWaitedSavePath()))
-            createNecessaryFolder(config.getWaitedSavePath());
-
+        if (!checkingFolderIsExist(config.getPdfSavePath())) createNecessaryFolder(config.getPdfSavePath());
+        if (!checkingFolderIsExist(config.getPicSavePath())) createNecessaryFolder(config.getPicSavePath());
+        if (!checkingFolderIsExist(config.getWaitedSavePath())) createNecessaryFolder(config.getWaitedSavePath());
         return config;
     }
 
