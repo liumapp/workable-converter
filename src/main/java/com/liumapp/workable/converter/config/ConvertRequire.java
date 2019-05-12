@@ -74,6 +74,10 @@ public class ConvertRequire implements Parameter, Serializable {
      */
     private String resultFilePath;
 
+    private File inputFile;
+
+    private File outputFile;
+
     public ConvertRequire() {
     }
 
