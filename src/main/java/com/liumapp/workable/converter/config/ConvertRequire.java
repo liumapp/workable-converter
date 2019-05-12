@@ -80,7 +80,7 @@ public class ConvertRequire implements Parameter, Serializable {
     /**
      * set the necessary parameters in convert by file path
      */
-    public void setConvertByFilePathRequire (@NotNull String srcWaitingConvertFilePath, @NotNull String destConvertedFilePath) {
+    public void setConvertByFilePathRequire (@NotNull   String srcWaitingConvertFilePath, @NotNull String destConvertedFilePath) {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
     }
