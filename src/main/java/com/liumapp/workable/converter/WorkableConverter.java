@@ -32,6 +32,7 @@ public class WorkableConverter implements Converter {
 
     public void convertByFilePath (Parameter require) throws ConvertFailedException {
         Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
+        
         converter.convert(require);
     }
 
