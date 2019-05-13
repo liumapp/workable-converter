@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.config;
 
+import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import lombok.Getter;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * date 2019/5/10
  */
 @Getter
-public class ConvertRequire implements Parameter, Serializable {
+public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private static final long serialVersionUID = 4920538182932714034L;
 
