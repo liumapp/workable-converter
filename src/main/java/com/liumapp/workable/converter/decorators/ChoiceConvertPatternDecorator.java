@@ -19,6 +19,7 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
 
     @Override
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) {
+
         super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 

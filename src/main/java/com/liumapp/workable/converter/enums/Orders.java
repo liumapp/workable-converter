@@ -1,4 +1,4 @@
-package com.liumapp.workable.converter.orders;
+package com.liumapp.workable.converter.enums;
 
 import com.liumapp.workable.converter.core.ConsoleOrder;
 

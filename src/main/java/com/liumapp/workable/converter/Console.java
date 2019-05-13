@@ -1,9 +1,8 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
-import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
-import com.liumapp.workable.converter.orders.Orders;
+import com.liumapp.workable.converter.enums.Orders;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -44,7 +43,7 @@ public class Console {
     }
 
     private static void handOrder (Orders orders) throws Exception {
-        ConvertRequire require = new ConvertRequire();
+        ConvertRequire require = ConvertRequire.getInstance();
         switch (orders) {
             case ConvertDocToPDF:
                 String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：");
