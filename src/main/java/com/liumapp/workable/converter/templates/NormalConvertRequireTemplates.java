@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
+import com.liumapp.workable.converter.enums.Patterns;
 import com.sun.xml.internal.rngom.digested.DDataPattern;
 
 /**
@@ -25,5 +26,10 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) {
         require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
+    }
+
+    @Override
+    public void choicePatterns(Patterns patterns) {
+        require.choicePatterns(patterns);
     }
 }
