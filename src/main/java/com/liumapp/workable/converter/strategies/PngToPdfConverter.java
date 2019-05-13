@@ -14,7 +14,7 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 public class PngToPdfConverter extends ConverterStrategy {
 
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
-        return null;
+    public boolean convert(Parameter require) throws ConvertFailedException {
+        return false;
     }
 }

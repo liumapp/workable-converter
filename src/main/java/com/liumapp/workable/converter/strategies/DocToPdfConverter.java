@@ -21,18 +21,18 @@ public class DocToPdfConverter extends ConverterStrategy {
     private OfficeManager officeManager = ConverterOfficeManager.getInstance();
 
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
+    public boolean convert(Parameter require) throws ConvertFailedException {
         return convertAccordingRequire( (ConvertRequire) require);
     }
 
-    private <T> T convertAccordingRequire(ConvertRequire require) throws ConvertFailedException {
+    private boolean convertAccordingRequire(ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_Path) {
             return byFilePath();
         }
-        return null;
+        return false;
     }
 
-    private <T> boolean byFilePath () {
+    private boolean byFilePath () {
         return true;
     }
 }

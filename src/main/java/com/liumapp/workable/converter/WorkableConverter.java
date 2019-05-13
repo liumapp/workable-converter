@@ -47,7 +47,7 @@ public class WorkableConverter implements Converter {
      * auto convert according the data of require
      */
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
-        return null;
+    public boolean convert(Parameter require) throws ConvertFailedException {
+        return false;
     }
 }

@@ -14,9 +14,9 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 public class HtmlToPdfConverter extends ConverterStrategy {
 
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
+    public boolean convert(Parameter require) throws ConvertFailedException {
         
-        return null;
+        return false;
     }
 
 
