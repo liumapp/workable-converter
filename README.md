@@ -3,9 +3,11 @@
 
 ## 技术栈
 
-* libreoffice:v6.2.3
+* LibreOffice:v6.2.3
 
 * jodconverter:4.2.2
+
+* Apache_OpenOffice:4.1.6
 
 * cglib动态代理 + 懒汉工厂模式 + 策略模式 + 装饰器模式
 
@@ -23,11 +25,11 @@
 
 ## 使用
 
-*
+* 
 
 ## 注意事项
 
-* 经过测试，LibreOffice在最新版本的Mac OS上存在异常奔溃问题，并且OfficeManager无法与其建立连接，所以请在windows或者Linux系统上使用 
+* 经过测试，LibreOffice在最新版本的Mac OS上存在异常奔溃问题，并且OfficeManager无法与其建立连接，所以请在windows或者Linux系统上使用LibreOffice，在Mac系统上请使用OpenOffice 
 
 ## 参考链接
 
