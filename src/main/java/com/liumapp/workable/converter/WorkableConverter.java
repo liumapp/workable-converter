@@ -30,17 +30,17 @@ public class WorkableConverter implements Converter {
     public WorkableConverter() throws Throwable {
     }
 
-    public void convertByFilePath (Parameter require) throws ConvertFailedException {
+    public boolean convertByFilePath (Parameter require) throws ConvertFailedException {
         Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
-        converter.convert(require);
+        return converter.convert(require);
     }
 
-    public void convertByStream (Parameter require) throws ConvertFailedException {
-        converterType.convert(require);
+    public boolean convertByStream (Parameter require) throws ConvertFailedException {
+        return converterType.convert(require);
     }
 
-    public void convertByBase64 (Parameter require) throws ConvertFailedException {
-        converterType.convert(require);
+    public boolean convertByBase64 (Parameter require) throws ConvertFailedException {
+        return converterType.convert(require);
     }
 
     /**

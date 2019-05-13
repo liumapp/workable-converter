@@ -31,7 +31,7 @@ public class WorkableConverterTest {
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
 
         converter.setConverterType(DocToPdfConverterManager.getInstance());
-        converter.convertByFilePath(require);
+        assertEquals(true, converter.convertByFilePath(require));
 
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
