@@ -83,6 +83,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     /**
      * set the necessary parameters in convert by file path
      */
+    @Override
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;

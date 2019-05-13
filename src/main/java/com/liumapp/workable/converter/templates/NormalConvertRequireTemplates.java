@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.templates;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
+import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
 import com.sun.xml.internal.rngom.digested.DDataPattern;
@@ -13,13 +14,16 @@ import com.sun.xml.internal.rngom.digested.DDataPattern;
  * homepage http://www.liumapp.com
  * date 2019/5/13
  */
-public class NormalConvertRequireTemplates implements Templates, Parameter {
+public class NormalConvertRequireTemplates implements Templates, Parameter, ConvertPattern {
 
-    private Parameter require;
+    private ConvertPattern require;
 
-    public NormalConvertRequireTemplates(Parameter require) {
+    public NormalConvertRequireTemplates(ConvertPattern require) {
         this.require = require;
     }
 
-
+    @Override
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) {
+        require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
+    }
 }

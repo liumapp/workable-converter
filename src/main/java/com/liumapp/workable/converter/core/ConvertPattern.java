@@ -12,6 +12,6 @@ import com.sun.xml.internal.rngom.digested.DDataPattern;
  */
 public interface ConvertPattern extends Parameter {
 
-
+    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath);
 
 }
