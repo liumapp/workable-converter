@@ -6,7 +6,11 @@ import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterOfficeManager;
+import org.jodconverter.JodConverter;
+import org.jodconverter.office.OfficeException;
 import org.jodconverter.office.OfficeManager;
+
+import java.io.File;
 
 /**
  * file DocToPdfConverter.java
@@ -18,8 +22,6 @@ import org.jodconverter.office.OfficeManager;
  */
 public class DocToPdfConverter extends ConverterStrategy {
 
-    private OfficeManager officeManager = ConverterOfficeManager.getInstance();
-
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         return convertAccordingRequire( (ConvertRequire) require);
@@ -27,12 +29,19 @@ public class DocToPdfConverter extends ConverterStrategy {
 
     private boolean convertAccordingRequire(ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_Path) {
-            return byFilePath();
+            return byFilePath(require);
         }
         return false;
     }
 
-    private boolean byFilePath () {
+    private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+        File inputFile = new File(require.getWaitingFilePath());
+        File outputFile = new File(require.getResultFilePath());
+        try {
+            JodConverter.convert(inputFile).to(outputFile).execute();
+        } catch (OfficeException e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
         return true;
     }
 }
