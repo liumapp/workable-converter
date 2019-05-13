@@ -9,4 +9,7 @@ package com.liumapp.workable.converter.core;
  * date 2019/5/10
  */
 public interface Parameter {
+
+
+
 }

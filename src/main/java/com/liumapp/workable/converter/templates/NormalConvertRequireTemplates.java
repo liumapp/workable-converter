@@ -1,7 +1,9 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
+import com.sun.xml.internal.rngom.digested.DDataPattern;
 
 /**
  * file NormalConvertRequireTemplates.java
@@ -13,6 +15,11 @@ import com.liumapp.workable.converter.core.Templates;
  */
 public class NormalConvertRequireTemplates implements Templates, Parameter {
 
+    private Parameter require;
+
+    public NormalConvertRequireTemplates(Parameter require) {
+        this.require = require;
+    }
 
 
 }
