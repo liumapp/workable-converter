@@ -8,5 +8,5 @@ package com.liumapp.workable.converter.core;
  * homepage http://www.liumapp.com
  * date 2019/5/13
  */
-public interface ConsoleOrder {
+public interface Order {
 }

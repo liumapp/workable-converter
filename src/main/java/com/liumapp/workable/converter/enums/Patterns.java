@@ -3,21 +3,19 @@ package com.liumapp.workable.converter.enums;
 import com.liumapp.workable.converter.core.Order;
 
 /**
- * file Orders.java
+ * file Patterns.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/13
  */
-public enum Orders implements Order {
+public enum Patterns implements Order {
 
-    ConvertDocToPDF,
+    By_File_Path,
 
-    ConvertHtmlToPDF,
+    By_Stream,
 
-    ConvertDocToPng,
-
-    ConvertPngToPDF;
+    By_Base64
 
 }
