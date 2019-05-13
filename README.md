@@ -23,7 +23,11 @@
 
 ## 使用
 
-* 
+*
+
+## 注意事项
+
+* 经过测试，LibreOffice在最新版本的Mac OS上存在异常奔溃问题，并且OfficeManager无法与其建立连接，所以请在windows或者Linux系统上使用 
 
 ## 参考链接
 

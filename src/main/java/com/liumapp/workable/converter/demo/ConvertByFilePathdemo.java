@@ -27,8 +27,8 @@ public class ConvertByFilePathdemo {
 
         OfficeManager officeManager = LocalOfficeManager.builder()
                 .install()
-                .portNumbers(2002, 2003, 2004, 2005)
-                .officeHome("/Applications/LibreOffice.app/Contents/")
+                .portNumbers(2002,2003,2004,2005)
+                .officeHome("/Applications/LibreOffice.app/Contents")
                 .build();
 
         try {
