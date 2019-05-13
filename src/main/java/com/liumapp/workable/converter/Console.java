@@ -22,7 +22,7 @@ public class Console {
 
     public static WorkableConverter workableConverter;
 
-    public static void main (String[] args) throws ConvertFailedException {
+    public static void main (String[] args) throws Exception {
         textIO = TextIoFactory.getTextIO();
         textIO.getTextTerminal().getProperties().setPaneWidth(1280);
         textIO.getTextTerminal().getProperties().setPaneHeight(960);
@@ -31,7 +31,7 @@ public class Console {
         showPrimaryMenu();
     }
 
-    private static void showPrimaryMenu () throws ConvertFailedException {
+    private static void showPrimaryMenu () throws Exception {
         Orders orders = textIO.newEnumInputReader(Orders.class)
                 .read("choice your order...");
         try {
@@ -43,7 +43,7 @@ public class Console {
 
     }
 
-    private static void handOrder (Orders orders) throws ConvertFailedException {
+    private static void handOrder (Orders orders) throws Exception {
         ConvertRequire require = new ConvertRequire();
         switch (orders) {
             case ConvertDocToPDF:
@@ -65,6 +65,7 @@ public class Console {
             default:
                 break;
         }
+        showPrimaryMenu();
     }
 
 }
