@@ -12,22 +12,12 @@ import com.liumapp.workable.converter.core.ConsoleOrder;
  */
 public enum Orders implements ConsoleOrder {
 
-    ConvertDocToPDF(1),
+    ConvertDocToPDF,
 
-    ConvertHtmlToPDF(2),
+    ConvertHtmlToPDF,
 
-    ConvertDocToPng(3),
+    ConvertDocToPng,
 
-    ConvertPngToPDF(4);
-
-    Orders(int order) {
-        this.order = order;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    private int order;
+    ConvertPngToPDF;
 
 }

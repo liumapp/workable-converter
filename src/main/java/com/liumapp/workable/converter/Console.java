@@ -30,7 +30,19 @@ public class Console {
     }
 
     private static void handOrder (Orders orders) {
-//        switch (orders)
+        switch (orders) {
+            case ConvertDocToPDF:
+
+                break;
+            case ConvertHtmlToPDF:
+                break;
+            case ConvertDocToPng:
+                break;
+            case ConvertPngToPDF:
+                break;
+            default:
+                break;
+        }
         showPrimaryMenu();
     }
 
