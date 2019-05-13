@@ -1,8 +1,6 @@
 package com.liumapp.workable.converter.config;
 
 import com.liumapp.workable.converter.core.Parameter;
-import com.sun.istack.internal.NotNull;
-import lombok.Data;
 import lombok.Getter;
 
 import java.io.File;
@@ -84,7 +82,7 @@ public class ConvertRequire implements Parameter, Serializable {
     /**
      * set the necessary parameters in convert by file path
      */
-    public void setConvertByFilePathRequire (@NotNull   String srcWaitingConvertFilePath, @NotNull String destConvertedFilePath) {
+    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
     }
