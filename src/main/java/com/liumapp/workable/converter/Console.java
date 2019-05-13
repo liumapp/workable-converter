@@ -48,7 +48,9 @@ public class Console {
         switch (orders) {
             case ConvertDocToPDF:
                 String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：");
+                inputFilePath = (inputFilePath == null || inputFilePath.length() == 0) ? "./data/test.doc" : inputFilePath;
                 String outputFilePaht = textIO.newStringInputReader().read("请输入转换后的pdf文件保存地址(./data/result.pdf)");
+                outputFilePaht = (outputFilePaht == null || outputFilePaht.length() == 0) ? "./data/result.pdf" : outputFilePaht;
                 require.setConvertByFilePathRequire(
                     inputFilePath, outputFilePaht
                 );
