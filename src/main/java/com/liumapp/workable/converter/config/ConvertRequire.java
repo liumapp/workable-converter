@@ -2,6 +2,8 @@ package com.liumapp.workable.converter.config;
 
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
+import com.liumapp.workable.converter.decorators.CheckingConvertPatternParamsDecorator;
+import com.liumapp.workable.converter.decorators.ChoiceConvertPatternDecorator;
 import lombok.Getter;
 
 import java.io.File;
@@ -77,7 +79,13 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private File outputFile;
 
-    public ConvertRequire() {
+    private ConvertRequire() {
+
+    }
+
+    public static ConvertRequire getConvertRequire() {
+        ConvertPattern pattern = new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
+        return (ConvertRequire) pattern;
     }
 
     /**
