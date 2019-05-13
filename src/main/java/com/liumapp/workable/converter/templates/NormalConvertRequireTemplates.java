@@ -5,7 +5,8 @@ import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
 import com.liumapp.workable.converter.enums.Patterns;
-import com.sun.xml.internal.rngom.digested.DDataPattern;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+
 
 /**
  * file NormalConvertRequireTemplates.java
@@ -17,14 +18,14 @@ import com.sun.xml.internal.rngom.digested.DDataPattern;
  */
 public class NormalConvertRequireTemplates implements Templates, Parameter, ConvertPattern {
 
-    protected ConvertRequire require;
+    protected ConvertPattern require;
 
-    public NormalConvertRequireTemplates(ConvertRequire require) {
+    public NormalConvertRequireTemplates(ConvertPattern require) {
         this.require = require;
     }
 
     @Override
-    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) {
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 

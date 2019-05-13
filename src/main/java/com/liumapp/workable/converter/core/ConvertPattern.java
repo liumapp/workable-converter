@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.core;
 
 import com.liumapp.workable.converter.enums.Patterns;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.sun.xml.internal.rngom.digested.DDataPattern;
 
 /**
@@ -13,7 +14,7 @@ import com.sun.xml.internal.rngom.digested.DDataPattern;
  */
 public interface ConvertPattern extends Parameter {
 
-    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath);
+    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
 
     public void choicePatterns (Patterns patterns);
 

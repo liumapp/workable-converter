@@ -5,6 +5,7 @@ import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.decorators.CheckingConvertPatternParamsDecorator;
 import com.liumapp.workable.converter.decorators.ChoiceConvertPatternDecorator;
 import com.liumapp.workable.converter.enums.Patterns;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import lombok.Getter;
 
 import java.io.File;
