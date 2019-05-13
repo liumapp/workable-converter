@@ -2,7 +2,6 @@ package com.liumapp.workable.converter.decorators;
 
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.str.basic.StrTool;
-import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;

@@ -3,7 +3,10 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
+import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.factory.ConverterOfficeManager;
+import org.jodconverter.office.OfficeManager;
 
 /**
  * file DocToPdfConverter.java
@@ -15,13 +18,21 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public class DocToPdfConverter extends ConverterStrategy {
 
+    private OfficeManager officeManager = ConverterOfficeManager.getInstance();
+
     @Override
     public <T> T convert(Parameter require) throws ConvertFailedException {
         return convertAccordingRequire( (ConvertRequire) require);
     }
 
     private <T> T convertAccordingRequire(ConvertRequire require) throws ConvertFailedException {
-
+        if (require.getPatterns() == Patterns.By_File_Path) {
+            return byFilePath();
+        }
         return null;
+    }
+
+    private <T> boolean byFilePath () {
+        return true;
     }
 }
