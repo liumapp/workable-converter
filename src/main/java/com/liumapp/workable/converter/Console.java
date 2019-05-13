@@ -34,7 +34,13 @@ public class Console {
     private static void showPrimaryMenu () throws ConvertFailedException {
         Orders orders = textIO.newEnumInputReader(Orders.class)
                 .read("choice your order...");
-        handOrder(orders);
+        try {
+            handOrder(orders);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
     }
 
     private static void handOrder (Orders orders) throws ConvertFailedException {
