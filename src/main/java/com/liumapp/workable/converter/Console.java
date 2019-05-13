@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.orders.Orders;
+import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,10 +17,16 @@ public class Console {
 
     public static TextIO textIO;
 
+    public static WorkableConverter workableConverter;
+
     public static void main (String[] args) {
         textIO = TextIoFactory.getTextIO();
         textIO.getTextTerminal().getProperties().setPaneWidth(1280);
         textIO.getTextTerminal().getProperties().setPaneHeight(960);
+
+        workableConverter = ConverterProxy.getInstance().getProxy();
+        
+
         showPrimaryMenu();
     }
 
