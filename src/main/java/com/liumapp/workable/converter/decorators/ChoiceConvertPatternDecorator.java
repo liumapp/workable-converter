@@ -1,6 +1,8 @@
 package com.liumapp.workable.converter.decorators;
 
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
+import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
 
 /**
@@ -13,14 +15,19 @@ import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
  */
 public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates {
 
-    public ChoiceConvertPatternDecorator(ConvertPattern require) {
+    public ChoiceConvertPatternDecorator(ConvertRequire require) {
         super(require);
     }
 
     @Override
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) {
-
+        this.choicePatterns(Patterns.By_File_Path);
         super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 
+    @Override
+    public void choicePatterns(Patterns patterns) {
+
+        super.choicePatterns(patterns);
+    }
 }

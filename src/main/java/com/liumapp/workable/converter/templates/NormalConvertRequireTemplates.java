@@ -17,9 +17,9 @@ import com.sun.xml.internal.rngom.digested.DDataPattern;
  */
 public class NormalConvertRequireTemplates implements Templates, Parameter, ConvertPattern {
 
-    private ConvertPattern require;
+    protected ConvertRequire require;
 
-    public NormalConvertRequireTemplates(ConvertPattern require) {
+    public NormalConvertRequireTemplates(ConvertRequire require) {
         this.require = require;
     }
 

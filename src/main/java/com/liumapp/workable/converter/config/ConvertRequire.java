@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.decorators.CheckingConvertPatternParamsDecorator;
 import com.liumapp.workable.converter.decorators.ChoiceConvertPatternDecorator;
+import com.liumapp.workable.converter.enums.Patterns;
 import lombok.Getter;
 
 import java.io.File;
@@ -79,6 +80,8 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private File outputFile;
 
+    private Patterns patterns;
+
     private ConvertRequire() {
 
     }
@@ -95,6 +98,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
+    }
+
+    @Override
+    public void choicePatterns(Patterns patterns) {
+        this.patterns = patterns;
     }
 
 }
