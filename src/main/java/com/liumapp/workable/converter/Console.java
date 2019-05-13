@@ -47,9 +47,10 @@ public class Console {
         ConvertRequire require = new ConvertRequire();
         switch (orders) {
             case ConvertDocToPDF:
+                String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：");
+                String outputFilePaht = textIO.newStringInputReader().read("请输入转换后的pdf文件保存地址(./data/result.pdf)");
                 require.setConvertByFilePathRequire(
-                        textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）："),
-                        textIO.newStringInputReader().read("请输入转换后的pdf文件保存地址(./data/result.pdf)")
+                    inputFilePath, outputFilePaht
                 );
                 workableConverter.setConverterType(DocToPdfConverterManager.getInstance());
                 workableConverter.convertByFilePath(require);
