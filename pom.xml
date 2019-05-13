@@ -118,6 +118,13 @@
       <version>1.7.25</version>
       <scope>runtime</scope>
     </dependency>
+
+    <!--console-->
+    <dependency>
+      <groupId>org.beryx</groupId>
+      <artifactId>text-io</artifactId>
+      <version>3.3.0</version>
+    </dependency>
   </dependencies>
 
   <build>
