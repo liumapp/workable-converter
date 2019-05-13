@@ -27,7 +27,7 @@ public class WorkableConverterTest {
     public void convertDocToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = new ConvertRequire();
+        ConvertRequire require = ConvertRequire.getInstance();
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
 
         converter.setConverterType(DocToPdfConverterManager.getInstance());
@@ -40,7 +40,7 @@ public class WorkableConverterTest {
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = new ConvertRequire();
+        ConvertRequire require = ConvertRequire.getInstance();
         require.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
 
         converter.setConverterType(HtmlToPdfConverterManager.getInstance());
@@ -53,7 +53,7 @@ public class WorkableConverterTest {
     public void convertDocToPngByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = new ConvertRequire();
+        ConvertRequire require = ConvertRequire.getInstance();
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
 
         converter.setConverterType(DocToPngConverterManager.getInstance());

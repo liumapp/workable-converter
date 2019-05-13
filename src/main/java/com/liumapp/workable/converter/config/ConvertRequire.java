@@ -83,7 +83,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     }
 
-    public static ConvertRequire getConvertRequire() {
+    public static ConvertRequire getInstance() {
         ConvertPattern pattern = new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
         return (ConvertRequire) pattern;
     }
