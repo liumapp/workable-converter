@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.workable.converter.orders.Orders;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -22,8 +23,15 @@ public class Console {
         showPrimaryMenu();
     }
 
-    private static void showPrimaryMenu() {
+    private static void showPrimaryMenu () {
+        Orders orders = textIO.newEnumInputReader(Orders.class)
+                .read("choice your order...");
+        handOrder(orders);
+    }
 
+    private static void handOrder (Orders orders) {
+//        switch (orders)
+        showPrimaryMenu();
     }
 
 }
