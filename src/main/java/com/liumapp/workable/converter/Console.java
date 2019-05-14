@@ -53,8 +53,12 @@ public class Console {
                     inputFilePath, outputFilePaht
                 );
                 workableConverter.setConverterType(DocToPdfConverterManager.getInstance());
-                workableConverter.convertByFilePath(require);
-                textIO.dispose("转换成功！");
+                boolean result = workableConverter.convertByFilePath(require);
+                if (result) {
+                    textIO.dispose("转换成功！");
+                } else {
+                    textIO.dispose("转换失败！");
+                }
                 break;
             case ConvertHtmlToPDF:
 
