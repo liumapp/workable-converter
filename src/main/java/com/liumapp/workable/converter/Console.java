@@ -56,9 +56,9 @@ public class Console {
                 workableConverter.setConverterType(DocToPdfConverterManager.getInstance());
                 boolean result = workableConverter.convertByFilePath(require.getParameter());
                 if (result) {
-                    textIO.dispose("转换成功！");
+                    textIO.getTextTerminal().dispose("转换成功！");
                 } else {
-                    textIO.dispose("转换失败！");
+                    textIO.getTextTerminal().dispose("转换失败！");
                 }
                 break;
             case ConvertHtmlToPDF:
@@ -72,6 +72,16 @@ public class Console {
                 break;
             default:
                 break;
+        }
+        tryAgain();
+    }
+
+    private static void tryAgain () throws Exception {
+        boolean again = textIO.newBooleanInputReader().withDefaultValue(true).read("再来一次？");
+        if (again) {
+            showPrimaryMenu();
+        } else {
+            System.exit(-1);
         }
     }
 
