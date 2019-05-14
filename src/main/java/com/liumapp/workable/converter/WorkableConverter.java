@@ -27,7 +27,7 @@ public class WorkableConverter implements Converter {
     @Getter
     private ConverterConfig params = ConverterConfigManager.getInstance().getParams();
 
-    public WorkableConverter() throws Throwable {
+    public WorkableConverter() {
     }
 
     /**
