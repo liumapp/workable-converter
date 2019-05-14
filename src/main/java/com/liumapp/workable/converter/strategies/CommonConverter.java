@@ -35,7 +35,7 @@ public class CommonConverter extends ConverterStrategy {
         if (require.getPatterns() == Patterns.By_File_Path) {
             return byFilePath(require);
         }
-        return false;
+        throw new ConvertFailedException("can not found convert patterns .");
     }
 
     private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
