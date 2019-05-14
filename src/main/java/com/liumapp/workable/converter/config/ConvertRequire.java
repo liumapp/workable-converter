@@ -83,20 +83,20 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private Patterns patterns;
 
-    private ConvertRequire() {
+    public ConvertRequire() {
 
     }
 
     public static ConvertRequire getInstance() {
-        ConvertPattern pattern = new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
-        return (ConvertRequire) pattern;
+        ConvertRequire require = new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
+        return require;
     }
 
     /**
      * set the necessary parameters in convert by file path
      */
     @Override
-    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) {
+    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
     }

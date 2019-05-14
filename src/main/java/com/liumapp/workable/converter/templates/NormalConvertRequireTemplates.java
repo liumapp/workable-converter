@@ -16,11 +16,11 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  * homepage http://www.liumapp.com
  * date 2019/5/13
  */
-public class NormalConvertRequireTemplates implements Templates, Parameter, ConvertPattern {
+public class NormalConvertRequireTemplates extends ConvertRequire implements Templates, Parameter, ConvertPattern {
 
-    protected ConvertPattern require;
+    protected ConvertRequire require;
 
-    public NormalConvertRequireTemplates(ConvertPattern require) {
+    public NormalConvertRequireTemplates(ConvertRequire require) {
         this.require = require;
     }
 
