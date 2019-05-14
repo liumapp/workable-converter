@@ -47,10 +47,8 @@ public class Console {
         ConvertRequire require = ConvertRequireManager.getInstance();
         switch (orders) {
             case ConvertDocToPDF:
-                String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：");
-                inputFilePath = (inputFilePath == null || inputFilePath.length() == 0) ? "./data/test.doc" : inputFilePath;
-                String outputFilePaht = textIO.newStringInputReader().read("请输入转换后的pdf文件保存地址(./data/result.pdf)");
-                outputFilePaht = (outputFilePaht == null || outputFilePaht.length() == 0) ? "./data/result.pdf" : outputFilePaht;
+                String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：", "./data/test.doc");
+                String outputFilePaht = textIO.newStringInputReader().read("请输入转换后的pdf文件保存地址(./data/result.pdf)", "./data/result.pdf");
                 require.setConvertByFilePathRequire(
                     inputFilePath, outputFilePaht
                 );
@@ -68,7 +66,6 @@ public class Console {
             default:
                 break;
         }
-        showPrimaryMenu();
     }
 
 }
