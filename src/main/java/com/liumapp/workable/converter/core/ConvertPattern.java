@@ -17,4 +17,6 @@ public interface ConvertPattern extends Parameter {
 
     public void choicePatterns (Patterns patterns);
 
+    public Parameter getParameter ();
+
 }

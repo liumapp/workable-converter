@@ -33,4 +33,9 @@ public class NormalConvertRequireTemplates extends ConvertRequire implements Tem
     public void choicePatterns(Patterns patterns) {
         require.choicePatterns(patterns);
     }
+
+    @Override
+    public Parameter getParameter() {
+        return require.getParameter();
+    }
 }

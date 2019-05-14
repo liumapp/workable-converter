@@ -44,8 +44,7 @@ public class Console {
     }
 
     private static void handOrder (Orders orders) throws Exception {
-        ConvertRequire params = new ConvertRequire();
-        ConvertRequire require = ConvertRequireManager.getInstance(params);
+        ConvertRequire require = ConvertRequireManager.getInstance();
         switch (orders) {
             case ConvertDocToPDF:
                 String inputFilePath = textIO.newStringInputReader().withDefaultValue("./data/test.doc").read("请输入要转换的doc文件地址：");
@@ -54,7 +53,7 @@ public class Console {
                     inputFilePath, outputFilePaht
                 );
                 workableConverter.setConverterType(DocToPdfConverterManager.getInstance());
-                boolean result = workableConverter.convertByFilePath(params);
+                boolean result = workableConverter.convertByFilePath(require.getParameter());
                 if (result) {
                     textIO.dispose("转换成功！");
                 } else {

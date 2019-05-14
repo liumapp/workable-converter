@@ -102,4 +102,9 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
         this.patterns = patterns;
     }
 
+    @Override
+    public Parameter getParameter() {
+        return this;
+    }
+
 }
