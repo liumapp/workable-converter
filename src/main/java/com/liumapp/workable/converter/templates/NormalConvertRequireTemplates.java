@@ -1,12 +1,11 @@
 package com.liumapp.workable.converter.templates;
 
-import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
-import org.jodconverter.document.DefaultDocumentFormatRegistry;
+import org.jodconverter.document.DocumentFormat;
 
 
 /**
@@ -36,12 +35,12 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setSrcFilePrefix(DefaultDocumentFormatRegistry formatRegistry) {
+    public void setSrcFilePrefix(DocumentFormat formatRegistry) {
         require.setSrcFilePrefix(formatRegistry);
     }
 
     @Override
-    public void setDestFilePrefix(DefaultDocumentFormatRegistry formatRegistry) {
+    public void setDestFilePrefix(DocumentFormat formatRegistry) {
         require.setDestFilePrefix(formatRegistry);
     }
 

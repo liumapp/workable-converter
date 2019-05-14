@@ -3,6 +3,7 @@ package com.liumapp.workable.converter.core;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
+import org.jodconverter.document.DocumentFormat;
 
 /**
  * file ConvertPattern.java
@@ -18,9 +19,9 @@ public interface ConvertPattern extends Parameter {
 
     public void choicePatterns (Patterns patterns);
 
-    public void setSrcFilePrefix (DefaultDocumentFormatRegistry formatRegistry);
+    public void setSrcFilePrefix (DocumentFormat formatRegistry);
 
-    public void setDestFilePrefix (DefaultDocumentFormatRegistry formatRegistry);
+    public void setDestFilePrefix (DocumentFormat formatRegistry);
 
     public Parameter getParameter ();
 

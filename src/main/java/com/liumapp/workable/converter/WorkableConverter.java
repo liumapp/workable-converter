@@ -30,24 +30,12 @@ public class WorkableConverter implements Converter {
     public WorkableConverter() throws Throwable {
     }
 
-    public boolean convertByFilePath (Parameter require) throws ConvertFailedException {
-        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
-        return converter.convert(require);
-    }
-
-    public boolean convertByStream (Parameter require) throws ConvertFailedException {
-        return converterType.convert(require);
-    }
-
-    public boolean convertByBase64 (Parameter require) throws ConvertFailedException {
-        return converterType.convert(require);
-    }
-
     /**
      * auto convert according the data of require
      */
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
-        return false;
+        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
+        return converter.convert(require);
     }
 }

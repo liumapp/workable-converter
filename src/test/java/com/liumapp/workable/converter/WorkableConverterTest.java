@@ -1,15 +1,14 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
-import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.factory.DocToPngConverterManager;
 import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
+import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -29,10 +28,11 @@ public class WorkableConverterTest {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
-        
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(DocToPdfConverterManager.getInstance());
 
-        assertEquals(true, converter.convertByFilePath(pattern.getParameter()));
+        assertEquals(true, converter.convert(pattern.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
 
@@ -49,7 +49,7 @@ public class WorkableConverterTest {
         pattern.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
 
         converter.setConverterType(HtmlToPdfConverterManager.getInstance());
-        converter.convertByFilePath(pattern.getParameter());
+        converter.convert(pattern.getParameter());
 
         assertEquals(true, FileTool.isFileExists("./data/pdf/result2.pdf"));
     }
@@ -62,7 +62,7 @@ public class WorkableConverterTest {
         pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
 
         converter.setConverterType(DocToPngConverterManager.getInstance());
-        converter.convertByFilePath(pattern.getParameter());
+        converter.convert(pattern.getParameter());
 
         assertEquals(true, FileTool.isFileExists("./data/pic/test1.png"));
         assertEquals(true, FileTool.isFileExists("./data/pic/test2.png"));

@@ -5,7 +5,7 @@ import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import lombok.Getter;
-import org.jodconverter.document.DefaultDocumentFormatRegistry;
+import org.jodconverter.document.DocumentFormat;
 
 import java.io.File;
 import java.io.InputStream;
@@ -78,9 +78,9 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private Patterns patterns;
 
-    private DefaultDocumentFormatRegistry srcFormat;
+    private DocumentFormat srcFormat;
 
-    private DefaultDocumentFormatRegistry destFormat;
+    private DocumentFormat destFormat;
 
     public ConvertRequire() {
 
@@ -101,12 +101,12 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     }
 
     @Override
-    public void setSrcFilePrefix(DefaultDocumentFormatRegistry formatRegistry) {
+    public void setSrcFilePrefix(DocumentFormat formatRegistry) {
         this.srcFormat = formatRegistry;
     }
 
     @Override
-    public void setDestFilePrefix(DefaultDocumentFormatRegistry formatRegistry) {
+    public void setDestFilePrefix(DocumentFormat formatRegistry) {
         this.destFormat = formatRegistry;
     }
 
