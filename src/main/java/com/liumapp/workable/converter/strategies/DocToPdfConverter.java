@@ -28,6 +28,7 @@ public class DocToPdfConverter extends ConverterStrategy {
 
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
+        logger.info("doc to pdf converter begin");
         return convertAccordingRequire( (ConvertRequire) require);
     }
 

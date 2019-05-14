@@ -2,6 +2,8 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * file HtmlToPdfConverter.java
@@ -13,11 +15,15 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public class HtmlToPdfConverter extends ConverterStrategy {
 
+    private static Logger logger = LoggerFactory.getLogger(HtmlToPdfConverter.class);
+
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
-        
+        logger.info("html to pdf converter begin.");
         return false;
     }
+
+
 
 
 }
