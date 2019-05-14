@@ -36,6 +36,11 @@ public class WorkableConverterTest {
     }
 
     @Test
+    public void convertDocxToPdfByFilePath () throws ConvertFailedException {
+        
+    }
+
+    @Test
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
