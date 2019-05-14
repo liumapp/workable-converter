@@ -4,6 +4,7 @@ import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.factory.ConvertRequireManager;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.factory.DocToPngConverterManager;
 import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
@@ -27,7 +28,7 @@ public class WorkableConverterTest {
     public void convertDocToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = ConvertRequire.getInstance();
+        ConvertRequire require = ConvertRequireManager.getInstance();
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
 
         converter.setConverterType(DocToPdfConverterManager.getInstance());
@@ -40,7 +41,7 @@ public class WorkableConverterTest {
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = ConvertRequire.getInstance();
+        ConvertRequire require = ConvertRequireManager.getInstance();
         require.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
 
         converter.setConverterType(HtmlToPdfConverterManager.getInstance());
@@ -53,7 +54,7 @@ public class WorkableConverterTest {
     public void convertDocToPngByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = ConvertRequire.getInstance();
+        ConvertRequire require = ConvertRequireManager.getInstance();
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
 
         converter.setConverterType(DocToPngConverterManager.getInstance());

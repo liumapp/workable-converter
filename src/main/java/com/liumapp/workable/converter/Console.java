@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
+import com.liumapp.workable.converter.factory.ConvertRequireManager;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.enums.Orders;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
@@ -43,7 +44,7 @@ public class Console {
     }
 
     private static void handOrder (Orders orders) throws Exception {
-        ConvertRequire require = ConvertRequire.getInstance();
+        ConvertRequire require = ConvertRequireManager.getInstance();
         switch (orders) {
             case ConvertDocToPDF:
                 String inputFilePath = textIO.newStringInputReader().read("请输入要转换的doc文件地址（./data/test.doc）：");

@@ -88,11 +88,6 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     }
 
-    public static ConvertRequire getInstance() {
-        ConvertRequire require = new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
-        return require;
-    }
-
     /**
      * set the necessary parameters in convert by file path
      */
