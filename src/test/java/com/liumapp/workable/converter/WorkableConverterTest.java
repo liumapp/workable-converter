@@ -3,10 +3,7 @@ package com.liumapp.workable.converter;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
-import com.liumapp.workable.converter.factory.ConvertPatternManager;
-import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
-import com.liumapp.workable.converter.factory.DocToPngConverterManager;
-import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
+import com.liumapp.workable.converter.factory.*;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
@@ -30,7 +27,7 @@ public class WorkableConverterTest {
         pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        converter.setConverterType(DocToPdfConverterManager.getInstance());
+        converter.setConverterType(CommonConverterManager.getInstance());
 
         assertEquals(true, converter.convert(pattern.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
@@ -38,7 +35,7 @@ public class WorkableConverterTest {
 
     @Test
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
-        
+
     }
 
     @Test

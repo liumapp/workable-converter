@@ -21,6 +21,7 @@ public class DocToPdfConverterManager extends AbstractConverterManager {
 
     }
 
+    @Deprecated
     public static Converter getInstance () {
         return DocToPdfConverterManagerHolder.INSTANCE.getConverter();
     }
