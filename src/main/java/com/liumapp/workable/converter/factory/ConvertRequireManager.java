@@ -18,7 +18,7 @@ public class ConvertRequireManager implements Manager {
     private ConvertRequireManager() {
     }
 
-    public static ConvertRequire getInstance () {
-        return new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
+    public static ConvertRequire getInstance (ConvertRequire require) {
+        return new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(require));
     }
 }
