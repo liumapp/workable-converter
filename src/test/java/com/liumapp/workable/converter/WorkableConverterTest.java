@@ -27,13 +27,11 @@ public class WorkableConverterTest {
     @Test
     public void convertDocToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-
         ConvertRequire require = ConvertRequireManager.getInstance();
         require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
-
         converter.setConverterType(DocToPdfConverterManager.getInstance());
-        assertEquals(true, converter.convertByFilePath(require));
 
+        assertEquals(true, converter.convertByFilePath(require.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
 
