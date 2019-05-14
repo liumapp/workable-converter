@@ -23,6 +23,7 @@ public class HtmlToPdfConverter extends ConverterStrategy {
 
     private static Logger logger = LoggerFactory.getLogger(HtmlToPdfConverter.class);
 
+    @Deprecated
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         logger.info("html to pdf converter begin.");

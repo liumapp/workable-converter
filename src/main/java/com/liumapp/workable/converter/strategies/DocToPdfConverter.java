@@ -26,6 +26,7 @@ public class DocToPdfConverter extends ConverterStrategy {
 
     private static Logger logger = LoggerFactory.getLogger(DocToPdfConverter.class);
 
+    @Deprecated
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         logger.info("doc to pdf converter begin");

@@ -13,6 +13,7 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public class DocToPngConverter extends ConverterStrategy {
 
+    @Deprecated
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         return false;
