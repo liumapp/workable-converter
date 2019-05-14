@@ -29,6 +29,7 @@ public class WorkableConverterTest {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
+        
         converter.setConverterType(DocToPdfConverterManager.getInstance());
 
         assertEquals(true, converter.convertByFilePath(pattern.getParameter()));
@@ -37,7 +38,7 @@ public class WorkableConverterTest {
 
     @Test
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
-        
+
     }
 
     @Test
