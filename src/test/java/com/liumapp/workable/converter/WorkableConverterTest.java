@@ -59,6 +59,7 @@ public class WorkableConverterTest {
         assertEquals(true, FileTool.isFileExists("./data/pdf/result3.pdf"));
     }
 
+    //todo
     @Test
     public void convertDocToPngByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
@@ -97,12 +98,6 @@ public class WorkableConverterTest {
     public void convertByBase64() throws ConvertFailedException {
 //        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 //        converter.convertByBase64();
-    }
-
-    @Test
-    public void convert() throws ConvertFailedException {
-//        Converter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-//        converter.convert();
     }
 
 }
