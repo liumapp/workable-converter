@@ -1,10 +1,8 @@
 package com.liumapp.workable.converter;
 
-import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.factory.CommonConverterManager;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
-import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.enums.Orders;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.beryx.textio.TextIO;
