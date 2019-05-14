@@ -16,7 +16,7 @@ import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
  */
 public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates {
 
-    public ChoiceConvertPatternDecorator(ConvertRequire require) {
+    public ChoiceConvertPatternDecorator(ConvertPattern require) {
         super(require);
     }
 

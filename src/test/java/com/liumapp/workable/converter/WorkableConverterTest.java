@@ -2,14 +2,14 @@ package com.liumapp.workable.converter;
 
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
+import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
-import com.liumapp.workable.converter.factory.ConvertRequireManager;
+import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.factory.DocToPngConverterManager;
 import com.liumapp.workable.converter.factory.HtmlToPdfConverterManager;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -27,11 +27,11 @@ public class WorkableConverterTest {
     @Test
     public void convertDocToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-        ConvertRequire require = ConvertRequireManager.getInstance();
-        require.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
         converter.setConverterType(DocToPdfConverterManager.getInstance());
 
-        assertEquals(true, converter.convertByFilePath(require.getParameter()));
+        assertEquals(true, converter.convertByFilePath(pattern.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
 
@@ -39,11 +39,11 @@ public class WorkableConverterTest {
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = ConvertRequireManager.getInstance();
-        require.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
 
         converter.setConverterType(HtmlToPdfConverterManager.getInstance());
-        converter.convertByFilePath(require);
+        converter.convertByFilePath(pattern.getParameter());
 
         assertEquals(true, FileTool.isFileExists("./data/pdf/result2.pdf"));
     }
@@ -52,11 +52,11 @@ public class WorkableConverterTest {
     public void convertDocToPngByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 
-        ConvertRequire require = ConvertRequireManager.getInstance();
-        require.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pic/");
 
         converter.setConverterType(DocToPngConverterManager.getInstance());
-        converter.convertByFilePath(require);
+        converter.convertByFilePath(pattern.getParameter());
 
         assertEquals(true, FileTool.isFileExists("./data/pic/test1.png"));
         assertEquals(true, FileTool.isFileExists("./data/pic/test2.png"));
@@ -72,20 +72,23 @@ public class WorkableConverterTest {
     }
 
     @Test
-    public void convertByStream() throws ConvertFailedException {
-        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+    public void convertDocToPdfByStream() throws ConvertFailedException {
+
+//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+//        ConvertRequire require = ConvertRequireManager.getInstance();
+
 //        converter.convertByStream();
     }
 
     @Test
     public void convertByBase64() throws ConvertFailedException {
-        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 //        converter.convertByBase64();
     }
 
     @Test
     public void convert() throws ConvertFailedException {
-        Converter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+//        Converter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
 //        converter.convert();
     }
 

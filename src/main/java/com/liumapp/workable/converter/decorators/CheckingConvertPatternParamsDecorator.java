@@ -17,7 +17,7 @@ import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
  */
 public class CheckingConvertPatternParamsDecorator extends NormalConvertRequireTemplates {
 
-    public CheckingConvertPatternParamsDecorator(ConvertRequire require) {
+    public CheckingConvertPatternParamsDecorator(ConvertPattern require) {
         super(require);
     }
 
