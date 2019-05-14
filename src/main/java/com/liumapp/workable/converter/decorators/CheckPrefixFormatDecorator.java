@@ -5,6 +5,7 @@ import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.templates.NormalConverterTemplates;
+import org.jodconverter.JodConverter;
 
 /**
  * file CheckPrefixFormatDecorator.java
@@ -23,7 +24,11 @@ public class CheckPrefixFormatDecorator extends NormalConverterTemplates {
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         ConvertRequire convertRequire = (ConvertRequire) require;
-        
+        if (convertRequire.getSrcFormat() == null || convertRequire.getDestFormat() == null) {
+            // todo
+        }
         return super.convert(require);
     }
+
+
 }

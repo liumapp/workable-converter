@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
+import com.liumapp.workable.converter.decorators.CheckPrefixFormatDecorator;
 import com.liumapp.workable.converter.decorators.ConnectAndStartLocalLibreOfficeDecorator;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
@@ -35,7 +36,7 @@ public class WorkableConverter implements Converter {
      */
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
-        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
+        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(new CheckPrefixFormatDecorator(converterType));
         return converter.convert(require);
     }
 }

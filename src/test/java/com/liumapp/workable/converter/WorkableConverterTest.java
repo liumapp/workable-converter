@@ -49,14 +49,14 @@ public class WorkableConverterTest {
     @Test
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result2.pdf");
+        pattern.setConvertByFilePathRequire("./data/test3.html", "./data/pdf/result3.pdf");
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.HTML);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        converter.setConverterType(CommonConverterManager.getInstance());
 
-        converter.setConverterType(HtmlToPdfConverterManager.getInstance());
-        converter.convert(pattern.getParameter());
-
-        assertEquals(true, FileTool.isFileExists("./data/pdf/result2.pdf"));
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result3.pdf"));
     }
 
     @Test
