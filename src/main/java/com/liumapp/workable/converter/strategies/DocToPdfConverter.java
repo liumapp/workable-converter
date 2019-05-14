@@ -9,6 +9,8 @@ import com.liumapp.workable.converter.factory.ConverterOfficeManager;
 import org.jodconverter.JodConverter;
 import org.jodconverter.office.OfficeException;
 import org.jodconverter.office.OfficeManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -21,6 +23,8 @@ import java.io.File;
  * date 2019/5/13
  */
 public class DocToPdfConverter extends ConverterStrategy {
+
+    private static Logger logger = LoggerFactory.getLogger(DocToPdfConverter.class);
 
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
@@ -35,6 +39,8 @@ public class DocToPdfConverter extends ConverterStrategy {
     }
 
     private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+        logger.info("get waiting convert file : " + require.getWaitingFilePath());
+        logger.info("get result file path : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
         File outputFile = new File(require.getResultFilePath());
         try {
