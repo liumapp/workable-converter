@@ -2,8 +2,6 @@ package com.liumapp.workable.converter.config;
 
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
-import com.liumapp.workable.converter.decorators.CheckingConvertPatternParamsDecorator;
-import com.liumapp.workable.converter.decorators.ChoiceConvertPatternDecorator;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import lombok.Getter;
@@ -83,7 +81,6 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private Patterns patterns;
 
-    @Deprecated
     public ConvertRequire() {
 
     }
