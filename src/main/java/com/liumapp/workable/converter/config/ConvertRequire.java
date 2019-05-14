@@ -96,6 +96,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     }
 
     @Override
+    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
+
+    }
+
+    @Override
     public void choicePatterns(Patterns patterns) {
         this.patterns = patterns;
     }

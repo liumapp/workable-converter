@@ -34,6 +34,11 @@ public class WorkableConverterTest {
     }
 
     @Test
+    public void convertDocToPdfByStream() {
+
+    }
+
+    @Test
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
@@ -83,15 +88,6 @@ public class WorkableConverterTest {
     @Test
     public void convertPngToPdfByFilePath() throws ConvertFailedException {
 
-    }
-
-    @Test
-    public void convertDocToPdfByStream() throws ConvertFailedException {
-
-//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-//        ConvertRequire require = ConvertRequireManager.getInstance();
-
-//        converter.convertByStream();
     }
 
     @Test

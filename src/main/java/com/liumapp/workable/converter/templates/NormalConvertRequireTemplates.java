@@ -7,6 +7,9 @@ import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.jodconverter.document.DocumentFormat;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 /**
  * file NormalConvertRequireTemplates.java
@@ -27,6 +30,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
+    }
+
+    @Override
+    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
+        require.setConvertByStream(inputStream, outputStream);
     }
 
     @Override

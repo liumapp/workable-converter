@@ -5,6 +5,9 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.jodconverter.document.DocumentFormat;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * file ConvertPattern.java
  * author liumapp
@@ -16,6 +19,13 @@ import org.jodconverter.document.DocumentFormat;
 public interface ConvertPattern extends Parameter {
 
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
+
+    /**
+     * convert by stream
+     * @param inputStream 输入流包含要转换的文件数据
+     * @param outputStream 输出流包含转换结果的文件数据
+     */
+    public void setConvertByStream (InputStream inputStream, OutputStream outputStream);
 
     public void choicePatterns (Patterns patterns);
 
