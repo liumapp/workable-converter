@@ -83,6 +83,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private Patterns patterns;
 
+    @Deprecated
     public ConvertRequire() {
 
     }
