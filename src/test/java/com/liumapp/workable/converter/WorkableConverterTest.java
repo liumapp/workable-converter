@@ -35,7 +35,15 @@ public class WorkableConverterTest {
 
     @Test
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByFilePathRequire("./data/test2.docx", "./data/pdf/result2.pdf");
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOCX);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        converter.setConverterType(CommonConverterManager.getInstance());
 
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result2.pdf"));
     }
 
     @Test

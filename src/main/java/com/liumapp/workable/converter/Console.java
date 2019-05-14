@@ -2,6 +2,7 @@ package com.liumapp.workable.converter;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
+import com.liumapp.workable.converter.factory.CommonConverterManager;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import com.liumapp.workable.converter.factory.DocToPdfConverterManager;
 import com.liumapp.workable.converter.enums.Orders;
@@ -53,8 +54,8 @@ public class Console {
                 require.setConvertByFilePathRequire(
                     inputFilePath, outputFilePaht
                 );
-                workableConverter.setConverterType(DocToPdfConverterManager.getInstance());
-                boolean result = workableConverter.convertByFilePath(require.getParameter());
+                workableConverter.setConverterType(CommonConverterManager.getInstance());
+                boolean result = workableConverter.convert(require.getParameter());
                 if (result) {
                     textIO.getTextTerminal().dispose("转换成功！");
                 } else {
