@@ -36,9 +36,14 @@ public interface ConvertPattern extends Parameter {
     /**
      * convert by base64
      * @param srcBase64 the base64 of src file to be convert
-     * @param destBase64 the base64 of converted file
      */
-    public void setConvertByBase64(String srcBase64, String destBase64);
+    public void setConvertByBase64(String srcBase64);
+
+    /**
+     * return base64 result
+     * @return String the base64 result of converted value
+     */
+    public String getBase64Result();
 
     public void choicePatterns (Patterns patterns);
 
