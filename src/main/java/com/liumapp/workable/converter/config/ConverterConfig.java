@@ -15,21 +15,6 @@ import lombok.Data;
 public class ConverterConfig implements Parameter {
 
     /**
-     * the save path for converted pdf file
-     */
-    private String pdfSavePath;
-
-    /**
-     * the save path for converted picture
-     */
-    private String picSavePath;
-
-    /**
-     * the save path for the file which is waiting to be converted
-     */
-    private String waitedSavePath;
-
-    /**
      * libreoffice home
      * example: C:\Program Files\LibreOffice
      */
@@ -41,14 +26,18 @@ public class ConverterConfig implements Parameter {
      */
     private int libreofficePort;
 
+    /**
+     * tmp data save path.
+     */
+    private String tmpPath;
+
     public ConverterConfig() {
     }
 
-    public ConverterConfig(String pdfSavePath, String picSavePath, String waitedSavePath, String libreofficePath, int libreofficePort) {
-        this.pdfSavePath = pdfSavePath;
-        this.picSavePath = picSavePath;
-        this.waitedSavePath = waitedSavePath;
+    public ConverterConfig(String libreofficePath, int libreofficePort, String tmpPath) {
         this.libreofficePath = libreofficePath;
         this.libreofficePort = libreofficePort;
+        this.tmpPath = tmpPath;
     }
+
 }

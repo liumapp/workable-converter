@@ -28,10 +28,8 @@ public class BuildingDefaultParamsDecorator extends NormalConverterConfigLoaderT
             throw new NotFoundLibreofficeHome("libreoffice home path must be setted");
         }
 
-        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "pdfSavePath"), "./data/pdf/");
-        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "picSavePath"), "./data/pic/");
-        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "waitedSavePath"), "./data/waiting/");
         buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "libreofficePort"), 2002);
+        buildingDefaultValueIfEmpty(node.getNode("com", "liumapp", "workable-converter", "tmpPath"), "./data/");
         return super.loadConfig(node);
     }
 
