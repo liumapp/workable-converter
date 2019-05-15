@@ -51,13 +51,37 @@ windows跟Mac同样可以在上述文章中拿到下载链接
 ````
 * Gradle
 
-
+````yaml
+compile group: 'com.liumapp.workable.converter', name: 'workable-converter', version: 'v1.0.0'
+````
 
 ### 3.3 编辑配置文件
 
+在项目的resources目录下，创建一个yml配置文件，需要确保文件名称为application.yml、bootstrap.yml或workable-converter.yml三种命名任意一个即可
+
+添加以下配置：
+
+````yaml
+com:
+  liumapp:
+    workable-converter:
+      libreofficePath: "/Applications/LibreOffice.app/Contents"
+````
+
+libreofficePath的值为LibreOffice:6.2.3的安装目录
+
+下表列出了其他支持的配置项
+
+<table>
+<tr>
+<th>参数名</th><th>解释</th><th>默认值</th>
+</tr>
+<tr></tr>
+</table>
+
 ### 3.4 命令行使用
 
-### 
+### 3.5  
 
 ## 4. 待办事项
 
