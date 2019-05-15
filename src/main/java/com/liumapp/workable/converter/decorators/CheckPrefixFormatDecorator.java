@@ -47,6 +47,7 @@ public class CheckPrefixFormatDecorator extends NormalConverterTemplates {
         logger.warn("no convert file prefix detected , we will try to convert by the end of file prefix .");
         if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
         if (require.getPatterns() == Patterns.By_Stream) throw new ConvertFailedException("convert by stream must specified convert prefix.");
+        if (require.getPatterns() == Patterns.By_Base64) throw new ConvertFailedException("convert by base64 must specified convert prefix.");
         throw new ConvertFailedException("can not found convert patterns .");
     }
 
