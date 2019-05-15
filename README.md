@@ -70,11 +70,15 @@ com:
 
 libreofficePath的值为LibreOffice:6.2.3的安装目录
 
-下表列出了其他支持的配置项
+完整的配置项列表如下
 
 <table>
 <tr><th>参数名</th><th>解释</th><th>默认值</th></tr>
-<tr><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>libreofficePath</td><td>LibreOffice安装目录</td><td>无默认值，该项必填</td></tr>
+<tr><td>libreofficePort</td><td>LibreOffice监听端口</td><td>2002</td></tr>
+<tr><td>pdfSavePath</td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
 </table>
 
 ### 3.4 命令行使用
