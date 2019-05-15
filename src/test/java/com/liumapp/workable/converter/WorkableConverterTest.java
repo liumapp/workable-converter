@@ -61,9 +61,9 @@ public class WorkableConverterTest {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
-        // you can also choice not set prefix, but better do that
-        //pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
-        //pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        // attention !!! convert by stream must set prefix.
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
 
         assertEquals(true, converter.convert(pattern.getParameter()));

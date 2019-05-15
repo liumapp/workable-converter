@@ -101,7 +101,8 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     @Override
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
-
+        this.srcStream = srcStream;
+        this.destStream = destStream;
     }
 
     @Override
