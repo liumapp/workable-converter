@@ -48,7 +48,6 @@ public class CheckPrefixFormatDecorator extends NormalConverterTemplates {
         if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
         if (require.getPatterns() == Patterns.By_Stream) throw new ConvertFailedException("convert by stream must specified convert prefix.");
         throw new ConvertFailedException("can not found convert patterns .");
-
     }
 
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
