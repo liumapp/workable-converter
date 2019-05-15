@@ -5,6 +5,7 @@ import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import lombok.Getter;
+import lombok.Setter;
 import org.jodconverter.document.DocumentFormat;
 
 import java.io.File;
@@ -64,6 +65,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     /**
      * the converted file base64
      */
+    @Setter
     private String destBase64;
 
     /**

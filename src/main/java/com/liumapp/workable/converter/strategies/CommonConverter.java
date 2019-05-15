@@ -77,6 +77,7 @@ public class CommonConverter extends ConverterStrategy {
                     .as(require.getSrcFormat())
                     .to(outputStream)
                     .as(require.getDestFormat()).execute();
+            require.setDestBase64(Base64FileTool.ByteArrayToBase64(outputStream.toByteArray()));
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         } finally {

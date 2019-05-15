@@ -128,12 +128,4 @@ public class WorkableConverterTest {
 //        assertEquals(true, FileTool.isFileExists("./data/pic/test3.png"));
     }
 
-    /**
-     * todo
-     */
-    @Test
-    public void convertPngToPdfByFilePath() throws ConvertFailedException {
-
-    }
-
 }
