@@ -57,19 +57,14 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     private List<String> picsBase64;
 
     /**
-     * the input stream waiting to convert
+     * the file base64 to be convert
      */
-    private InputStream waitingIS;
+    private String srcBase64;
 
     /**
-     * the output stream which had been converted
+     * the converted file base64
      */
-    private OutputStream resultOS;
-
-    /**
-     * the file base64 waiting to convert
-     */
-    private String waitingBase64;
+    private String destBase64;
 
     /**
      * the file save path which had been converted.
@@ -103,6 +98,12 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         this.srcStream = srcStream;
         this.destStream = destStream;
+    }
+
+    @Override
+    public void setConvertByBase64(String srcBase64, String destBase64) {
+        this.srcBase64 = srcBase64;
+        this.destBase64 = destBase64;
     }
 
     @Override
