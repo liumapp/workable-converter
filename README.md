@@ -86,14 +86,14 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 以doc转PDF为例
 
 ````java
-WorkableConverter converter = new WorkableConverter();
+WorkableConverter converter = new WorkableConverter();//实例化的同时，初始化配置项，配置项的校验通过Decorator装饰
 
 ConvertPattern pattern = ConvertPatternManager.getInstance();
 pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf"); //test.doc为待转换文件路径，result1.pdf为转换结果存储路径
 pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
 pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
 
-converter.setConverterType(CommonConverterManager.getInstance());//策略模式，后续实现了新的转换策略后，在此处更换
+converter.setConverterType(CommonConverterManager.getInstance());//策略模式，后续实现了新的转换策略后，在此处更换，图片转换将考虑使用新的策略来完成
 boolean result = converter.convert(pattern.getParameter();
 ````
 
@@ -114,6 +114,9 @@ pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
 其他类型的同理
 
 #### 3.4.2 按照输入输出流转换
+
+
+
 
 #### 3.4.3 按照文件Base64转换  
 
