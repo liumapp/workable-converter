@@ -103,9 +103,13 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64, String destBase64) {
+    public String getBase64Result() {
+        return this.destBase64;
+    }
+
+    @Override
+    public void setConvertByBase64(String srcBase64) {
         this.srcBase64 = srcBase64;
-        this.destBase64 = destBase64;
     }
 
     @Override

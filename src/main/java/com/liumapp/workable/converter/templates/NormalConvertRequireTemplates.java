@@ -38,8 +38,13 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64, String destBase64) {
-        require.setConvertByBase64(srcBase64, destBase64);
+    public String getBase64Result() {
+        return require.getBase64Result();
+    }
+
+    @Override
+    public void setConvertByBase64(String srcBase64) {
+        require.setConvertByBase64(srcBase64);
     }
 
     @Override
