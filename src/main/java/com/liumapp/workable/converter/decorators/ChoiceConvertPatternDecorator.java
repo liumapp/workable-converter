@@ -6,6 +6,9 @@ import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * file ChoiceConvertPatternDecorator.java
  * author liumapp
@@ -24,6 +27,12 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.choicePatterns(Patterns.By_File_Path);
         super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
+    }
+
+    @Override
+    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
+        this.choicePatterns(Patterns.By_Stream);
+        super.setConvertByStream(inputStream, outputStream);
     }
 
     @Override
