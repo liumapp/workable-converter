@@ -83,7 +83,35 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 
 #### 3.4.1 按照文件路径转换
 
+以doc转PDF为例
 
+````java
+WorkableConverter converter = new WorkableConverter();
+
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf"); //test.doc为待转换文件路径，result1.pdf为转换结果存储路径
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+
+converter.setConverterType(CommonConverterManager.getInstance());//策略模式，后续实现了新的转换策略后，在此处更换
+boolean result = converter.convert(pattern.getParameter();
+````
+
+如果要用html转PDF，将上述代码的
+
+````java
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+````
+
+改为
+
+````java
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.HTML);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+````
+
+其他类型的同理
 
 #### 3.4.2 按照输入输出流转换
 
@@ -93,9 +121,11 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 
 * 文档跟图片之间的转换还不够智能，比如：一份20多页的doc文档转图片，只支持单页转换，不能批量按页转换，后续迭代改进
 
-* 已经测试通过的有doc、docx、html 按照不同姿势转PDF，其他类型的并没有编写测试单元，后续改进
+* 已经测试通过的有doc、docx、html 按照不同姿势转PDF，其他类型的并没有编写测试单元，后续考虑增加
 
-* 目前只支持yml配置，后续添加其他类型的配置支持（xml、properties等） 
+* 目前只支持yml配置，后续考虑添加其他类型的配置支持（xml、properties等）
+
+* 目前Markdown格式很流行，考虑实现markdown格式的字符串转PDF(markdown -> html -> pdf)
 
 ## 5. 参考链接
 

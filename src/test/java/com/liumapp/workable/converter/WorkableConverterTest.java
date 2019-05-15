@@ -26,7 +26,8 @@ public class WorkableConverterTest {
 
     @Test
     public void convertDocToPdfByFilePath() throws ConvertFailedException {
-        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
