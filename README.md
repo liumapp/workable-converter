@@ -73,10 +73,8 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 下表列出了其他支持的配置项
 
 <table>
-<tr>
-<th>参数名</th><th>解释</th><th>默认值</th>
-</tr>
-<tr></tr>
+<tr><th>参数名</th><th>解释</th><th>默认值</th></tr>
+<tr><td>1</td><td>2</td><td>3</td></tr>
 </table>
 
 ### 3.4 命令行使用
