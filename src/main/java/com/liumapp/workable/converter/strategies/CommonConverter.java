@@ -11,9 +11,13 @@ import org.jodconverter.office.OfficeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Base64;
 
 /**
  * file CommonConverter.java
@@ -65,10 +69,24 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     protected  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
-
-//        try {
-//            JodConverter.convert()
-//        }
+        ByteArrayInputStream inputStream = null;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try {
+            inputStream = Base64FileTool.decodeBase64ToInputStream(require.getSrcBase64());
+            JodConverter.convert(inputStream)
+                    .as(require.getSrcFormat())
+                    .to(outputStream)
+                    .as(require.getDestFormat()).execute();
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        } finally {
+            try {
+                inputStream.close();
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return true;
     }
 
