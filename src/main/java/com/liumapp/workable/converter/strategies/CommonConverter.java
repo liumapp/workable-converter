@@ -65,8 +65,9 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     protected  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
+
 //        try {
-//
+//            JodConverter.convert()
 //        }
         return true;
     }

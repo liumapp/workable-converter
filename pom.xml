@@ -92,12 +92,12 @@
     <dependency>
       <groupId>com.liumapp.qtools.property</groupId>
       <artifactId>qtools-property</artifactId>
-      <version>v1.3.9</version>
+      <version>v1.3.10</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
-      <version>v1.3.9</version>
+      <version>v1.3.10</version>
     </dependency>
 
     <!-- proxy -->
