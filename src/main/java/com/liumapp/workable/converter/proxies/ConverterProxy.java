@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.proxies;
 
+import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.core.Proxy;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -45,6 +46,10 @@ public class ConverterProxy implements Proxy, MethodInterceptor {
 
     public <T> T getProxy (Class<T> clz) {
         return (T) Enhancer.create(clz, this);
+    }
+
+    public <T> T getProxy () {
+        return (T) Enhancer.create(WorkableConverter.class, this);
     }
 
     protected void before (Method method) {

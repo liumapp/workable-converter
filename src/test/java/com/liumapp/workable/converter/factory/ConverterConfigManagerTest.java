@@ -15,10 +15,8 @@ public class ConverterConfigManagerTest {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        assertEquals("C:\\Program Files\\LibreOffice", params.getLibreofficePath());
-        assertEquals("./data/pdf/", params.getPdfSavePath());
-        assertEquals("./data/pic/", params.getPicSavePath());
-        assertEquals("./data/waiting/", params.getWaitedSavePath());
+        assertEquals("/Applications/LibreOffice.app/Contents", params.getLibreofficePath());
+        assertEquals("./data/", params.getTmpPath());
         assertEquals(2002, params.getLibreofficePort());
     }
 }

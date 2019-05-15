@@ -56,6 +56,26 @@
       <artifactId>ridl</artifactId>
       <version>6.2.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>unoil</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>jurt</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>juh</artifactId>
+      <version>6.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.libreoffice</groupId>
+      <artifactId>officebean</artifactId>
+      <version>6.2.3</version>
+    </dependency>
 
     <!-- helper -->
     <dependency>
@@ -72,14 +92,15 @@
     <dependency>
       <groupId>com.liumapp.qtools.property</groupId>
       <artifactId>qtools-property</artifactId>
-      <version>v1.3.8</version>
+      <version>v1.3.10</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
-      <version>v1.3.8</version>
+      <version>v1.3.10</version>
     </dependency>
-    <!--framework core-->
+
+    <!-- proxy -->
     <dependency>
       <groupId>cglib</groupId>
       <artifactId>cglib-nodep</artifactId>
@@ -97,6 +118,13 @@
       <artifactId>slf4j-jdk14</artifactId>
       <version>1.7.25</version>
       <scope>runtime</scope>
+    </dependency>
+
+    <!--console-->
+    <dependency>
+      <groupId>org.beryx</groupId>
+      <artifactId>text-io</artifactId>
+      <version>3.3.0</version>
     </dependency>
   </dependencies>
 
@@ -138,20 +166,20 @@
           <stagingProgressTimeoutMinutes>20</stagingProgressTimeoutMinutes>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.6</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-gpg-plugin</artifactId>-->
+        <!--<version>1.6</version>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>sign-artifacts</id>-->
+            <!--<phase>verify</phase>-->
+            <!--<goals>-->
+              <!--<goal>sign</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -165,6 +193,34 @@
             <configuration> <!-- add this to disable checking -->
               <additionalparam>-Xdoclint:none</additionalparam>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4.1</version>
+        <configuration>
+          <!-- get all project dependencies -->
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <!-- MainClass in mainfest make a executable jar -->
+          <archive>
+            <manifest>
+              <mainClass>com.liumapp.workable.converter.Console</mainClass>
+            </manifest>
+          </archive>
+
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <!-- bind to the packaging phase -->
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>

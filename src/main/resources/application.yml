@@ -1,4 +1,8 @@
 com:
   liumapp:
     workable-converter:
-      libreofficePath: "C:\\Program Files\\LibreOffice"
+#      libreofficePath: "/opt/libreoffice6.2/"
+      libreofficePath: "/Applications/LibreOffice.app/Contents"
+      libreofficePort: 2002
+
+

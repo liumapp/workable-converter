@@ -25,7 +25,7 @@ public class ConnectAndStartLocalLibreOfficeDecorator extends NormalConverterTem
     }
 
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
+    public boolean convert(Parameter require) throws ConvertFailedException {
         officeManager = ConverterOfficeManager.getInstance();
         if (!officeManager.isRunning()) {
             try {

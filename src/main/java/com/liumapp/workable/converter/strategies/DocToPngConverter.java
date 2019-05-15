@@ -2,6 +2,10 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.jodconverter.JodConverter;
+import org.jodconverter.LocalConverter;
+
+import java.io.File;
 
 /**
  * file DocToPngConverter.java
@@ -13,8 +17,10 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public class DocToPngConverter extends ConverterStrategy {
 
+    @Deprecated
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
-        return null;
+    public boolean convert(Parameter require) throws ConvertFailedException {
+        //todo
+        return false;
     }
 }

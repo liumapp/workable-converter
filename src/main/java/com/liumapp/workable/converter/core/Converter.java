@@ -12,6 +12,6 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public interface Converter {
 
-    <T> T convert (Parameter require) throws ConvertFailedException;
+    boolean convert (Parameter require) throws ConvertFailedException;
 
 }

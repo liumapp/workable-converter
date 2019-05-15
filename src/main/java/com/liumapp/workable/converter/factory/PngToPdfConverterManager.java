@@ -20,6 +20,7 @@ public class PngToPdfConverterManager extends AbstractConverterManager {
     private PngToPdfConverterManager() {
     }
 
+    @Deprecated
     public static Converter getInstance () {
         return PngToPdfConverterManagerHolder.INSTANCE.getConverter();
     }

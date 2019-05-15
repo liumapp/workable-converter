@@ -19,7 +19,7 @@ import java.io.File;
  */
 public class ConvertByFilePathdemo {
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws OfficeException {
 
         //convert by file path
         File inputFile = new File("./data/test.doc");
@@ -27,15 +27,17 @@ public class ConvertByFilePathdemo {
 
         OfficeManager officeManager = LocalOfficeManager.builder()
                 .install()
-                .portNumbers(2002, 2003, 2004, 2005)
-                .officeHome("C:\\Program Files\\LibreOffice")
+                .portNumbers(8100)
+                .officeHome("/Applications/OpenOffice.app/Contents")
                 .build();
-
         try {
             officeManager.start();
             JodConverter.convert(inputFile).to(outputFile).execute();
+            officeManager.stop();
         } catch (OfficeException e) {
             e.printStackTrace();
+        } finally {
+            officeManager.stop();
         }
 
     }

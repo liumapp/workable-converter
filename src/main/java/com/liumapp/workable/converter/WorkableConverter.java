@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
+import com.liumapp.workable.converter.decorators.CheckPrefixFormatDecorator;
 import com.liumapp.workable.converter.decorators.ConnectAndStartLocalLibreOfficeDecorator;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
@@ -27,28 +28,15 @@ public class WorkableConverter implements Converter {
     @Getter
     private ConverterConfig params = ConverterConfigManager.getInstance().getParams();
 
-    public WorkableConverter() throws Throwable {
-    }
-
-    public void convertByFilePath (Parameter require) throws ConvertFailedException {
-        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(converterType);
-        
-        converter.convert(require);
-    }
-
-    public void convertByStream (Parameter require) throws ConvertFailedException {
-        converterType.convert(require);
-    }
-
-    public void convertByBase64 (Parameter require) throws ConvertFailedException {
-        converterType.convert(require);
+    public WorkableConverter() {
     }
 
     /**
      * auto convert according the data of require
      */
     @Override
-    public <T> T convert(Parameter require) throws ConvertFailedException {
-        return null;
+    public boolean convert(Parameter require) throws ConvertFailedException {
+        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(new CheckPrefixFormatDecorator(converterType));
+        return converter.convert(require);
     }
 }
