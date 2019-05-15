@@ -1,12 +1,17 @@
 package com.liumapp.workable.converter;
 
 import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.*;
 import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 import static org.junit.Assert.*;
 
@@ -34,8 +39,18 @@ public class WorkableConverterTest {
     }
 
     @Test
-    public void convertDocToPdfByStream() {
+    public void convertDocToPdfByStream() throws FileNotFoundException, ConvertFailedException {
+        // you can also choice not use proxy
+        WorkableConverter converter = new WorkableConverter();
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_1.pdf"));
+        // you can also choice not set prefix, but better do that
+        //pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+        //pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        converter.setConverterType(CommonConverterManager.getInstance());
 
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result1_1.pdf"));
     }
 
     @Test
