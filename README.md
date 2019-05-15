@@ -2,7 +2,7 @@
 
 基于libreoffice实现的文档转换项目，无框架依赖，即插即用
 
-## 技术栈
+## 1. 技术栈
 
 * LibreOffice:v6.2.3
 
@@ -12,7 +12,7 @@
 
 * qtools-property管理配置文件(application.yml、bootstrap.yml、workable-converter.yml三种命名的配置文件任意包含一种即可)
 
-## 功能
+## 2. 功能
 
 * 支持doc、docx、html、ppt、png、pdf等等类型的文件**互相转换**
 
@@ -20,11 +20,46 @@
 
 * 不依赖第三方框架，即插即用，支持application.yml、bootstrap.yml、workable-converter.yml三种配置（自己项目中具体配置一个即可）
 
-## 使用
+## 3. 使用
 
- 
+### 3.1 安装配置LibreOffice6.2.3
 
-## 待办事项
+CentOS请直接参考这篇文章：[CentOS7安装LibreOffice6.2.3](http://www.liumapp.com/articles/2019/04/25/1556178926172.html)
+
+windows跟Mac同样可以在上述文章中拿到下载链接
+
+安装完成后，请记住您的LibreOffice的Home目录，后面需要用到
+
+默认目录：
+
+* CentOS: /opt/libreoffice6.2/
+
+* Mac: /Applications/LibreOffice.app/Contents/
+
+* Windows: C:\\Program Files\\LibreOffice\\
+
+### 3.2 获取依赖
+
+* Maven
+
+```` mxml
+<dependency>
+  <groupId>com.liumapp.workable.converter</groupId>
+  <artifactId>workable-converter</artifactId>
+  <version>v1.0.0</version>
+</dependency>
+````
+* Gradle
+
+
+
+### 3.3 编辑配置文件
+
+### 3.4 命令行使用
+
+### 
+
+## 4. 待办事项
 
 * 文档跟图片之间的转换还不够智能，比如：一份20多页的doc文档转图片，只支持单页转换，不能批量按页转换，后续迭代改进
 
@@ -32,7 +67,7 @@
 
 * 目前只支持yml配置，后续添加其他类型的配置支持（xml、properties等） 
 
-## 参考链接
+## 5. 参考链接
 
 * https://www.libreoffice.org/download/download/?type=rpm-x86_64&version=6.2.3&lang=zh-CN
 
