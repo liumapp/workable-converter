@@ -71,6 +71,13 @@ public class WorkableConverterTest {
     }
 
     @Test
+    public void convertDocToPdfByBase64() throws ConvertFailedException {
+        WorkableConverter converter = new WorkableConverter();
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+
+    }
+
+    @Test
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
@@ -120,12 +127,6 @@ public class WorkableConverterTest {
     @Test
     public void convertPngToPdfByFilePath() throws ConvertFailedException {
 
-    }
-
-    @Test
-    public void convertByBase64() throws ConvertFailedException {
-//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-//        converter.convertByBase64();
     }
 
 }

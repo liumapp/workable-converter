@@ -99,7 +99,8 @@
       <artifactId>qtools-file</artifactId>
       <version>v1.3.8</version>
     </dependency>
-    <!--framework core-->
+
+    <!-- proxy -->
     <dependency>
       <groupId>cglib</groupId>
       <artifactId>cglib-nodep</artifactId>

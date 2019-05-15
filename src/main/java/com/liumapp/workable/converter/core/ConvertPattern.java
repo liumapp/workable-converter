@@ -18,14 +18,27 @@ import java.io.OutputStream;
  */
 public interface ConvertPattern extends Parameter {
 
+    /**
+     * convert by filepath
+     * @param srcWaitingConvertFilePath file path to be convert
+     * @param destConvertedFilePath file path converted
+     * @throws ConvertFailedException
+     */
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
 
     /**
      * convert by stream
-     * @param srcStream 输入流包含要转换的文件数据
-     * @param destStream 输出流包含转换结果的文件数据
+     * @param srcStream data to be convert
+     * @param destStream data converted
      */
     public void setConvertByStream (InputStream srcStream, OutputStream destStream);
+
+    /**
+     * convert by base64
+     * @param srcBase64 the base64 of src file to be convert
+     * @param destBase64 the base64 of converted file
+     */
+    public void setConvertByBase64(String srcBase64, String destBase64);
 
     public void choicePatterns (Patterns patterns);
 
