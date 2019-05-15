@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
@@ -9,9 +10,7 @@ import com.liumapp.workable.converter.proxies.ConverterProxy;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 
 import static org.junit.Assert.*;
 
@@ -71,10 +70,18 @@ public class WorkableConverterTest {
     }
 
     @Test
-    public void convertDocToPdfByBase64() throws ConvertFailedException {
+    public void convertDocToPdfByBase64() throws ConvertFailedException, IOException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-
+        String destBase64 = null;
+        pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")), destBase64);
+        // attention !!! convert by base64 must set prefix.
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        converter.setConverterType(CommonConverterManager.getInstance());
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        Base64FileTool.saveBase64File(destBase64, "./data/pdf/result1_3.pdf");//save dest base64 to file
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result1_3.pdf"));
     }
 
     @Test
