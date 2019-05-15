@@ -1,5 +1,7 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
@@ -34,6 +36,7 @@ public class CommonConverter extends ConverterStrategy {
     protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
         if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
+        if (require.getPatterns() == Patterns.By_Base64) return byBase64(require);
         throw new ConvertFailedException("can not found convert patterns .");
     }
 
@@ -58,6 +61,13 @@ public class CommonConverter extends ConverterStrategy {
         } catch (OfficeException e) {
             throw new ConvertFailedException(e.getMessage());
         }
+        return true;
+    }
+
+    protected  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
+//        try {
+//
+//        }
         return true;
     }
 
