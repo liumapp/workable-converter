@@ -73,7 +73,7 @@ public class WorkableConverterTest {
     public void convertDocToPdfByBase64() throws ConvertFailedException, IOException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        String destBase64 = null;
+        String destBase64 = new String();
         pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")), destBase64);
         // attention !!! convert by base64 must set prefix.
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
