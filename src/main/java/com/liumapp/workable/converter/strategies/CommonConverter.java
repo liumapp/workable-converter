@@ -31,14 +31,13 @@ public class CommonConverter extends ConverterStrategy {
         return accordingRequire((ConvertRequire) require);
     }
 
-    private boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
-        if (require.getPatterns() == Patterns.By_File_Path) {
-            return byFilePath(require);
-        }
+    protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
+        if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
+        if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
         throw new ConvertFailedException("can not found convert patterns .");
     }
 
-    private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("input file path is : " + require.getWaitingFilePath());
         logger.info("output file path is : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
@@ -49,6 +48,11 @@ public class CommonConverter extends ConverterStrategy {
         } catch (OfficeException e) {
             throw new ConvertFailedException(e.getMessage());
         }
+        return true;
+    }
+
+    protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
+
         return true;
     }
 
