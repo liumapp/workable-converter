@@ -74,11 +74,9 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 
 <table>
 <tr><th>参数名</th><th>解释</th><th>默认值</th></tr>
-<tr><td>libreofficePath</td><td>LibreOffice安装目录</td><td>无默认值，该项必填</td></tr>
-<tr><td>libreofficePort</td><td>LibreOffice监听端口</td><td>2002</td></tr>
-<tr><td>pdfSavePath</td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td></tr>
+<tr><td>libreofficePath</td><td>LibreOffice安装目录</td><td>(String) 无默认值，该项必填</td></tr>
+<tr><td>libreofficePort</td><td>LibreOffice监听端口</td><td>(int) 2002</td></tr>
+<tr><td>tmpPath</td><td>临时存储目录</td><td>(String) "./data/"</td></tr>
 </table>
 
 ### 3.4 命令行使用
