@@ -82,6 +82,10 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private DocumentFormat destFormat;
 
+    private InputStream srcStream;
+
+    private OutputStream destStream;
+
     public ConvertRequire() {
 
     }
@@ -96,7 +100,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     }
 
     @Override
-    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
 
     }
 

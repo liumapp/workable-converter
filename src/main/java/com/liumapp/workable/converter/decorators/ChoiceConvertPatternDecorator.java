@@ -30,9 +30,9 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
     }
 
     @Override
-    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         this.choicePatterns(Patterns.By_Stream);
-        super.setConvertByStream(inputStream, outputStream);
+        super.setConvertByStream(srcStream, destStream);
     }
 
     @Override

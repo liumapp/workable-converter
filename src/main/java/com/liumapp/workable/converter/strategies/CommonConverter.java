@@ -52,7 +52,12 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
-
+        try {
+            JodConverter.convert(require.getSrcStream()).as(require.getSrcFormat())
+                    .to(require.getDestStream()).as(require.getDestFormat()).execute();
+        } catch (OfficeException e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
         return true;
     }
 

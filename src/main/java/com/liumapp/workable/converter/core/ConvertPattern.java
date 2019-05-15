@@ -22,10 +22,10 @@ public interface ConvertPattern extends Parameter {
 
     /**
      * convert by stream
-     * @param inputStream 输入流包含要转换的文件数据
-     * @param outputStream 输出流包含转换结果的文件数据
+     * @param srcStream 输入流包含要转换的文件数据
+     * @param destStream 输出流包含转换结果的文件数据
      */
-    public void setConvertByStream (InputStream inputStream, OutputStream outputStream);
+    public void setConvertByStream (InputStream srcStream, OutputStream destStream);
 
     public void choicePatterns (Patterns patterns);
 

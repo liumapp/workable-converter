@@ -33,8 +33,8 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setConvertByStream(InputStream inputStream, OutputStream outputStream) {
-        require.setConvertByStream(inputStream, outputStream);
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
+        require.setConvertByStream(srcStream, destStream);
     }
 
     @Override

@@ -38,19 +38,35 @@ public class WorkableConverterTest {
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1.pdf"));
     }
 
+    /**
+     * but we do suggest you set convert result prefix.
+     */
+    @Test
+    public void convertDocToPdfByFilePathWithoutPrefix() throws ConvertFailedException {
+        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1_1.pdf");
+//        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+//        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        converter.setConverterType(CommonConverterManager.getInstance());
+
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result1_1.pdf"));
+    }
+
     @Test
     public void convertDocToPdfByStream() throws FileNotFoundException, ConvertFailedException {
         // you can also choice not use proxy
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_1.pdf"));
+        pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
         // you can also choice not set prefix, but better do that
         //pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         //pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
 
         assertEquals(true, converter.convert(pattern.getParameter()));
-        assertEquals(true, FileTool.isFileExists("./data/pdf/result1_1.pdf"));
+        assertEquals(true, FileTool.isFileExists("./data/pdf/result1_2.pdf"));
     }
 
     @Test

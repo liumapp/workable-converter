@@ -43,14 +43,15 @@ public class CheckPrefixFormatDecorator extends NormalConverterTemplates {
     /**
      * judge prefix by the file prefix
      */
-    private boolean convertWithoutPrefix (ConvertRequire require) throws ConvertFailedException {
-        if (require.getPatterns() == Patterns.By_File_Path) {
-            return byFilePath(require);
-        }
+    protected boolean convertWithoutPrefix (ConvertRequire require) throws ConvertFailedException {
+        logger.warn("no convert file prefix detected , we will try to convert by the end of file prefix .");
+        if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
+        if (require.getPatterns() == Patterns.By_Stream) throw new ConvertFailedException("convert by stream must specified convert prefix.");
         throw new ConvertFailedException("can not found convert patterns .");
+
     }
 
-    private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("get waiting convert path :" + require.getWaitingFilePath());
         logger.info("get result convert path : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
@@ -62,6 +63,4 @@ public class CheckPrefixFormatDecorator extends NormalConverterTemplates {
         }
         return true;
     }
-
-
 }
