@@ -35,9 +35,9 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64, String destBase64) {
+    public void setConvertByBase64(String srcBase64) {
         this.choicePatterns(Patterns.By_Base64);
-        super.setConvertByBase64(srcBase64, destBase64);
+        super.setConvertByBase64(srcBase64);
     }
 
     @Override
