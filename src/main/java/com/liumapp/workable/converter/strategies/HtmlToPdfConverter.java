@@ -32,7 +32,7 @@ public class HtmlToPdfConverter extends ConverterStrategy {
 
     @Override
     protected boolean accordingRequire(ConvertRequire require) throws ConvertFailedException {
-        if (require.getPatterns() == Patterns.By_File_Path) {
+        if (require.getPatterns() == Patterns.By_File_To_File) {
             return byFilePath(require);
         }
         return false;

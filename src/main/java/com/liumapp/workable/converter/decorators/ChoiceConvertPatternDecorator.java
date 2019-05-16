@@ -24,19 +24,19 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
 
     @Override
     public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
-        this.choicePatterns(Patterns.By_File_Path);
+        this.choicePatterns(Patterns.By_File_To_File);
         super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 
     @Override
     public void fileToFile(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
-        this.choicePatterns(Patterns.By_File_Path);
+        this.choicePatterns(Patterns.By_File_To_File);
         super.fileToFile(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 
     @Override
     public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
-        this.choicePatterns(Patterns.By_File_Path);
+        this.choicePatterns(Patterns.By_File_To_File);
         super.fileToFiles(srcWaitingConvertFilePath, destConvertedPath);
     }
 

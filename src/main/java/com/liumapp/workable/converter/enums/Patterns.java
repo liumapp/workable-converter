@@ -12,7 +12,9 @@ import com.liumapp.workable.converter.core.Order;
  */
 public enum Patterns implements Order {
 
-    By_File_Path,
+    By_File_To_File,
+
+    By_File_To_Folder,
 
     By_Stream,
 
