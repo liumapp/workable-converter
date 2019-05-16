@@ -5,6 +5,7 @@ import com.liumapp.qtools.str.basic.StrTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.exceptions.UnsupportedConverterParameterException;
 import com.liumapp.workable.converter.templates.NormalConvertRequireTemplates;
 import org.jodconverter.document.DocumentFormat;
 
@@ -62,33 +63,38 @@ public class CheckingConvertPatternParamsDecorator extends NormalConvertRequireT
      * check not null
      */
     @Override
-    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
-        if (srcStream == null || destStream == null) throw new
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
+        if (srcStream == null || destStream == null) throw new ConvertFailedException("src stream or dest stream can not be null");
         super.setConvertByStream(srcStream, destStream);
     }
 
     @Override
-    public void streamToStream(InputStream srcStream, OutputStream destStream) {
+    public void streamToStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
+        if (srcStream == null || destStream == null) throw new ConvertFailedException("src stream or dest stream can not be null");
         super.streamToStream(srcStream, destStream);
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64) {
+    public void setConvertByBase64(String srcBase64) throws ConvertFailedException {
+        if (srcBase64 == null) throw new ConvertFailedException("src base64 can not be null");
         super.setConvertByBase64(srcBase64);
     }
 
     @Override
-    public void base64ToBase64(String srcBase64) {
+    public void base64ToBase64(String srcBase64) throws ConvertFailedException {
+        if (srcBase64 == null) throw new ConvertFailedException("src base64 can not be null");
         super.base64ToBase64(srcBase64);
     }
 
     @Override
-    public void setSrcFilePrefix(DocumentFormat formatRegistry) {
+    public void setSrcFilePrefix(DocumentFormat formatRegistry) throws UnsupportedConverterParameterException {
+        if (formatRegistry == null) throw new UnsupportedConverterParameterException("src format registry can not be null");
         super.setSrcFilePrefix(formatRegistry);
     }
 
     @Override
-    public void setDestFilePrefix(DocumentFormat formatRegistry) {
+    public void setDestFilePrefix(DocumentFormat formatRegistry) throws UnsupportedConverterParameterException {
+        if (formatRegistry == null) throw new UnsupportedConverterParameterException("dest format registry can not be null");
         super.setDestFilePrefix(formatRegistry);
     }
 }
