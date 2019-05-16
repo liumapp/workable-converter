@@ -34,4 +34,14 @@ public class CheckingConvertPatternParamsDecorator extends NormalConvertRequireT
         super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 
+    /**
+     * check the dest converted path is a folder ?
+     */
+    @Override
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+        if (StrTool.isSpace(srcWaitingConvertFilePath) || StrTool.isSpace(destConvertedPath)) throw new ConvertFailedException("src waiting path and dest conveted path can not be null or empty");
+        if (FileTool.isDirectory(srcWaitingConvertFilePath)) throw new ConvertFailedException(srcWaitingConvertFilePath + "must be a file path , and can not be a folder");
+        if (!FileTool.isDirectory(destConvertedPath)) throw new ConvertFailedException(destConvertedPath + "must be a folder , and can not be a file");
+        super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedPath, deleteTmp);
+    }
 }

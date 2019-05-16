@@ -29,6 +29,12 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
     }
 
     @Override
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+        this.choicePatterns(Patterns.By_File_Path);
+        super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedPath, deleteTmp);
+    }
+
+    @Override
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         this.choicePatterns(Patterns.By_Stream);
         super.setConvertByStream(srcStream, destStream);
