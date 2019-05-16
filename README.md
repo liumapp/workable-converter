@@ -2,6 +2,8 @@
 
 基于libreoffice实现的文档转换项目，无框架依赖，即插即用
 
+
+
 ## 1. 技术栈
 
 * LibreOffice:v6.2.3
@@ -115,10 +117,46 @@ pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
 
 #### 3.4.2 按照输入输出流转换
 
+以doc转pdf为例
 
+````java
+// you can also choice not use proxy
+WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
+// attention !!! convert by stream must set prefix.
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+converter.setConverterType(CommonConverterManager.getInstance());
+boolean result = converter.convert(pattern.getParameter();
+````
 
+跟上例基本相同，唯一的变化是通过pattern.setConvertByStream()来设置输入输出流，转换源文件数据从输入流中读取，转换结果会直接写入输出流中，
+
+同时要切换转换格式，跟上例一样设置不同的prefix即可
 
 #### 3.4.3 按照文件Base64转换  
+
+仍以doc转pdf为例
+
+````java
+WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
+// attention !!! convert by base64 must set prefix.
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+converter.setConverterType(CommonConverterManager.getInstance());
+boolean result = converter.convert(pattern.getParameter();
+String destBase64 = pattern.getBase64Result();
+````
+
+输入base64执行转换，首先通过pattern.setConvertByBase64()来设置转换源的base64值
+
+转换结果result仍然是一个boolean类型，通过pattern.getBase64Result来获取转换结果的base64值
+
+要切换转换格式，跟上例一样设置不同的prefix即可
+
 
 ## 4. 待办事项
 
