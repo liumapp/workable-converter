@@ -30,17 +30,19 @@ public class DocToPdfConverter extends ConverterStrategy {
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         logger.info("doc to pdf converter begin");
-        return convertAccordingRequire( (ConvertRequire) require);
+        return accordingRequire( (ConvertRequire) require);
     }
 
-    private boolean convertAccordingRequire(ConvertRequire require) throws ConvertFailedException {
+    @Override
+    protected boolean accordingRequire(ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_Path) {
             return byFilePath(require);
         }
         return false;
     }
 
-    private boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    @Override
+    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("get waiting convert file : " + require.getWaitingFilePath());
         logger.info("get result file path : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
@@ -51,5 +53,15 @@ public class DocToPdfConverter extends ConverterStrategy {
             throw new ConvertFailedException(e.getMessage());
         }
         return true;
+    }
+
+    @Override
+    protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
+        return false;
+    }
+
+    @Override
+    protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
+        return false;
     }
 }

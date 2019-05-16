@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.jodconverter.JodConverter;
@@ -21,6 +22,26 @@ public class DocToPngConverter extends ConverterStrategy {
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         //todo
+        return false;
+    }
+
+    @Override
+    protected boolean accordingRequire(ConvertRequire require) throws ConvertFailedException {
+        return false;
+    }
+
+    @Override
+    protected boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
+        return false;
+    }
+
+    @Override
+    protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
+        return false;
+    }
+
+    @Override
+    protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
         return false;
     }
 }

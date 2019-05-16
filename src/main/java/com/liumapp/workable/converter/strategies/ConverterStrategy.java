@@ -1,6 +1,8 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 
 /**
  * file ConverterStrategy.java
@@ -11,4 +13,13 @@ import com.liumapp.workable.converter.core.Converter;
  * date 2019/5/10
  */
 public abstract class ConverterStrategy implements Converter {
+
+    protected abstract boolean accordingRequire(ConvertRequire require) throws ConvertFailedException;
+
+    protected abstract boolean byFilePath (ConvertRequire require) throws ConvertFailedException;
+
+    protected abstract boolean byStream (ConvertRequire require) throws ConvertFailedException;
+
+    protected abstract boolean byBase64 (ConvertRequire require) throws ConvertFailedException;
+
 }

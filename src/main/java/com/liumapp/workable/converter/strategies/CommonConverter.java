@@ -37,6 +37,7 @@ public class CommonConverter extends ConverterStrategy {
         return accordingRequire((ConvertRequire) require);
     }
 
+    @Override
     protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_Path) return byFilePath(require);
         if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
@@ -44,6 +45,7 @@ public class CommonConverter extends ConverterStrategy {
         throw new ConvertFailedException("can not found convert patterns .");
     }
 
+    @Override
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("input file path is : " + require.getWaitingFilePath());
         logger.info("output file path is : " + require.getResultFilePath());
@@ -58,6 +60,7 @@ public class CommonConverter extends ConverterStrategy {
         return true;
     }
 
+    @Override
     protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
         try {
             JodConverter.convert(require.getSrcStream()).as(require.getSrcFormat())
@@ -68,6 +71,7 @@ public class CommonConverter extends ConverterStrategy {
         return true;
     }
 
+    @Override
     protected  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
         ByteArrayInputStream inputStream = null;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
