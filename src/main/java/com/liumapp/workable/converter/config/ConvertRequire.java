@@ -84,7 +84,8 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     @Override
     public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
-
+        this.waitingFilePath = srcWaitingConvertFilePath;
+        this.destConvertedPath = destConvertedPath;
     }
 
     @Override
@@ -95,7 +96,8 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     @Override
     public void StreamToStream(InputStream srcStream, OutputStream destStream) {
-
+        this.srcStream = srcStream;
+        this.destStream = destStream;
     }
 
     @Override
@@ -110,7 +112,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     @Override
     public void base64ToBase64(String srcBase64) {
-
+        this.srcBase64 = srcBase64;
     }
 
     @Override
