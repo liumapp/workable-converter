@@ -29,21 +29,39 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
     }
 
     @Override
-    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+    public void fileToFile(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.choicePatterns(Patterns.By_File_Path);
-        super.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedPath, deleteTmp);
+        super.fileToFile(srcWaitingConvertFilePath, destConvertedFilePath);
     }
 
     @Override
-    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
+    public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
+        this.choicePatterns(Patterns.By_File_Path);
+        super.fileToFiles(srcWaitingConvertFilePath, destConvertedPath);
+    }
+
+    @Override
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
         this.choicePatterns(Patterns.By_Stream);
         super.setConvertByStream(srcStream, destStream);
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64) {
+    public void streamToStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
+        this.choicePatterns(Patterns.By_Stream);
+        super.streamToStream(srcStream, destStream);
+    }
+
+    @Override
+    public void setConvertByBase64(String srcBase64) throws ConvertFailedException {
         this.choicePatterns(Patterns.By_Base64);
         super.setConvertByBase64(srcBase64);
+    }
+
+    @Override
+    public void base64ToBase64(String srcBase64) throws ConvertFailedException {
+        this.choicePatterns(Patterns.By_Base64);
+        super.base64ToBase64(srcBase64);
     }
 
     @Override
