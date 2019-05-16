@@ -40,7 +40,7 @@ public class CommonConverter extends ConverterStrategy {
     @Override
     protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
         if (require.getPatterns() == Patterns.By_File_To_File) return byFilePath(require);
-        if (require.getPatterns() == Patterns.By_File_To_Folder) throw new ConvertFailedException("common converter do not support convert by file to folder pattern");
+        if (require.getPatterns() == Patterns.By_File_To_Folder) return byFileFolder(require);
         if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
         if (require.getPatterns() == Patterns.By_Base64) return byBase64(require);
         throw new ConvertFailedException("can not found convert patterns .");
@@ -59,6 +59,12 @@ public class CommonConverter extends ConverterStrategy {
             throw new ConvertFailedException(e.getMessage());
         }
         return true;
+    }
+
+    // todo
+    @Override
+    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+        throw new ConvertFailedException("common converter do not support convert by file to folder pattern right now");
     }
 
     @Override

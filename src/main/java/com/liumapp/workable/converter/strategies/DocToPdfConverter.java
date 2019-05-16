@@ -5,10 +5,8 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
-import com.liumapp.workable.converter.factory.ConverterOfficeManager;
 import org.jodconverter.JodConverter;
 import org.jodconverter.office.OfficeException;
-import org.jodconverter.office.OfficeManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,6 +51,11 @@ public class DocToPdfConverter extends ConverterStrategy {
             throw new ConvertFailedException(e.getMessage());
         }
         return true;
+    }
+
+    @Override
+    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+        return false;
     }
 
     @Override

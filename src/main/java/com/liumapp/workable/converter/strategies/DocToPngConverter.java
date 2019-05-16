@@ -36,6 +36,11 @@ public class DocToPngConverter extends ConverterStrategy {
     }
 
     @Override
+    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+        return false;
+    }
+
+    @Override
     protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
         return false;
     }

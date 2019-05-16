@@ -18,6 +18,8 @@ public abstract class ConverterStrategy implements Converter {
 
     protected abstract boolean byFilePath (ConvertRequire require) throws ConvertFailedException;
 
+    protected abstract boolean byFileFolder (ConvertRequire require) throws ConvertFailedException;
+
     protected abstract boolean byStream (ConvertRequire require) throws ConvertFailedException;
 
     protected abstract boolean byBase64 (ConvertRequire require) throws ConvertFailedException;
