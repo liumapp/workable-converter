@@ -1,0 +1,229 @@
+<h1 id="workableconverter">workable-converter</h1>
+
+<p>基于libreoffice实现的文档转换项目，无框架依赖，即插即用</p>
+
+<ul>
+    <li><a href="#1.-技术栈">1. 技术栈</a></li>
+
+    <li><a href="#2.-功能">2. 功能</a></li>
+
+    <li><a href="#3.-使用">3. 使用</a>
+
+
+        <ul>
+            <li><a href="#3.1-安装配置libreoffice6.2.3">3.1 安装配置LibreOffice6.2.3</a></li>
+
+            <li><a href="#3.2-获取依赖">3.2 获取依赖</a></li>
+
+            <li><a href="#3.3-编辑配置文件">3.3 编辑配置文件</a></li>
+
+            <li><a href="#3.4-执行转换">3.4 执行转换</a>
+
+
+                <ul>
+                    <li><a href="#3.4.1-按照文件路径转换">3.4.1 按照文件路径转换</a></li>
+
+                    <li><a href="#3.4.2-按照输入输出流转换">3.4.2 按照输入输出流转换</a></li>
+
+                    <li><a href="#3.4.3-按照文件base64转换">3.4.3 按照文件Base64转换</a></li></ul>
+            </li></ul>
+    </li>
+
+    <li><a href="#4.-待办事项">4. 待办事项</a></li>
+
+    <li><a href="#5.-参考链接">5. 参考链接</a></li>
+</ul>
+
+<h2 id="1">1. 技术栈</h2>
+
+<ul>
+    <li><p>LibreOffice:v6.2.3</p></li>
+
+    <li><p>jodconverter:4.2.2</p></li>
+
+    <li><p>cglib动态代理 + 懒汉工厂模式 + 策略模式 + 装饰器模式</p></li>
+
+    <li><p>qtools-property管理配置文件(application.yml、bootstrap.yml、workable-converter.yml三种命名的配置文件任意包含一种即可)</p></li>
+</ul>
+
+<h2 id="2">2. 功能</h2>
+
+<ul>
+    <li><p>支持doc、docx、html、ppt、png、pdf等等类型的文件<strong>互相转换</strong></p></li>
+
+    <li><p>支持按照文件路径、字节输入输出流、Base64等不同姿势转换</p></li>
+
+    <li><p>不依赖第三方框架，即插即用，支持application.yml、bootstrap.yml、workable-converter.yml三种配置（自己项目中具体配置一个即可）</p></li>
+</ul>
+
+<h2 id="3">3. 使用</h2>
+
+<h3 id="31libreoffice623">3.1 安装配置LibreOffice6.2.3</h3>
+
+<p>CentOS请直接参考这篇文章：<a href="http://www.liumapp.com/articles/2019/04/25/1556178926172.html">CentOS7安装LibreOffice6.2.3</a></p>
+
+<p>windows跟Mac同样可以在上述文章中拿到下载链接</p>
+
+<p>安装完成后，请记住您的LibreOffice的Home目录，后面需要用到</p>
+
+<p>默认目录：</p>
+
+<ul>
+    <li><p>CentOS: /opt/libreoffice6.2/</p></li>
+
+    <li><p>Mac: /Applications/LibreOffice.app/Contents/</p></li>
+
+    <li><p>Windows: C:\Program Files\LibreOffice\</p></li>
+</ul>
+
+<h3 id="32">3.2 获取依赖</h3>
+
+<ul>
+    <li>Maven</li>
+</ul>
+
+<pre><code class="` mxml language-` mxml">&lt;dependency&gt;
+  &lt;groupId&gt;com.liumapp.workable.converter&lt;/groupId&gt;
+  &lt;artifactId&gt;workable-converter&lt;/artifactId&gt;
+  &lt;version&gt;v1.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>`</p>
+
+<ul>
+    <li>Gradle</li>
+</ul>
+
+<pre><code class="`yaml language-`yaml">compile group: 'com.liumapp.workable.converter', name: 'workable-converter', version: 'v1.0.0'
+</code></pre>
+
+<p>`</p>
+
+<h3 id="33">3.3 编辑配置文件</h3>
+
+<p>在项目的resources目录下，创建一个yml配置文件，需要确保文件名称为application.yml、bootstrap.yml或workable-converter.yml三种命名任意一个即可</p>
+
+<p>添加以下配置：</p>
+
+<pre><code class="`yaml language-`yaml">com:
+  liumapp:
+    workable-converter:
+      libreofficePath: "/Applications/LibreOffice.app/Contents"
+</code></pre>
+
+<p>`</p>
+
+<p>libreofficePath的值为LibreOffice:6.2.3的安装目录</p>
+
+<p>完整的配置项列表如下</p>
+
+<table>
+    <tr><th>参数名</th><th>解释</th><th>默认值</th></tr>
+    <tr><td>libreofficePath</td><td>LibreOffice安装目录</td><td>(String) 无默认值，该项必填</td></tr>
+    <tr><td>libreofficePort</td><td>LibreOffice监听端口</td><td>(int) 2002</td></tr>
+    <tr><td>tmpPath</td><td>临时存储目录</td><td>(String) "./data/"</td></tr>
+</table>
+
+<h3 id="34">3.4 执行转换</h3>
+
+<h4 id="341">3.4.1 按照文件路径转换</h4>
+
+<p>以doc转PDF为例</p>
+
+<pre><code class="`java language-`java">WorkableConverter converter = new WorkableConverter();//实例化的同时，初始化配置项，配置项的校验通过Decorator装饰
+
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf"); //test.doc为待转换文件路径，result1.pdf为转换结果存储路径
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+
+converter.setConverterType(CommonConverterManager.getInstance());//策略模式，后续实现了新的转换策略后，在此处更换，图片转换将考虑使用新的策略来完成
+boolean result = converter.convert(pattern.getParameter();
+</code></pre>
+
+<p>`</p>
+
+<p>如果要用html转PDF，将上述代码的</p>
+
+<pre><code class="`java language-`java">pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+</code></pre>
+
+<p>`</p>
+
+<p>改为</p>
+
+<pre><code class="`java language-`java">pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.HTML);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+</code></pre>
+
+<p>`</p>
+
+<p>其他类型的同理</p>
+
+<h4 id="342">3.4.2 按照输入输出流转换</h4>
+
+<p>以doc转pdf为例</p>
+
+<pre><code class="`java language-`java">// you can also choice not use proxy
+WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
+// attention !!! convert by stream must set prefix.
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+converter.setConverterType(CommonConverterManager.getInstance());
+boolean result = converter.convert(pattern.getParameter();
+</code></pre>
+
+<p>`</p>
+
+<p>跟上例基本相同，唯一的变化是通过pattern.setConvertByStream()来设置输入输出流，转换源文件数据从输入流中读取，转换结果会直接写入输出流中，</p>
+
+<p>同时要切换转换格式，跟上例一样设置不同的prefix即可</p>
+
+<h4 id="343base64">3.4.3 按照文件Base64转换</h4>
+
+<p>仍以doc转pdf为例</p>
+
+<pre><code class="`java language-`java">WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
+// attention !!! convert by base64 must set prefix.
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+converter.setConverterType(CommonConverterManager.getInstance());
+boolean result = converter.convert(pattern.getParameter();
+String destBase64 = pattern.getBase64Result();
+</code></pre>
+
+<p>`</p>
+
+<p>输入base64执行转换，首先通过pattern.setConvertByBase64()来设置转换源的base64值</p>
+
+<p>转换结果result仍然是一个boolean类型，通过pattern.getBase64Result来获取转换结果的base64值</p>
+
+<p>要切换转换格式，跟上例一样设置不同的prefix即可</p>
+
+<h2 id="4">4. 待办事项</h2>
+
+<ul>
+    <li><p>文档跟图片之间的转换还不够智能，比如：一份20多页的doc文档转图片，只支持单页转换，不能批量按页转换，后续迭代改进</p></li>
+
+    <li><p>已经测试通过的有doc、docx、html 按照不同姿势转PDF，其他类型的并没有编写测试单元，后续考虑增加</p></li>
+
+    <li><p>目前只支持yml配置，后续考虑添加其他类型的配置支持（xml、properties等）</p></li>
+
+    <li><p>目前Markdown格式很流行，考虑实现markdown格式的字符串转PDF(markdown -> html -> pdf)</p></li>
+</ul>
+
+<h2 id="5">5. 参考链接</h2>
+
+<ul>
+    <li><p>https://www.libreoffice.org/download/download/?type=rpm-x86_64&amp;version=6.2.3&amp;lang=zh-CN</p></li>
+
+    <li><p>https://api.libreoffice.org/</p></li>
+
+    <li><p>https://github.com/sbraconnier/jodconverter/</p></li>
+</ul>
