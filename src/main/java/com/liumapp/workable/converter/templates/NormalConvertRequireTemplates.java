@@ -33,13 +33,23 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
-        require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedPath, deleteTmp);
+    public void fileToFile(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
+        require.fileToFile(srcWaitingConvertFilePath, destConvertedFilePath);
+    }
+
+    @Override
+    public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
+        require.fileToFiles(srcWaitingConvertFilePath, destConvertedPath);
     }
 
     @Override
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         require.setConvertByStream(srcStream, destStream);
+    }
+
+    @Override
+    public void streamToStream(InputStream srcStream, OutputStream destStream) {
+        require.streamToStream(srcStream, destStream);
     }
 
     @Override
@@ -50,6 +60,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public void setConvertByBase64(String srcBase64) {
         require.setConvertByBase64(srcBase64);
+    }
+
+    @Override
+    public void base64ToBase64(String srcBase64) {
+        require.base64ToBase64(srcBase64);
     }
 
     @Override

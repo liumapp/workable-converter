@@ -55,7 +55,7 @@ public interface ConvertPattern extends Parameter {
      * @param srcStream read data from src stream
      * @param destStream converted data to dest stream
      */
-    public void StreamToStream (InputStream srcStream, OutputStream destStream);
+    public void streamToStream (InputStream srcStream, OutputStream destStream);
 
     /**
      * convert by base64
