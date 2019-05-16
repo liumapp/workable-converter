@@ -36,7 +36,7 @@ public class ChoiceConvertPatternDecorator extends NormalConvertRequireTemplates
 
     @Override
     public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
-        this.choicePatterns(Patterns.By_File_To_File);
+        this.choicePatterns(Patterns.By_File_To_Folder);
         super.fileToFiles(srcWaitingConvertFilePath, destConvertedPath);
     }
 

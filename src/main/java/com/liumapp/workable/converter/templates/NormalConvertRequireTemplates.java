@@ -86,4 +86,5 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     public Parameter getParameter() {
         return require.getParameter();
     }
+
 }

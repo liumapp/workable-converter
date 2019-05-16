@@ -33,5 +33,4 @@ public abstract class NormalConverterConfigLoaderTemplate implements LoadingConf
         return loadingConfig.loadConfig(node);
     }
 
-
 }
