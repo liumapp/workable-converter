@@ -33,6 +33,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+        require.setConvertByFilePathRequire(srcWaitingConvertFilePath, destConvertedPath, deleteTmp);
+    }
+
+    @Override
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         require.setConvertByStream(srcStream, destStream);
     }

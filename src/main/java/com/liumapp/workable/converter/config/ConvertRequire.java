@@ -33,31 +33,6 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     private String waitingFilePath;
 
     /**
-     * the file name list waiting to be convert
-     */
-    private List<String> waitingFileNameList;
-
-    /**
-     * the File object waiting to convert
-     */
-    private File waitingFile;
-
-    /**
-     * the pic files path waiting to convert
-     */
-    private List<String> picsFilePath;
-
-    /**
-     * the pic File objects waiting to convert
-     */
-    private List<File> picsFile;
-
-    /**
-     * the pic files base64 values waiting to convert
-     */
-    private List<String> picsBase64;
-
-    /**
      * the file base64 to be convert
      */
     private String srcBase64;
@@ -83,6 +58,13 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
 
     private OutputStream destStream;
 
+    /**
+     * the folder to save file which had been converted
+     */
+    private String destConvertedPath;
+
+    private boolean deleteTmp;
+
     public ConvertRequire() {
 
     }
@@ -94,6 +76,13 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
+    }
+
+    @Override
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+        this.waitingFilePath = srcWaitingConvertFilePath;
+        this.destConvertedPath = destConvertedPath;
+        this.deleteTmp = deleteTmp;
     }
 
     @Override
