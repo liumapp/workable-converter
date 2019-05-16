@@ -13,7 +13,8 @@
         * [3.4.2 按照输入输出流转换](#3.4.2-按照输入输出流转换)
         * [3.4.3 按照文件Base64转换](#3.4.3-按照文件base64转换)
 * [4. 待办事项](#4.-待办事项)
-* [5. 参考链接](#5.-参考链接)
+* [5. 注意事项](#5.-注意事项)
+* [6. 参考链接](#6.-参考链接)
 
 ## 1. 技术栈
 
@@ -179,7 +180,15 @@ String destBase64 = pattern.getBase64Result();
 
 * 目前Markdown格式很流行，考虑实现markdown格式的字符串转PDF(markdown -> html -> pdf)
 
-## 5. 参考链接
+## 5. 注意事项
+
+* 因为需要LibreOffice的支持，所以不建议在Docker等容器内运行(LibreOffice暂无Docker稳定发行版的镜像)
+
+* 转换乱码、转换耗时过长，请检查服务器是否安装有中文字体
+
+* 项目启动后，在执行第一次转换任务时，因为涉及到与LibreOffice建立连接等操作，所以会耗时较长，第二次任务及以后稳定在0.5秒以内（具体时间因机器配置会有所差异）
+
+## 6. 参考链接
 
 * https://www.libreoffice.org/download/download/?type=rpm-x86_64&version=6.2.3&lang=zh-CN
 
