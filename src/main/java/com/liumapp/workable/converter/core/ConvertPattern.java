@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.core;
 
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.exceptions.UnsupportedConverterParameterException;
 import org.jodconverter.document.DocumentFormat;
 
 import java.io.InputStream;
@@ -48,28 +49,27 @@ public interface ConvertPattern extends Parameter {
      * @param destStream data converted
      */
     @Deprecated
-    public void setConvertByStream (InputStream srcStream, OutputStream destStream);
+    public void setConvertByStream (InputStream srcStream, OutputStream destStream) throws ConvertFailedException;
 
     /**
      * convert by stream
      * @param srcStream read data from src stream
      * @param destStream converted data to dest stream
      */
-    public void streamToStream (InputStream srcStream, OutputStream destStream);
+    public void streamToStream (InputStream srcStream, OutputStream destStream) throws ConvertFailedException;
 
     /**
      * convert by base64
      * @param srcBase64 the base64 of src file to be convert
      */
     @Deprecated
-    public void setConvertByBase64(String srcBase64);
-
+    public void setConvertByBase64(String srcBase64) throws ConvertFailedException;
 
     /**
      * convert by base64
      * @param srcBase64 the base64 of src file to be convert
      */
-    public void base64ToBase64 (String srcBase64);
+    public void base64ToBase64 (String srcBase64) throws ConvertFailedException;
 
     /**
      * return base64 result
@@ -79,9 +79,9 @@ public interface ConvertPattern extends Parameter {
 
     public void choicePatterns (Patterns patterns);
 
-    public void setSrcFilePrefix (DocumentFormat formatRegistry);
+    public void setSrcFilePrefix (DocumentFormat formatRegistry) throws UnsupportedConverterParameterException;
 
-    public void setDestFilePrefix (DocumentFormat formatRegistry);
+    public void setDestFilePrefix (DocumentFormat formatRegistry) throws UnsupportedConverterParameterException;
 
     public Parameter getParameter ();
 
