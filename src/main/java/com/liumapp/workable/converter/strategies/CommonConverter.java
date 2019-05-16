@@ -38,15 +38,6 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
-        if (require.getPatterns() == Patterns.By_File_To_File) return byFilePath(require);
-        if (require.getPatterns() == Patterns.By_File_To_Folder) return byFileFolder(require);
-        if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
-        if (require.getPatterns() == Patterns.By_Base64) return byBase64(require);
-        throw new ConvertFailedException("can not found convert patterns .");
-    }
-
-    @Override
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("input file path is : " + require.getWaitingFilePath());
         logger.info("output file path is : " + require.getResultFilePath());

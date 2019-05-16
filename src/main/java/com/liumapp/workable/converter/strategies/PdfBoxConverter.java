@@ -22,21 +22,15 @@ public class PdfBoxConverter extends ConverterStrategy {
     @Override
     public boolean convert (Parameter require) throws ConvertFailedException {
         logger.info("pdf box converter begin: ");
-        return this.accordingRequire((ConvertRequire) require);
+        return accordingRequire((ConvertRequire) require);
     }
 
-    @Override
-    protected boolean accordingRequire (ConvertRequire require) throws ConvertFailedException {
-        if (require.getPatterns() == Patterns.By_File_To_File) return byFilePath(require);
-        if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
-        if (require.getPatterns() == Patterns.By_Base64) return byBase64(require);
-        throw new ConvertFailedException("can not found convert patterns .");
-    }
-
+    /**
+     * todo
+     */
     @Override
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
-        
-        return false;
+        throw new ConvertFailedException("pdf box converter do not support by file path convert pattern");
     }
 
     @Override
@@ -44,11 +38,17 @@ public class PdfBoxConverter extends ConverterStrategy {
         return false;
     }
 
+    /**
+     * todo
+     */
     @Override
     protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
         return false;
     }
 
+    /**
+     * todo
+     */
     @Override
     protected boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
         return false;

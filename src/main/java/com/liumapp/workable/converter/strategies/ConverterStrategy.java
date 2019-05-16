@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 
 /**
@@ -14,7 +15,13 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public abstract class ConverterStrategy implements Converter {
 
-    protected abstract boolean accordingRequire(ConvertRequire require) throws ConvertFailedException;
+    protected boolean accordingRequire(ConvertRequire require) throws ConvertFailedException {
+        if (require.getPatterns() == Patterns.By_File_To_File) return byFilePath(require);
+        if (require.getPatterns() == Patterns.By_File_To_Folder) return byFileFolder(require);
+        if (require.getPatterns() == Patterns.By_Stream) return byStream(require);
+        if (require.getPatterns() == Patterns.By_Base64) return byBase64(require);
+        throw new ConvertFailedException("can not found convert patterns .");
+    };
 
     protected abstract boolean byFilePath (ConvertRequire require) throws ConvertFailedException;
 
