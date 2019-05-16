@@ -43,12 +43,12 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
+    public void setConvertByStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
         require.setConvertByStream(srcStream, destStream);
     }
 
     @Override
-    public void streamToStream(InputStream srcStream, OutputStream destStream) {
+    public void streamToStream(InputStream srcStream, OutputStream destStream) throws ConvertFailedException {
         require.streamToStream(srcStream, destStream);
     }
 
@@ -58,12 +58,12 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     }
 
     @Override
-    public void setConvertByBase64(String srcBase64) {
+    public void setConvertByBase64(String srcBase64) throws ConvertFailedException {
         require.setConvertByBase64(srcBase64);
     }
 
     @Override
-    public void base64ToBase64(String srcBase64) {
+    public void base64ToBase64(String srcBase64) throws ConvertFailedException {
         require.base64ToBase64(srcBase64);
     }
 
