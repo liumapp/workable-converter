@@ -63,8 +63,6 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
      */
     private String destConvertedPath;
 
-    private boolean deleteTmp;
-
     public ConvertRequire() {
 
     }
@@ -79,16 +77,25 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     }
 
     @Override
-    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException {
+    public void fileToFile(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.waitingFilePath = srcWaitingConvertFilePath;
-        this.destConvertedPath = destConvertedPath;
-        this.deleteTmp = deleteTmp;
+        this.resultFilePath = destConvertedFilePath;
+    }
+
+    @Override
+    public void fileToFiles(String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException {
+
     }
 
     @Override
     public void setConvertByStream(InputStream srcStream, OutputStream destStream) {
         this.srcStream = srcStream;
         this.destStream = destStream;
+    }
+
+    @Override
+    public void StreamToStream(InputStream srcStream, OutputStream destStream) {
+
     }
 
     @Override
@@ -99,6 +106,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Override
     public void setConvertByBase64(String srcBase64) {
         this.srcBase64 = srcBase64;
+    }
+
+    @Override
+    public void base64ToBase64(String srcBase64) {
+
     }
 
     @Override

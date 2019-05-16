@@ -2,7 +2,6 @@ package com.liumapp.workable.converter.core;
 
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
-import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.jodconverter.document.DocumentFormat;
 
 import java.io.InputStream;
