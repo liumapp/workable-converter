@@ -22,9 +22,18 @@ public interface ConvertPattern extends Parameter {
      * convert by filepath
      * @param srcWaitingConvertFilePath file path to be convert
      * @param destConvertedFilePath file path converted
-     * @throws ConvertFailedException
+     * @throws ConvertFailedException convert failed exception
      */
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
+
+    /**
+     * convert by filepath
+     * @param srcWaitingConvertFilePath file path to be convert
+     * @param destConvertedPath folder path to save converted files
+     * @param deleteTmp need delete tmp file ?  true: delete false: do not delete
+     * @throws ConvertFailedException convert failed exception
+     */
+    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException;
 
     /**
      * convert by stream

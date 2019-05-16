@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.core.ConvertPattern;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import org.junit.Test;
 
@@ -18,10 +19,11 @@ import static org.junit.Assert.*;
 public class PdfBoxConverterTest {
 
     @Test
-    public void byFilePath() {
+    public void byFilePath() throws ConvertFailedException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-//        pattern.setConvertByFilePathRequire("./");
+        pattern.setConvertByFilePathRequire("./data/test5.pdf", "./data/");
+
     }
 
     @Test
