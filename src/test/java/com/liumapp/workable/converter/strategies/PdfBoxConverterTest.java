@@ -22,7 +22,8 @@ public class PdfBoxConverterTest {
     public void byFilePath() throws ConvertFailedException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test5.pdf", "./data/");
+//        pattern.setConvertByFilePathRequire("./data/test5.pdf", "./data/", true);
+
 
     }
 

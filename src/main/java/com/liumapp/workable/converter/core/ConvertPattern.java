@@ -24,29 +24,53 @@ public interface ConvertPattern extends Parameter {
      * @param destConvertedFilePath file path converted
      * @throws ConvertFailedException convert failed exception
      */
+    @Deprecated
     public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
+
+    /**
+     * convert file to file
+     * @param srcWaitingConvertFilePath src file path
+     * @param destConvertedFilePath dest file path
+     * @throws ConvertFailedException
+     */
+    public void fileToFile (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException;
 
     /**
      * convert by filepath
      * @param srcWaitingConvertFilePath file path to be convert
      * @param destConvertedPath folder path to save converted files
-     * @param deleteTmp need delete tmp file ?  true: delete false: do not delete
      * @throws ConvertFailedException convert failed exception
      */
-    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedPath, boolean deleteTmp) throws ConvertFailedException;
+    public void fileToFiles (String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException;
 
     /**
      * convert by stream
      * @param srcStream data to be convert
      * @param destStream data converted
      */
+    @Deprecated
     public void setConvertByStream (InputStream srcStream, OutputStream destStream);
+
+    /**
+     * convert by stream
+     * @param srcStream read data from src stream
+     * @param destStream converted data to dest stream
+     */
+    public void StreamToStream (InputStream srcStream, OutputStream destStream);
 
     /**
      * convert by base64
      * @param srcBase64 the base64 of src file to be convert
      */
+    @Deprecated
     public void setConvertByBase64(String srcBase64);
+
+
+    /**
+     * convert by base64
+     * @param srcBase64 the base64 of src file to be convert
+     */
+    public void base64ToBase64 (String srcBase64);
 
     /**
      * return base64 result
