@@ -1,14 +1,18 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.qtools.str.basic.StrTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -41,9 +45,12 @@ public class PdfBoxConverter extends ConverterStrategy {
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
         logger.info("pdfbox convert by file folder begin :");
         try {
-            PDDocument document = PDDocument.load(new File(require.getWaitingFilePath()));
+            File srcFile = new File(require.getWaitingFilePath());
+            PDDocument document = PDDocument.load(srcFile);
             PDFRenderer renderer = new PDFRenderer(document);
             for (int page = 0; page < document.getNumberOfPages(); page++) {
+                BufferedImage image = renderer.renderImageWithDPI(page, 300, ImageType.RGB);
+                String savename = require.getDestConvertedPath() + "/" + srcFile.getName();
 
             }
         } catch (Exception e) {
