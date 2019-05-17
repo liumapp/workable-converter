@@ -75,8 +75,13 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Override
     protected boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
-        
-        return false;
+        logger.info("pdfbox convert by base64 begin:");
+        try {
+
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
+        return true;
     }
 
 

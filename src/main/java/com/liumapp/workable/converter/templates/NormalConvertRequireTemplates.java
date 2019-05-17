@@ -9,6 +9,7 @@ import org.jodconverter.document.DocumentFormat;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 
 /**
@@ -55,6 +56,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public String getBase64Result() {
         return require.getBase64Result();
+    }
+
+    @Override
+    public List<String> getBase64Results() {
+        return require.getBase64Results();
     }
 
     @Override
