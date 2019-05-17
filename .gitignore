@@ -41,3 +41,5 @@ gradle
 gradle.*
 
 *.pdf
+
+*.png

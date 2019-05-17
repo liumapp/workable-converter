@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.factory;
 
 import com.liumapp.workable.converter.core.Converter;
+import com.liumapp.workable.converter.strategies.PdfBoxConverter;
 
 /**
  * file PdfBoxConverterManager.java
@@ -25,6 +26,9 @@ public class PdfBoxConverterManager extends AbstractConverterManager {
 
     @Override
     public Converter getConverter() {
-        return null;
+        if (this.converter == null) {
+            this.converter = new PdfBoxConverter();
+        }
+        return this.converter;
     }
 }

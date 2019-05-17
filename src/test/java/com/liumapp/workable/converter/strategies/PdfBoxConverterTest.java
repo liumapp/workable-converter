@@ -30,10 +30,10 @@ public class PdfBoxConverterTest {
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
         converter.setConverterType(PdfBoxConverterManager.getInstance());
         assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/test5_0.png"));
         assertEquals(true, FileTool.isFileExists("./data/test5_1.png"));
         assertEquals(true, FileTool.isFileExists("./data/test5_2.png"));
         assertEquals(true, FileTool.isFileExists("./data/test5_3.png"));
-        assertEquals(true, FileTool.isFileExists("./data/test5_4.png"));
     }
 
     @Test

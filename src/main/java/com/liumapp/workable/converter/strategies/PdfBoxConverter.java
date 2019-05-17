@@ -2,6 +2,7 @@ package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.str.basic.StrTool;
+import com.liumapp.qtools.str.suffix.SuffixTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
@@ -9,6 +10,7 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,14 +52,14 @@ public class PdfBoxConverter extends ConverterStrategy {
             PDFRenderer renderer = new PDFRenderer(document);
             for (int page = 0; page < document.getNumberOfPages(); page++) {
                 BufferedImage image = renderer.renderImageWithDPI(page, 300, ImageType.RGB);
-                String savename = require.getDestConvertedPath() + "/" + srcFile.getName();
-
+                String savename = require.getDestConvertedPath() + "/" + SuffixTool.deleteSuffix(srcFile.getName()) + "_" + page + ".png";
+                ImageIOUtil.writeImage(image, savename, 300);
             }
+            document.close();
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
-
-        return false;
+        return true;
     }
 
     /**
