@@ -37,10 +37,18 @@ public class PdfBoxConverterTest {
     }
 
     @Test
-    public void byStream() {
+    public void byBase64() {
+        WorkableConverter converter = new WorkableConverter();
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+
+//        pattern.
     }
 
+    /**
+     * todo
+     */
     @Test
-    public void byBase64() {
+    public void byStream() {
+
     }
 }
