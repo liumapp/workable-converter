@@ -39,10 +39,13 @@ public class PdfBoxConverter extends ConverterStrategy {
 
     @Override
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+        logger.info("pdfbox convert by file folder begin :");
         try {
             PDDocument document = PDDocument.load(new File(require.getWaitingFilePath()));
             PDFRenderer renderer = new PDFRenderer(document);
-            
+            for (int page = 0; page < document.getNumberOfPages(); page++) {
+
+            }
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
