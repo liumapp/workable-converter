@@ -33,7 +33,7 @@ public class PdfBoxConverterTest {
         pattern.fileToFiles("./data/test5.pdf", "./data/");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
-        converter.setConverterType(PdfBoxConverterManager.getInstance());
+        converter.setConverterType(PdfBoxConverterManager.getInstance()); // pdf box converter manager only support pdf to png
         assertEquals(true, converter.convert(pattern.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/test5_0.png"));
         assertEquals(true, FileTool.isFileExists("./data/test5_1.png"));
@@ -48,7 +48,7 @@ public class PdfBoxConverterTest {
         pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
-        converter.setConverterType(PdfBoxConverterManager.getInstance());
+        converter.setConverterType(PdfBoxConverterManager.getInstance()); // pdf box converter manager only support pdf to png
         boolean result = converter.convert(pattern.getParameter());
         List<String> resultBase64 = pattern.getBase64Results();
         assertEquals(true, result);
