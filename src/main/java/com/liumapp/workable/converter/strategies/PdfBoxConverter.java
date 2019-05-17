@@ -64,6 +64,7 @@ public class PdfBoxConverter extends ConverterStrategy {
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
+        logger.info("pdf box convert by filepath success");
         return true;
     }
 
@@ -99,6 +100,7 @@ public class PdfBoxConverter extends ConverterStrategy {
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
+        logger.info("pdf box convert by base64 success");
         return true;
     }
 

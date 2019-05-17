@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.core.ConvertPattern;
@@ -8,6 +9,10 @@ import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import com.liumapp.workable.converter.factory.PdfBoxConverterManager;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -37,11 +42,17 @@ public class PdfBoxConverterTest {
     }
 
     @Test
-    public void byBase64() {
+    public void byBase64() throws IOException, ConvertFailedException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-
-//        pattern.
+        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
+        converter.setConverterType(PdfBoxConverterManager.getInstance());
+        boolean result = converter.convert(pattern.getParameter());
+        List<String> resultBase64 = pattern.getBase64Results();
+        assertEquals(true, result);
+        assertEquals(4, resultBase64.size());
     }
 
     /**
