@@ -67,7 +67,7 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Override
     protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
-        return false;
+        throw new ConvertFailedException("pdf box converter do not support by stream right now");
     }
 
     /**
@@ -75,6 +75,7 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Override
     protected boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
+
         return false;
     }
 
