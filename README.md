@@ -108,7 +108,7 @@ libreofficePath的值为LibreOffice:6.2.3的安装目录
 WorkableConverter converter = new WorkableConverter();//实例化的同时，初始化配置项，配置项的校验通过Decorator装饰
 
 ConvertPattern pattern = ConvertPatternManager.getInstance();
-pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf"); //test.doc为待转换文件路径，result1.pdf为转换结果存储路径
+pattern.fileToFile("./data/test.doc", "./data/pdf/result1.pdf"); //test.doc为待转换文件路径，result1.pdf为转换结果存储路径
 pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
 pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
 
@@ -140,7 +140,7 @@ pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
 // you can also choice not use proxy
 WorkableConverter converter = new WorkableConverter();
 ConvertPattern pattern = ConvertPatternManager.getInstance();
-pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
+pattern.streamToStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
 // attention !!! convert by stream must set prefix.
 pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
 pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
@@ -148,7 +148,7 @@ converter.setConverterType(CommonConverterManager.getInstance());
 boolean result = converter.convert(pattern.getParameter();
 ````
 
-跟上例基本相同，唯一的变化是通过pattern.setConvertByStream()来设置输入输出流，转换源文件数据从输入流中读取，转换结果会直接写入输出流中，
+跟上例基本相同，唯一的变化是通过pattern.streamToStream()来设置输入输出流，转换源文件数据从输入流中读取，转换结果会直接写入输出流中，
 
 同时要切换转换格式，跟上例一样设置不同的prefix即可
 
@@ -159,7 +159,7 @@ boolean result = converter.convert(pattern.getParameter();
 ````java
 WorkableConverter converter = new WorkableConverter();
 ConvertPattern pattern = ConvertPatternManager.getInstance();
-pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
+pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
 // attention !!! convert by base64 must set prefix.
 pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
 pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
@@ -168,7 +168,7 @@ boolean result = converter.convert(pattern.getParameter();
 String destBase64 = pattern.getBase64Result();
 ````
 
-输入base64执行转换，首先通过pattern.setConvertByBase64()来设置转换源的base64值
+输入base64执行转换，首先通过pattern.base64ToBase64()来设置转换源的base64值
 
 转换结果result仍然是一个boolean类型，通过pattern.getBase64Result来获取转换结果的base64值
 
@@ -180,12 +180,40 @@ String destBase64 = pattern.getBase64Result();
 
 #### 3.5.1 按照文件路径处理
 
-````java
+pattern.fileToFiles()第一个参数为待转换的pdf文件路径，第二个参数为转换后的图片存储路径
 
+````java
+WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.fileToFiles("./data/test5.pdf", "./data/");
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
+converter.setConverterType(PdfBoxConverterManager.getInstance()); // pdf box converter manager only support pdf to png
+assertEquals(true, converter.convert(pattern.getParameter()));
+assertEquals(true, FileTool.isFileExists("./data/test5_0.png"));
+assertEquals(true, FileTool.isFileExists("./data/test5_1.png"));
+assertEquals(true, FileTool.isFileExists("./data/test5_2.png"));
+assertEquals(true, FileTool.isFileExists("./data/test5_3.png"));
 ````
 
 #### 3.5.2 按照文件Base64处理
 
+pattern.base64ToBase64()的参数为待转换pdf文件的base64值
+
+转换结束后，通过```List<String> resultBase64 = pattern.getBase64Results()```获取转换后的图片base64值的集合
+
+````java
+WorkableConverter converter = new WorkableConverter();
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
+converter.setConverterType(PdfBoxConverterManager.getInstance()); // pdf box converter manager only support pdf to png
+boolean result = converter.convert(pattern.getParameter());
+List<String> resultBase64 = pattern.getBase64Results();
+assertEquals(true, result);
+assertEquals(4, resultBase64.size());
+````
 
 ## 4. 待办事项
 

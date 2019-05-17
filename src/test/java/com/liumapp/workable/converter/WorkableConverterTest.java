@@ -29,7 +29,7 @@ public class WorkableConverterTest {
 //        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1.pdf");
+        pattern.fileToFile("./data/test.doc", "./data/pdf/result1.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
@@ -46,7 +46,7 @@ public class WorkableConverterTest {
 //        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         WorkableConverter converter = new WorkableConverter();//you can also choice not use proxy, plz yourself.
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pdf/result1_1.pdf");
+        pattern.fileToFile("./data/test.doc", "./data/pdf/result1_1.pdf");
 //        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
 //        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
@@ -60,7 +60,7 @@ public class WorkableConverterTest {
         // you can also choice not use proxy
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
+        pattern.streamToStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
         // attention !!! convert by stream must set prefix.
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
@@ -74,7 +74,7 @@ public class WorkableConverterTest {
     public void convertDocToPdfByBase64() throws ConvertFailedException, IOException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
+        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test.doc")));
         // attention !!! convert by base64 must set prefix.
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
@@ -88,7 +88,7 @@ public class WorkableConverterTest {
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test2.docx", "./data/pdf/result2.pdf");
+        pattern.fileToFile("./data/test2.docx", "./data/pdf/result2.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOCX);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
@@ -101,7 +101,7 @@ public class WorkableConverterTest {
     public void convertHtmlToPdfByFilePath() throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.setConvertByFilePathRequire("./data/test4.html", "./data/pdf/result4.pdf");
+        pattern.fileToFile("./data/test4.html", "./data/pdf/result4.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.HTML);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
