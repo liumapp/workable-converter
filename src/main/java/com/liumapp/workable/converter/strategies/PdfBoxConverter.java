@@ -1,12 +1,13 @@
 package com.liumapp.workable.converter.strategies;
 
-import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.qtools.str.basic.StrTool;
+import com.liumapp.qtools.file.base64.Base64FileTool;
+import com.liumapp.qtools.str.random.StrRandomTool;
 import com.liumapp.qtools.str.suffix.SuffixTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
+import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.Parameter;
-import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.liumapp.workable.converter.factory.ConverterConfigManager;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * file PdfBoxConverter.java
@@ -28,6 +31,8 @@ import java.io.File;
 public class PdfBoxConverter extends ConverterStrategy {
 
     private static Logger logger = LoggerFactory.getLogger(PdfBoxConverter.class);
+
+    private static ConverterConfig params = ConverterConfigManager.getInstance().getParams();
 
     @Override
     public boolean convert (Parameter require) throws ConvertFailedException {
@@ -45,7 +50,7 @@ public class PdfBoxConverter extends ConverterStrategy {
 
     @Override
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
-        logger.info("pdfbox convert by file folder begin :");
+        logger.info("pdfbox convert by file folder begin(src file must be a pdf file) :");
         try {
             File srcFile = new File(require.getWaitingFilePath());
             PDDocument document = PDDocument.load(srcFile);
@@ -71,13 +76,26 @@ public class PdfBoxConverter extends ConverterStrategy {
     }
 
     /**
-     * todo
+     * convert a pdf base64 file to png pics
      */
     @Override
     protected boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
-        logger.info("pdfbox convert by base64 begin:");
+        logger.info("pdfbox convert by base64 begin(src file must be a pdf file):");
         try {
-
+            String srcFileTmpName = StrRandomTool.getUuid(true) + ".pdf";
+            Base64FileTool.saveBase64File(require.getSrcBase64(), params.getTmpPath() + "/" + srcFileTmpName);
+            File srcFile = new File(params.getTmpPath() + "/" + srcFileTmpName);
+            PDDocument document = PDDocument.load(srcFile);
+            PDFRenderer renderer = new PDFRenderer(document);
+            List<String> results = new LinkedList<>();
+            for (int page = 0; page < document.getNumberOfPages(); page++) {
+                BufferedImage image = renderer.renderImageWithDPI(page, 300, ImageType.RGB);
+                String savePath = params.getTmpPath() + "/" + SuffixTool.deleteSuffix(srcFile.getName()) + "_" + page + ".png";
+                ImageIOUtil.writeImage(image, savePath, 300);
+                results.add(Base64FileTool.filePathToBase64(savePath));
+            }
+            require.setDestBase64s(results);
+            document.close();
         } catch (Exception e) {
             throw new ConvertFailedException(e.getMessage());
         }
