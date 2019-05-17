@@ -4,6 +4,7 @@ import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
+import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -22,8 +23,10 @@ public class PdfBoxConverterTest {
     public void byFilePath() throws ConvertFailedException {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-//        pattern.setConvertByFilePathRequire("./data/test5.pdf", "./data/", true);
-
+        pattern.fileToFiles("./data/test5.pdf", "./data/");
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
+//        converter.setConverterType();
 
     }
 

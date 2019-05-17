@@ -30,11 +30,12 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Override
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
-        throw new ConvertFailedException("pdf box converter do not support by file path convert pattern");
+        throw new ConvertFailedException("pdf box converter do not support by file path convert pattern right now");
     }
 
     @Override
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+
         return false;
     }
 

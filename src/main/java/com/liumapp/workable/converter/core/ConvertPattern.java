@@ -38,10 +38,10 @@ public interface ConvertPattern extends Parameter {
     /**
      * convert by filepath
      * @param srcWaitingConvertFilePath file path to be convert
-     * @param destConvertedPath folder path to save converted files
+     * @param destConvertedFolderPath folder path to save converted files
      * @throws ConvertFailedException convert failed exception
      */
-    public void fileToFiles (String srcWaitingConvertFilePath, String destConvertedPath) throws ConvertFailedException;
+    public void fileToFiles (String srcWaitingConvertFilePath, String destConvertedFolderPath) throws ConvertFailedException;
 
     /**
      * convert by stream
