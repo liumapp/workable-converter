@@ -4,8 +4,12 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
 
 /**
  * file PdfBoxConverter.java
@@ -35,6 +39,13 @@ public class PdfBoxConverter extends ConverterStrategy {
 
     @Override
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+        try {
+            PDDocument document = PDDocument.load(new File(require.getWaitingFilePath()));
+            PDFRenderer renderer = new PDFRenderer(document);
+            
+        } catch (Exception e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
 
         return false;
     }
