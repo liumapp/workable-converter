@@ -1,9 +1,11 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
+import com.liumapp.workable.converter.factory.PdfBoxConverterManager;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
@@ -26,8 +28,12 @@ public class PdfBoxConverterTest {
         pattern.fileToFiles("./data/test5.pdf", "./data/");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
-//        converter.setConverterType();
-
+        converter.setConverterType(PdfBoxConverterManager.getInstance());
+        assertEquals(true, converter.convert(pattern.getParameter()));
+        assertEquals(true, FileTool.isFileExists("./data/test5_1.png"));
+        assertEquals(true, FileTool.isFileExists("./data/test5_2.png"));
+        assertEquals(true, FileTool.isFileExists("./data/test5_3.png"));
+        assertEquals(true, FileTool.isFileExists("./data/test5_4.png"));
     }
 
     @Test
