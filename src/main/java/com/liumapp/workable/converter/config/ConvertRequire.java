@@ -44,6 +44,12 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     private String destBase64;
 
     /**
+     * the converted files base64
+     */
+    @Setter
+    private List<String> destBase64s;
+
+    /**
      * the file save path which had been converted.
      */
     private String resultFilePath;
@@ -103,6 +109,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Override
     public String getBase64Result() {
         return this.destBase64;
+    }
+
+    @Override
+    public List<String> getBase64Results() {
+        return this.destBase64s;
     }
 
     @Override

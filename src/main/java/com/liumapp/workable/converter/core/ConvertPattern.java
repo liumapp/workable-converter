@@ -7,6 +7,7 @@ import org.jodconverter.document.DocumentFormat;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 /**
  * file ConvertPattern.java
@@ -76,6 +77,11 @@ public interface ConvertPattern extends Parameter {
      * @return String the base64 result of converted value
      */
     public String getBase64Result();
+
+    /**
+     * return multy-base64 result
+     */
+    public List<String> getBase64Results();
 
     public void choicePatterns (Patterns patterns);
 
