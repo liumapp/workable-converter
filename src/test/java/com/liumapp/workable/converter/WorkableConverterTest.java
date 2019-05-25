@@ -61,11 +61,12 @@ public class WorkableConverterTest {
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         pattern.streamToStream(new FileInputStream("./data/test.doc"), new FileOutputStream("./data/pdf/result1_2.pdf"));
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        pattern.streamToStream(new FileInputStream("./data/test.doc"), bos);
         // attention !!! convert by stream must set prefix.
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
-
         assertEquals(true, converter.convert(pattern.getParameter()));
         assertEquals(true, FileTool.isFileExists("./data/pdf/result1_2.pdf"));
     }

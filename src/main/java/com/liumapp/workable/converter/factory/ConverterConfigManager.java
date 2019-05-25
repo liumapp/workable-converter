@@ -8,6 +8,11 @@ import com.liumapp.workable.converter.decorators.BuildingDefaultParamsDecorator;
 import com.liumapp.workable.converter.decorators.CheckingUrlSourceForParamsDecorator;
 import com.liumapp.workable.converter.decorators.CreatingFoldersForParamsDecorator;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 /**
  * file ConverterConfigManager.java
  * author liumapp
