@@ -21,7 +21,7 @@ public class DocToPngConverterManager extends AbstractConverterManager {
     }
 
     @Deprecated
-    public static Converter getInstance () {
+    public static synchronized Converter getInstance () {
         return DocToPngConverterManagerHodler.INSTANCE.getConverter();
     }
 

@@ -21,7 +21,7 @@ public class HtmlToPdfConverterManager extends AbstractConverterManager {
     }
 
     @Deprecated
-    public static Converter getInstance () {
+    public static synchronized Converter getInstance () {
         return HtmlToPdfConverterManagerHolder.INSTANCE.getConverter();
     }
 

@@ -23,7 +23,7 @@ public class CommonConverterManager extends AbstractConverterManager {
     private CommonConverterManager() {
     }
 
-    public static Converter getInstance () {
+    public static synchronized Converter getInstance () {
         return CommonConverterManagerHolder.INSTANCE.getConverter();
     }
 

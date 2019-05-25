@@ -20,7 +20,7 @@ public class PdfBoxConverterManager extends AbstractConverterManager {
     private PdfBoxConverterManager() {
     }
 
-    public static Converter getInstance () {
+    public static synchronized Converter getInstance () {
         return PdfBoxConverterManagerHolder.INSTANCE.getConverter();
     }
 

@@ -19,7 +19,7 @@ public class ConvertPatternManager implements Manager {
     private ConvertPatternManager() {
     }
 
-    public static ConvertPattern getInstance () {
+    public static synchronized ConvertPattern getInstance () {
         return new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
     }
 }

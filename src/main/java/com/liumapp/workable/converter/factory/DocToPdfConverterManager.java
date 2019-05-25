@@ -22,7 +22,7 @@ public class DocToPdfConverterManager extends AbstractConverterManager {
     }
 
     @Deprecated
-    public static Converter getInstance () {
+    public static synchronized Converter getInstance () {
         return DocToPdfConverterManagerHolder.INSTANCE.getConverter();
     }
 

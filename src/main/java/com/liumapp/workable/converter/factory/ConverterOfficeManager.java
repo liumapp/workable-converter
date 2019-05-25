@@ -26,7 +26,7 @@ public class ConverterOfficeManager implements Manager {
     private ConverterOfficeManager() {
     }
 
-    public static OfficeManager getInstance () {
+    public static synchronized OfficeManager getInstance () {
         return ConverterOfficeManagerHolder.INSTANCE;
     }
 

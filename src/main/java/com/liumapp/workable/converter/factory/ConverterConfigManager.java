@@ -33,7 +33,7 @@ public class ConverterConfigManager implements Manager {
     private ConverterConfigManager () {
     }
 
-    public static ConverterConfigManager getInstance() {
+    public static synchronized ConverterConfigManager getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ConverterConfigManager();
             try {
