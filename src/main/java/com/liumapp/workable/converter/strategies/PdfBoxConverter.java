@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.time.ZonedDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class PdfBoxConverter extends ConverterStrategy {
 
     @Override
     public boolean convert (Parameter require) throws ConvertFailedException {
-        logger.info("pdf box converter begin: ");
+        logger.info("pdf box converter begin at : " + ZonedDateTime.now());
         return accordingRequire((ConvertRequire) require);
     }
 

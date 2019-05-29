@@ -3,6 +3,10 @@ package com.liumapp.workable.converter.strategies;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.ZonedDateTime;
 
 /**
  * file WaterMarkConverter.java
@@ -14,10 +18,12 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
  */
 public class WaterMarkConverter extends ConverterStrategy {
 
+    private static Logger logger = LoggerFactory.getLogger(WaterMarkConverter.class);
+
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
-
-        return false;
+        logger.info("watermark converter begin at : " + ZonedDateTime.now());
+        return accordingRequire((ConvertRequire) require);
     }
 
     @Override
