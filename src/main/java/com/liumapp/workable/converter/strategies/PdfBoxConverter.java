@@ -44,6 +44,7 @@ public class PdfBoxConverter extends ConverterStrategy {
     /**
      * todo
      */
+    @Deprecated
     @Override
     protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("pdf box converter do not support by file path convert pattern right now");
@@ -72,6 +73,7 @@ public class PdfBoxConverter extends ConverterStrategy {
     /**
      * todo
      */
+    @Deprecated
     @Override
     protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("pdf box converter do not support by stream right now");

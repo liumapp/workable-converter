@@ -28,12 +28,14 @@ public class WaterMarkConverter extends ConverterStrategy {
 
     @Override
     protected boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
+
         return false;
     }
 
+    @Deprecated
     @Override
     protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
-        return false;
+        throw new ConvertFailedException("waterMark converter do not support by file folder");
     }
 
     @Override
