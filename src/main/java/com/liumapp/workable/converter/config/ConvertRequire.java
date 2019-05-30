@@ -69,6 +69,10 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
      */
     private String destConvertedPath;
 
+    @Getter
+    @Setter
+    private WaterMarkRequire waterMarkRequire;
+
     public ConvertRequire() {
 
     }
