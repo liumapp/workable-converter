@@ -3,6 +3,7 @@ package com.liumapp.workable.converter.strategies;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.apache.pdfbox.multipdf.Overlay;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
 
 /**
  * file WaterMarkConverter.java
@@ -34,7 +36,13 @@ public class WaterMarkConverter extends ConverterStrategy {
     protected boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
         try {
             PDDocument pdfFile = PDDocument.load(new File(require.getWaitingFilePath()));
-
+            HashMap<Integer, String> overlayGuide = new HashMap<>();
+//            overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage());
+            Overlay overlay = new Overlay();
+            overlay.setInputPDF(pdfFile);
+            overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
+            overlay.overlay(overlayGuide);
+            pdfFile.save(require.getResultFilePath());
         } catch ( IOException e) {
             e.printStackTrace();
         }

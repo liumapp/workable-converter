@@ -45,7 +45,7 @@ public class WaterMarkConverterTest {
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
 
-        boolean result = converter.convert(pattern);
+        boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
 
     }

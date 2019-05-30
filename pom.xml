@@ -123,6 +123,11 @@
       <artifactId>qtools-file</artifactId>
       <version>v1.3.11</version>
     </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+    </dependency>
 
     <!-- proxy -->
     <dependency>
