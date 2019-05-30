@@ -7,6 +7,7 @@ import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.apache.pdfbox.multipdf.Overlay;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,11 +73,34 @@ public class WaterMarkConverter extends ConverterStrategy {
 
     @Override
     protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
-        return false;
+        try {
+            PDDocument pdfFile = PDDocument.load(require.getSrcStream());
+            HashMap<Integer, String> overlayGuide = new HashMap<>();
+
+            String tmpName = this.getTmpName(require.getWaterMarkRequire());
+            //0 means add watermark in all page
+            if (require.getWaterMarkRequire().getWaterMarkPage() == 0) {
+                for (int i = 0; i < pdfFile.getNumberOfPages(); i++) {
+                    overlayGuide.put(i + 1, tmpName);
+                }
+            } else {
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+            }
+            Overlay overlay = new Overlay();
+            overlay.setInputPDF(pdfFile);
+            overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
+            overlay.overlay(overlayGuide);
+            pdfFile.save(require.getDestStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ConvertFailedException(e.getMessage());
+        }
+        return true;
     }
 
     @Override
     protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
+
         return false;
     }
 

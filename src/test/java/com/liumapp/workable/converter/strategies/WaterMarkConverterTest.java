@@ -1,6 +1,7 @@
 package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.qtools.file.base64.Base64FileTool;
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
@@ -11,6 +12,8 @@ import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -38,12 +41,12 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark01.pdf");
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
@@ -59,16 +62,15 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+        pattern.streamToStream(new FileInputStream("./data/test5.pdf"), new FileOutputStream("./data/test5_with_mark02.pdf"));
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
-
     }
 
     @Test
@@ -80,12 +82,12 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark03.pdf");
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
