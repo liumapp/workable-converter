@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.core.Templates;
@@ -86,6 +87,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public void setDestFilePrefix(DocumentFormat formatRegistry) {
         require.setDestFilePrefix(formatRegistry);
+    }
+
+    @Override
+    public void setWaterMarkRequire(WaterMarkRequire waterMarkRequire) {
+        require.setWaterMarkRequire(waterMarkRequire);
     }
 
     @Override

@@ -70,7 +70,6 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     private String destConvertedPath;
 
     @Getter
-    @Setter
     private WaterMarkRequire waterMarkRequire;
 
     public ConvertRequire() {
@@ -143,6 +142,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Override
     public void setDestFilePrefix(DocumentFormat formatRegistry) {
         this.destFormat = formatRegistry;
+    }
+
+    @Override
+    public void setWaterMarkRequire(WaterMarkRequire waterMarkRequire) {
+        this.waterMarkRequire = waterMarkRequire;
     }
 
     @Override
