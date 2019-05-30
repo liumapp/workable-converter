@@ -40,7 +40,7 @@ public class WaterMarkConverterTest {
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-
+        converter.setConverterType();
 
     }
 
