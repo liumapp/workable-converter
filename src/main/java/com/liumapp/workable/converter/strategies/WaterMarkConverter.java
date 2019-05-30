@@ -1,11 +1,11 @@
 package com.liumapp.workable.converter.strategies;
 
 import com.liumapp.workable.converter.config.ConvertRequire;
+import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.apache.pdfbox.multipdf.Overlay;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +37,7 @@ public class WaterMarkConverter extends ConverterStrategy {
         try {
             PDDocument pdfFile = PDDocument.load(new File(require.getWaitingFilePath()));
             HashMap<Integer, String> overlayGuide = new HashMap<>();
-//            overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage());
+            overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
             Overlay overlay = new Overlay();
             overlay.setInputPDF(pdfFile);
             overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
@@ -45,6 +45,7 @@ public class WaterMarkConverter extends ConverterStrategy {
             pdfFile.save(require.getResultFilePath());
         } catch ( IOException e) {
             e.printStackTrace();
+            throw new ConvertFailedException(e.getMessage());
         }
 
         return true;
@@ -64,6 +65,16 @@ public class WaterMarkConverter extends ConverterStrategy {
     @Override
     protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
         return false;
+    }
+
+    private String getTmpName (WaterMarkRequire require) throws IOException, ConvertFailedException {
+        if (require.getWaterMarkPicBase64() != null) {
+            return saveTmpFileByBase64(require.getWaterMarkPicBase64(), "png");
+        } else if (require.getWaterMarkPicBytes() != null) {
+            return saveTmpFileByBytes(require.getWaterMarkPicBytes(), "png");
+        } else {
+            throw new ConvertFailedException("water mark pic must be specified");
+        }
     }
 
 

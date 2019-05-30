@@ -8,7 +8,9 @@ import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -45,9 +47,10 @@ public abstract class ConverterStrategy implements Converter {
         return tmpName;
     }
 
-    protected String saveTmpFileByBytes (byte[] fileBytes, String prefix) {
-
-        return null;
+    protected String saveTmpFileByBytes (byte[] fileBytes, String prefix) throws IOException {
+        String tmpName = converterConfig.getTmpPath() + "/" + StrRandomTool.getRandom(12) + "." + prefix;
+        FileUtils.writeByteArrayToFile(new File(tmpName), fileBytes);
+        return tmpName;
     }
 
 }
