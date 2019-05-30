@@ -51,10 +51,43 @@ public class WaterMarkConverterTest {
     }
 
     @Test
-    public void byStream() {
+    public void byStream() throws IOException, ConvertFailedException {
+        WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(WaterMarkConverterManager.getInstance());
+
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
+
+        waterMarkRequire.setWaterMarkPage(0);//0 means all age
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+
+        pattern.setWaterMarkRequire(waterMarkRequire);
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+
+        boolean result = converter.convert(pattern.getParameter());
+        assertEquals(true, result);
+
     }
 
     @Test
-    public void byBase64() {
+    public void byBase64() throws IOException, ConvertFailedException {
+        WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(WaterMarkConverterManager.getInstance());
+
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
+
+        waterMarkRequire.setWaterMarkPage(0);//0 means all age
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+
+        pattern.setWaterMarkRequire(waterMarkRequire);
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+
+        boolean result = converter.convert(pattern.getParameter());
+        assertEquals(true, result);
     }
 }

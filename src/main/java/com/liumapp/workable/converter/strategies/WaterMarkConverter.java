@@ -40,7 +40,17 @@ public class WaterMarkConverter extends ConverterStrategy {
         try {
             PDDocument pdfFile = PDDocument.load(new File(require.getWaitingFilePath()));
             HashMap<Integer, String> overlayGuide = new HashMap<>();
-            overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+
+            String tmpName = this.getTmpName(require.getWaterMarkRequire());
+
+            //0 means add watermark in all page
+            if (require.getWaterMarkRequire().getWaterMarkPage() == 0) {
+                for (int i = 0; i < pdfFile.getNumberOfPages(); i++) {
+                    overlayGuide.put(i + 1, tmpName);
+                }
+            } else {
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+            }
             Overlay overlay = new Overlay();
             overlay.setInputPDF(pdfFile);
             overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
