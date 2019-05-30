@@ -40,6 +40,8 @@ gradle
 
 gradle.*
 
-*.pdf
-
 *.png
+
+watermark02.pdf
+
+

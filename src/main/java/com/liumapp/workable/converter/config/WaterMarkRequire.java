@@ -18,9 +18,9 @@ public class WaterMarkRequire implements Parameter, Serializable {
 
     private static final long serialVersionUID = -2036663284702922443L;
 
-    private String waterMarkPicBase64;
+    private String waterMarkPDFBase64;
 
-    private byte[] waterMarkPicBytes;
+    private byte[] waterMarkPDFBytes;
 
     /**
      * the page which need water mark

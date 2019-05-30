@@ -38,7 +38,7 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(1);
-        waterMarkRequire.setWaterMarkPicBase64(Base64FileTool.FileToBase64(new File("./data/watermark01.png")));
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);

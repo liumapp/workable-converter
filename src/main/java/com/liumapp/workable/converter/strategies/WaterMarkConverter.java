@@ -6,9 +6,12 @@ import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import org.apache.pdfbox.multipdf.Overlay;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -68,12 +71,12 @@ public class WaterMarkConverter extends ConverterStrategy {
     }
 
     private String getTmpName (WaterMarkRequire require) throws IOException, ConvertFailedException {
-        if (require.getWaterMarkPicBase64() != null) {
-            return saveTmpFileByBase64(require.getWaterMarkPicBase64(), "png");
-        } else if (require.getWaterMarkPicBytes() != null) {
-            return saveTmpFileByBytes(require.getWaterMarkPicBytes(), "png");
+        if (require.getWaterMarkPDFBase64() != null) {
+            return saveTmpFileByBase64(require.getWaterMarkPDFBase64(), "pdf");
+        } else if (require.getWaterMarkPDFBytes() != null) {
+            return saveTmpFileByBytes(require.getWaterMarkPDFBytes(), "pdf");
         } else {
-            throw new ConvertFailedException("water mark pic must be specified");
+            throw new ConvertFailedException("water mark pdf must be specified");
         }
     }
 

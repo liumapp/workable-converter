@@ -63,7 +63,10 @@ public class CommonConverter extends ConverterStrategy {
         try {
             JodConverter.convert(require.getSrcStream()).as(require.getSrcFormat())
                     .to(require.getDestStream()).as(require.getDestFormat()).execute();
-        } catch (OfficeException e) {
+            require.getSrcStream().close();
+            require.getDestStream().flush();
+            require.getDestStream().close();
+        } catch (OfficeException | IOException e) {
             throw new ConvertFailedException(e.getMessage());
         }
         return true;
