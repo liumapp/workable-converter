@@ -37,7 +37,7 @@ public class WaterMarkConverterTest {
         ConvertPattern pattern = ConvertPatternManager.getInstance();
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
-        waterMarkRequire.setWaterMarkPage(0);
+        waterMarkRequire.setWaterMarkPage(0);//0 means all age
         waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
