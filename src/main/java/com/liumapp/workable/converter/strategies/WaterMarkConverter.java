@@ -13,16 +13,16 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 
 /**
- * file PicWaterMarkConverter.java
+ * file WaterMarkConverter.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/5/29
  */
-public class PicWaterMarkConverter extends ConverterStrategy {
+public class WaterMarkConverter extends ConverterStrategy {
 
-    private static Logger logger = LoggerFactory.getLogger(PicWaterMarkConverter.class);
+    private static Logger logger = LoggerFactory.getLogger(WaterMarkConverter.class);
 
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
