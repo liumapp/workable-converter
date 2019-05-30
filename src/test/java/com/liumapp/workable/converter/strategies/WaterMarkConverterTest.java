@@ -4,7 +4,9 @@ import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.workable.converter.WorkableConverter;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
+import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
+import com.liumapp.workable.converter.factory.WaterMarkConverterManager;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
@@ -28,19 +30,23 @@ public class WaterMarkConverterTest {
      * add water mark only support pdf to pdf
      */
     @Test
-    public void byFilePath() throws IOException{
+    public void byFilePath() throws IOException, ConvertFailedException {
         WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(WaterMarkConverterManager.getInstance());
 
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
+
         waterMarkRequire.setWaterMarkPage(1);
         waterMarkRequire.setWaterMarkPicBase64(Base64FileTool.FileToBase64(new File("./data/watermark01.png")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        converter.setConverterType();
+        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark.pdf");
+
+        boolean result = converter.convert(pattern);
+        assertEquals(true, result);
 
     }
 
