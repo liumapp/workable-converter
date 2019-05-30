@@ -87,9 +87,12 @@ public class WaterMarkConverterTest {
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark03.pdf");
+        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
 
         boolean result = converter.convert(pattern.getParameter());
+        String base64Result = pattern.getBase64Result();
+        Base64FileTool.saveBase64File(base64Result, "./data/test5_with_mark03.pdf");
         assertEquals(true, result);
+
     }
 }
