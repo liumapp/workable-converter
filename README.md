@@ -14,7 +14,11 @@
         * [3.4.3 按照文件Base64转换](#3.4.3-按照文件base64转换)
     * [3.5 图片处理](#3.5-图片处理)    
         * [3.5.1 按照文件路径处理](#3.5.1-按照文件路径处理)
-        * [3.5.2 按照文件Base64处理](#3.5.2-按照文件base64处理)    
+        * [3.5.2 按照文件Base64处理](#3.5.2-按照文件base64处理)
+    * [3.6 添加水印](#3.6-添加水印)
+        * [3.6.1 按照文件路径添加水印](#3.6.1-按照文件路径添加水印)
+        * [3.6.2 按照流添加水印](#3.6.2-按照流添加水印)
+        * [3.6.3 按照base64添加水印](#3.6.3-按照base64添加水印)            
 * [4. 待办事项](#4.-待办事项)
 * [5. 注意事项](#5.-注意事项)
 * [6. 参考链接](#6.-参考链接)
@@ -253,7 +257,7 @@ waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./d
 pattern.setWaterMarkRequire(waterMarkRequire);
 pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
 pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark01.pdf");
+pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark01.pdf");//添加水印后的文件保存在./data/目录下，名为test5_with_mark01.pdf
 
 boolean result = converter.convert(pattern.getParameter());
 assertEquals(true, result);
@@ -261,11 +265,47 @@ assertEquals(true, result);
 
 ### 3.6.2 按照流添加水印
 
+````java
+WorkableConverter converter = new WorkableConverter();
+converter.setConverterType(WaterMarkConverterManager.getInstance());
 
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
+
+waterMarkRequire.setWaterMarkPage(0);//0 means all age
+waterMarkRequire.setWaterMarkPDFBytes(FileUtils.readFileToByteArray(new File("./data/watermark.pdf")));
+
+pattern.setWaterMarkRequire(waterMarkRequire);
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.streamToStream(new FileInputStream("./data/test5.pdf"), new FileOutputStream("./data/test5_with_mark02.pdf"));
+
+boolean result = converter.convert(pattern.getParameter());
+assertEquals(true, result);
+````
 
 ### 3.6.3 按照base64添加水印
 
+````java
+WorkableConverter converter = new WorkableConverter();
+converter.setConverterType(WaterMarkConverterManager.getInstance());
 
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
+
+waterMarkRequire.setWaterMarkPage(0);//0 means all age
+waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
+
+pattern.setWaterMarkRequire(waterMarkRequire);
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
+
+boolean result = converter.convert(pattern.getParameter());
+String base64Result = pattern.getBase64Result();
+Base64FileTool.saveBase64File(base64Result, "./data/test5_with_mark03.pdf");
+assertEquals(true, result);
+````
 
 ## 4. 待办事项
 
