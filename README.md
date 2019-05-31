@@ -69,13 +69,13 @@ windows跟Mac同样可以在上述文章中拿到下载链接
 <dependency>
   <groupId>com.liumapp.workable.converter</groupId>
   <artifactId>workable-converter</artifactId>
-  <version>v1.1.0</version>
+  <version>v1.2.0</version>
 </dependency>
 ````
 * Gradle
 
 ````yaml
-compile group: 'com.liumapp.workable.converter', name: 'workable-converter', version: 'v1.1.0'
+compile group: 'com.liumapp.workable.converter', name: 'workable-converter', version: 'v1.2.0'
 ````
 
 ### 3.3 编辑配置文件
