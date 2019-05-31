@@ -215,6 +215,24 @@ assertEquals(true, result);
 assertEquals(4, resultBase64.size());
 ````
 
+### 3.6 添加水印
+
+水印的转换策略为WaterMarkConverter
+
+具体使用可以分为三种方式
+
+### 3.6.1 按照文件路径添加水印
+
+
+
+### 3.6.2 按照流添加水印
+
+
+
+### 3.6.3 按照base64添加水印
+
+
+
 ## 4. 待办事项
 
 * 已经测试通过的有doc、docx、html 按照不同姿势转PDF，其他类型的并没有编写测试单元，后续考虑增加
