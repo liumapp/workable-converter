@@ -47,7 +47,7 @@ public class WaterMarkConverterTest {
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark01.pdf");
+        pattern.fileToFile("./data/test6.pdf", "./data/test6_with_mark01.pdf");
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
@@ -64,12 +64,12 @@ public class WaterMarkConverterTest {
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
 //        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
-        waterMarkRequire.setWaterMarkPDFBytes(FileUtils.readFileToByteArray(new File("./data/watermark.pdf")));
+        waterMarkRequire.setWaterMarkPDFBytes(FileUtils.readFileToByteArray(new File("./data/watermark02.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.streamToStream(new FileInputStream("./data/test5.pdf"), new FileOutputStream("./data/test5_with_mark02.pdf"));
+        pattern.streamToStream(new FileInputStream("./data/test6.pdf"), new FileOutputStream("./data/test6_with_mark02.pdf"));
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
@@ -84,16 +84,16 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
+        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test5.pdf")));
+        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test6.pdf")));
 
         boolean result = converter.convert(pattern.getParameter());
         String base64Result = pattern.getBase64Result();
-        Base64FileTool.saveBase64File(base64Result, "./data/test5_with_mark03.pdf");
+        Base64FileTool.saveBase64File(base64Result, "./data/test6_with_mark03.pdf");
         assertEquals(true, result);
 
     }

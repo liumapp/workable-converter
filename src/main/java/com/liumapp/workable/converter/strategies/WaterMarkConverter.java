@@ -53,7 +53,7 @@ public class WaterMarkConverter extends ConverterStrategy {
                     overlayGuide.put(i + 1, tmpName);
                 }
             } else {
-                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), tmpName);
             }
             Overlay overlay = new Overlay();
             overlay.setInputPDF(pdfFile);
@@ -86,7 +86,7 @@ public class WaterMarkConverter extends ConverterStrategy {
                     overlayGuide.put(i + 1, tmpName);
                 }
             } else {
-                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), tmpName);
             }
             Overlay overlay = new Overlay();
             overlay.setInputPDF(pdfFile);
@@ -113,7 +113,7 @@ public class WaterMarkConverter extends ConverterStrategy {
                     overlayGuide.put(i + 1, tmpName);
                 }
             } else {
-                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), tmpName);
             }
             Overlay overlay = new Overlay();
             overlay.setInputPDF(pdfFile);
