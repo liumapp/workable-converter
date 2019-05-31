@@ -219,11 +219,45 @@ assertEquals(4, resultBase64.size());
 
 水印的转换策略为WaterMarkConverter
 
+添加水印注意事项
+
+* 请确保输入源文件后缀为PDF，输出源文件后缀也为PDF
+
+* 水印参数需要new一个WaterMarkRequire来设置
+
+* setWaterMarkPage(int page)代表在哪一页上添加水印，如果为0，则表示所有页面
+
+* 水印本身为一个PDF文件，该文件只需要一页，其第一页的内容将被视为水印添加到源文件中
+
+    比如说，要添加透明度为0.3的文本作为水印的话，自己使用word等工具绘制透明度为0.3的字体（或者上包含透明度的png图片也可以）并另存为一个watermark.pdf文件
+    
+    然后使用waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")))
+    
+    或者waterMarkRequire.setWaterMarkPDFBytes(FileUtils.readFileToByteArray(new File("./data/watermark.pdf")))将该文件的base64或者bytes值输入即可
+        
 具体使用可以分为三种方式
 
 ### 3.6.1 按照文件路径添加水印
 
+````java
+WorkableConverter converter = new WorkableConverter();
+converter.setConverterType(WaterMarkConverterManager.getInstance());//选择具体的水印转换策略
 
+ConvertPattern pattern = ConvertPatternManager.getInstance();
+WaterMarkRequire waterMarkRequire = new WaterMarkRequire();//创建水印所需要的参数
+
+//指定在具体的哪一页添加水印，0的话则在所有页面添加水印
+waterMarkRequire.setWaterMarkPage(0);//0 means all age
+waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
+
+pattern.setWaterMarkRequire(waterMarkRequire);
+pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+pattern.fileToFile("./data/test5.pdf", "./data/test5_with_mark01.pdf");
+
+boolean result = converter.convert(pattern.getParameter());
+assertEquals(true, result);
+````
 
 ### 3.6.2 按照流添加水印
 

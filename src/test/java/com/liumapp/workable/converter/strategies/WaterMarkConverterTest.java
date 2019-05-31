@@ -8,6 +8,7 @@ import com.liumapp.workable.converter.core.ConvertPattern;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConvertPatternManager;
 import com.liumapp.workable.converter.factory.WaterMarkConverterManager;
+import org.apache.commons.io.FileUtils;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.junit.Test;
 
@@ -62,7 +63,8 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
+//        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark.pdf")));
+        waterMarkRequire.setWaterMarkPDFBytes(FileUtils.readFileToByteArray(new File("./data/watermark.pdf")));
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
