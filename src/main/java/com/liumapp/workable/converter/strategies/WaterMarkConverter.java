@@ -1,9 +1,11 @@
 package com.liumapp.workable.converter.strategies;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.multipdf.Overlay;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -58,7 +61,6 @@ public class WaterMarkConverter extends ConverterStrategy {
             overlay.overlay(overlayGuide);
             pdfFile.save(require.getResultFilePath());
         } catch ( IOException e) {
-            e.printStackTrace();
             throw new ConvertFailedException(e.getMessage());
         }
 
@@ -92,7 +94,6 @@ public class WaterMarkConverter extends ConverterStrategy {
             overlay.overlay(overlayGuide);
             pdfFile.save(require.getDestStream());
         } catch (IOException e) {
-            e.printStackTrace();
             throw new ConvertFailedException(e.getMessage());
         }
         return true;
@@ -100,8 +101,30 @@ public class WaterMarkConverter extends ConverterStrategy {
 
     @Override
     protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
-
-        return false;
+        try {
+            String tmpFileName = this.saveTmpFileByBase64(require.getSrcBase64(), "pdf");
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            PDDocument pdfFile = PDDocument.load(new File(tmpFileName));
+            HashMap<Integer, String> overlayGuide = new HashMap<>();
+            String tmpName = this.getTmpName(require.getWaterMarkRequire());
+            //0 means add watermark in all page
+            if (require.getWaterMarkRequire().getWaterMarkPage() == 0) {
+                for (int i = 0; i < pdfFile.getNumberOfPages(); i++) {
+                    overlayGuide.put(i + 1, tmpName);
+                }
+            } else {
+                overlayGuide.put(require.getWaterMarkRequire().getWaterMarkPage(), this.getTmpName(require.getWaterMarkRequire()));
+            }
+            Overlay overlay = new Overlay();
+            overlay.setInputPDF(pdfFile);
+            overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
+            overlay.overlay(overlayGuide);
+            pdfFile.save(byteArrayOutputStream);
+            require.setDestBase64(Base64FileTool.ByteArrayToBase64(byteArrayOutputStream.toByteArray()));
+        } catch (IOException e) {
+            throw new ConvertFailedException(e.getMessage());
+        }
+        return true;
     }
 
     private String getTmpName (WaterMarkRequire require) throws IOException, ConvertFailedException {
