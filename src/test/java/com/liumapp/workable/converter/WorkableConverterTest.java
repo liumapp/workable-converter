@@ -87,7 +87,7 @@ public class WorkableConverterTest {
     public void convertDocxToPdfByFilePath () throws ConvertFailedException {
         WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.fileToFile("./data/test2.docx", "./data/pdf/result2.pdf");
+        pattern.fileToFile("./data/fonts-test.docx", "./data/pdf/result2.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOCX);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
@@ -109,22 +109,5 @@ public class WorkableConverterTest {
         assertEquals(true, FileTool.isFileExists("./data/pdf/result4.pdf"));
     }
 
-    //todo
-    @Test
-    public void convertDocToPngByFilePath() throws ConvertFailedException {
-//        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
-//
-//        ConvertPattern pattern = ConvertPatternManager.getInstance();
-//        pattern.setConvertByFilePathRequire("./data/test.doc", "./data/pic/test.png");
-//        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
-//        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PNG);
-//
-//        converter.setConverterType(CommonConverterManager.getInstance());
-//        converter.convert(pattern.getParameter());
-
-//        assertEquals(true, FileTool.isFileExists("./data/pic/test1.png"));
-//        assertEquals(true, FileTool.isFileExists("./data/pic/test2.png"));
-//        assertEquals(true, FileTool.isFileExists("./data/pic/test3.png"));
-    }
 
 }
