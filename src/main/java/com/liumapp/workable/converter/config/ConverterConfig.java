@@ -31,6 +31,8 @@ public class ConverterConfig implements Parameter {
      */
     private String tmpPath;
 
+    private String fontPath;
+
     public ConverterConfig() {
     }
 
@@ -40,4 +42,10 @@ public class ConverterConfig implements Parameter {
         this.tmpPath = tmpPath;
     }
 
+    public ConverterConfig(String libreofficePath, int libreofficePort, String tmpPath, String fontPath) {
+        this.libreofficePath = libreofficePath;
+        this.libreofficePort = libreofficePort;
+        this.tmpPath = tmpPath;
+        this.fontPath = fontPath;
+    }
 }

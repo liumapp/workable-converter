@@ -22,4 +22,9 @@ public class ConvertPatternManager implements Manager {
     public static synchronized ConvertPattern getInstance () {
         return new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
     }
+
+
+    public static synchronized ConvertPattern getTextInstance () {
+        return new CheckingConvertPatternParamsDecorator(new ChoiceConvertPatternDecorator(new ConvertRequire()));
+    }
 }

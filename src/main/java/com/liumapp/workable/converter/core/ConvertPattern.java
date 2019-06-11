@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.core;
 
+import com.liumapp.workable.converter.config.TextRequire;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
@@ -91,6 +92,8 @@ public interface ConvertPattern extends Parameter {
     public void setDestFilePrefix (DocumentFormat formatRegistry) throws UnsupportedConverterParameterException;
 
     public void setWaterMarkRequire (WaterMarkRequire waterMarkRequire);
+
+    public void setTextRequire(TextRequire textRequire);
 
     public Parameter getParameter ();
 

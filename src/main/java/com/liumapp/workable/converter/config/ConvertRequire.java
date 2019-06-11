@@ -72,6 +72,9 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Getter
     private WaterMarkRequire waterMarkRequire;
 
+    @Getter
+    private TextRequire textRequire;
+
     public ConvertRequire() {
 
     }
@@ -147,6 +150,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Override
     public void setWaterMarkRequire(WaterMarkRequire waterMarkRequire) {
         this.waterMarkRequire = waterMarkRequire;
+    }
+
+    @Override
+    public void setTextRequire(TextRequire textRequire) {
+        this.textRequire = textRequire;
     }
 
     @Override
