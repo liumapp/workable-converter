@@ -25,7 +25,7 @@ public class TextConverterTest {
         WorkableConverter converter = new WorkableConverter();
         converter.setConverterType(TextConverterManager.getInstance());
 
-        ConvertPattern pattern = ConvertPatternManager.getTextInstance();
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
         TextRequire templateRequire = new TextRequire();
 
         List<PdfEditDTO> pdfEditDTOList = new ArrayList<>();
@@ -72,7 +72,7 @@ public class TextConverterTest {
         WorkableConverter converter = new WorkableConverter();
         converter.setConverterType(TextConverterManager.getInstance());
 
-        ConvertPattern pattern = ConvertPatternManager.getTextInstance();
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
         TextRequire templateRequire = new TextRequire();
 
         List<PdfEditDTO> pdfEditDTOList = new ArrayList<>();
