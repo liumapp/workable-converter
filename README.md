@@ -307,6 +307,113 @@ Base64FileTool.saveBase64File(base64Result, "./data/test5_with_mark03.pdf");
 assertEquals(true, result);
 ````
 
+## 3.7 itext7编辑pdf
+
+itext7编辑pdf策略为TextConverter
+
+编辑pdf注意事项
+
+* 请确保输入源文件后缀为PDF，输出源文件后缀也为PDF
+
+* 编辑pdf参数需要new一个TextRequire来设置
+
+### 3.7.1 按照文件路径编辑pdf
+
+````java
+        WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(TextConverterManager.getInstance());
+
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        TextRequire templateRequire = new TextRequire();
+
+        List<PdfEditDTO> pdfEditDTOList = new ArrayList<>();
+
+        PdfEditDTO pdfEditDTO = new PdfEditDTO();
+        pdfEditDTO.setFieldName("one");
+        pdfEditDTO.setFontSize(18);
+        pdfEditDTO.setFontType(FontType.SIMYOU);
+        pdfEditDTO.setPositionX(0f);
+        pdfEditDTO.setPositionY(10f);
+        pdfEditDTO.setText("Hello World I am One Field");
+        pdfEditDTO.setWidth(250);
+        pdfEditDTO.setHeitht(20);
+        pdfEditDTO.setPageNum(1);
+
+        pdfEditDTOList.add(pdfEditDTO);
+
+        PdfEditDTO pdfEditDTO2 = new PdfEditDTO();
+        pdfEditDTO2.setFieldName("two");
+        pdfEditDTO2.setFontSize(18);
+        pdfEditDTO2.setFontType(FontType.STKAITI);
+        pdfEditDTO2.setPositionX(0f);
+        pdfEditDTO2.setPositionY(820f);
+        pdfEditDTO2.setText("Hello World I am Two Field");
+        pdfEditDTO2.setWidth(250);
+        pdfEditDTO2.setHeitht(20);
+        pdfEditDTO2.setPageNum(2);
+
+        pdfEditDTOList.add(pdfEditDTO2);
+
+        templateRequire.setPdfEditDTOList(pdfEditDTOList);
+
+        pattern.setTextRequire(templateRequire);
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.fileToFile("./data/txt.pdf","./data/txt2.pdf");
+
+        boolean result = converter.convert(pattern.getParameter());
+        assertEquals(true, result);
+````
+### 3.7.2 按照base64编辑pdf
+
+```java
+WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(TextConverterManager.getInstance());
+
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        TextRequire templateRequire = new TextRequire();
+
+        List<PdfEditDTO> pdfEditDTOList = new ArrayList<>();
+
+        PdfEditDTO pdfEditDTO = new PdfEditDTO();
+        pdfEditDTO.setFieldName("one");
+        pdfEditDTO.setFontSize(18);
+        pdfEditDTO.setFontType(FontType.SIMYOU);
+        pdfEditDTO.setPositionX(0f);
+        pdfEditDTO.setPositionY(10f);
+        pdfEditDTO.setText("Hello World I am One Field");
+        pdfEditDTO.setWidth(250);
+        pdfEditDTO.setHeitht(20);
+        pdfEditDTO.setPageNum(1);
+
+        pdfEditDTOList.add(pdfEditDTO);
+
+        PdfEditDTO pdfEditDTO2 = new PdfEditDTO();
+        pdfEditDTO2.setFieldName("two");
+        pdfEditDTO2.setFontSize(18);
+        pdfEditDTO2.setFontType(FontType.STKAITI);
+        pdfEditDTO2.setPositionX(0f);
+        pdfEditDTO2.setPositionY(820f);
+        pdfEditDTO2.setText("Hello World I am Two Field");
+        pdfEditDTO2.setWidth(250);
+        pdfEditDTO2.setHeitht(20);
+        pdfEditDTO2.setPageNum(2);
+
+        pdfEditDTOList.add(pdfEditDTO2);
+
+        templateRequire.setPdfEditDTOList(pdfEditDTOList);
+
+        pattern.setTextRequire(templateRequire);
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/txt.pdf")));
+
+        boolean result = converter.convert(pattern.getParameter());
+        String base64Result = pattern.getBase64Result();
+        Base64FileTool.saveBase64File(base64Result,"./data/txt2.pdf");
+```
+
+
 ## 4. 待办事项
 
 * 已经测试通过的有doc、docx、html 按照不同姿势转PDF，其他类型的并没有编写测试单元，后续考虑增加
