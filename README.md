@@ -18,7 +18,10 @@
     * [3.6 添加水印](#3.6-添加水印)
         * [3.6.1 按照文件路径添加水印](#3.6.1-按照文件路径添加水印)
         * [3.6.2 按照流添加水印](#3.6.2-按照流添加水印)
-        * [3.6.3 按照base64添加水印](#3.6.3-按照base64添加水印)            
+        * [3.6.3 按照base64添加水印](#3.6.3-按照base64添加水印)
+    * [3.7 itext7编辑pdf](#3.7-itext7编辑pdf)
+        * [3.7.1 按照文件路径编辑pdf](#3.7.1-按照文件路径编辑pdf)
+        * [3.7.2 按照base64编辑pdf](#3.7.2-按照base64编辑pdf)                
 * [4. 待办事项](#4.-待办事项)
 * [5. 注意事项](#5.-注意事项)
 * [6. 参考链接](#6.-参考链接)
@@ -307,7 +310,7 @@ Base64FileTool.saveBase64File(base64Result, "./data/test5_with_mark03.pdf");
 assertEquals(true, result);
 ````
 
-## 3.7 itext7编辑pdf
+### 3.7 itext7编辑pdf
 
 itext7编辑pdf策略为TextConverter
 
@@ -317,7 +320,7 @@ itext7编辑pdf策略为TextConverter
 
 * 编辑pdf参数需要new一个TextRequire来设置
 
-### 3.7.1 按照文件路径编辑pdf
+#### 3.7.1 按照文件路径编辑pdf
 
 ````java
         WorkableConverter converter = new WorkableConverter();
@@ -364,7 +367,8 @@ itext7编辑pdf策略为TextConverter
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
 ````
-### 3.7.2 按照base64编辑pdf
+
+#### 3.7.2 按照base64编辑pdf
 
 ```java
 WorkableConverter converter = new WorkableConverter();
