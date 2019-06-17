@@ -40,7 +40,9 @@ public class TextConverter extends ConverterStrategy {
             //font
             Rectangle rectangle;
             for (PdfEditDTO editDTO : require.getTextRequire().getPdfEditDTOList()) {
-                String ttfPath = this.getClass().getClassLoader().getResource("./font/"+editDTO.getFontType().getFont()).getPath();
+                ClassLoader classLoader = this.getClass().getClassLoader();
+                System.out.println(editDTO.getFontType().getType());
+                String ttfPath = classLoader.getResource("./font/"+editDTO.getFontType().getFont()).getPath();
                 PdfTextFormField pdfTextFormField;
                 // 读取ttf字体文件
                 FontProgram fontProgram = FontProgramFactory.createFont(ttfPath);

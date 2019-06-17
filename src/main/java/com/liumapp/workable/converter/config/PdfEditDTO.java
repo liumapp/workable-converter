@@ -3,6 +3,9 @@ package com.liumapp.workable.converter.config;
 import com.liumapp.workable.converter.enums.FontType;
 import lombok.Data;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Data
 public class PdfEditDTO {
 
@@ -14,12 +17,12 @@ public class PdfEditDTO {
     /**
      * 内容宽
      */
-    private Integer width;
+    private Float width;
 
     /**
      * 内容高
      */
-    private Integer heitht;
+    private Float heitht;
 
     /**
      * 占位符别名
@@ -47,8 +50,19 @@ public class PdfEditDTO {
     private String text;
 
     /**
-     * 字体类型（枚举）
+     * 字体类型（枚举） 默认宋体
      */
-    private FontType fontType;
+    private FontType fontType = FontType.SIMHEI;
 
+    private Integer fontTypeNum = 0;
+
+
+    public FontType getFontType() {
+        List<FontType> fontTypeList =
+                Arrays.asList(FontType.SIMSUN,FontType.SIMKAI, FontType.SIMHEI,FontType.SIMYOU,FontType.STKAITI);
+        if (this.fontTypeNum >= fontTypeList.size()) {
+            return fontTypeList.get(0);
+        }
+        return fontTypeList.get(this.fontTypeNum);
+    }
 }
