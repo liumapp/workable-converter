@@ -8,14 +8,31 @@ import lombok.Getter;
 public enum FontType {
 
     /**
-     * 华文幼圆
+     * 宋体
      */
-    SIMYOU(1,"SIMYOU.TTF"),
+    SIMSUN(0,"SIMSUN.TTF"),
 
     /**
      * 楷体
      */
-    STKAITI(2,"STKAITI.TTF")
+    SIMKAI(1,"SIMKAI.TTF"),
+
+    /**
+     * 黑体
+     */
+    SIMHEI(2,"SIMHEI.TTF"),
+
+    /**
+     * 华文幼圆
+     */
+    SIMYOU(3,"SIMYOU.TTF"),
+
+    /**
+     * 华文楷体
+     */
+    STKAITI(4,"STKAITI.TTF"),
+
+
 
     ;
 
