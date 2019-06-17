@@ -29,7 +29,7 @@ public class WorkableConverterTest {
 //        WorkableConverter converter = ConverterProxy.getInstance().getProxy(WorkableConverter.class);
         WorkableConverter converter = new WorkableConverter();
         ConvertPattern pattern = ConvertPatternManager.getInstance();
-        pattern.fileToFile("./data/test.doc", "./data/pdf/result1.pdf");
+        pattern.fileToFile("./data/test1.doc", "./data/pdf/result1.pdf");
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.DOC);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
         converter.setConverterType(CommonConverterManager.getInstance());
