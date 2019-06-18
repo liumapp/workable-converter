@@ -2,6 +2,8 @@
 
 基于libreoffice实现的文档转换项目，无框架依赖，即插即用
 
+<a title="Hits" target="_blank" href="https://github.com/b3log/hits"><img src="https://hits.b3log.org/b3log/hits.svg"></a>
+
 * [1. 技术栈](#1-技术栈)
 * [2. 功能](#2-功能)
 * [3. 使用](#3-使用)
