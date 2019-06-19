@@ -82,7 +82,8 @@ public class CheckingConvertPatternParamsDecorator extends NormalConvertRequireT
 
     @Override
     public void base64ToBase64(String srcBase64) throws ConvertFailedException {
-        if (srcBase64 == null) throw new ConvertFailedException("src base64 can not be null");
+        if (srcBase64 == null)
+            throw new ConvertFailedException("src base64 can not be null");
         super.base64ToBase64(srcBase64);
     }
 

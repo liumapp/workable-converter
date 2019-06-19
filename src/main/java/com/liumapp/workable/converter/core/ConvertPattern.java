@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.core;
 
+import com.liumapp.workable.converter.config.EditorRequire;
 import com.liumapp.workable.converter.config.TextRequire;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.enums.Patterns;
@@ -94,6 +95,8 @@ public interface ConvertPattern extends Parameter {
     public void setWaterMarkRequire (WaterMarkRequire waterMarkRequire);
 
     public void setTextRequire(TextRequire textRequire);
+
+    public void setEditorRequire(EditorRequire editorRequire);
 
     public Parameter getParameter ();
 
