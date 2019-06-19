@@ -24,7 +24,7 @@
     * [3.7 itext7编辑pdf](#37-itext7编辑pdf)
         * [3.7.1 按照文件路径编辑pdf](#371-按照文件路径编辑pdf)
         * [3.7.2 按照base64编辑pdf](#372-按照base64编辑pdf)
-    * [3.8 使用Itext7 HTML转PDF文件](#38-使用Itext7 HTML转PDF文件)
+    * [3.8 使用Itext7 HTML转PDF文件](#38-使用Itext7-HTML转PDF文件)
         * [3.8.1 按照base64方式](#381-按照base64方式)                
 * [4. 待办事项](#4-待办事项)
 * [5. 注意事项](#5-注意事项)
