@@ -22,7 +22,7 @@ public class PdfEditDTO {
     /**
      * 内容高
      */
-    private Float heitht;
+    private Float height;
 
     /**
      * 占位符别名

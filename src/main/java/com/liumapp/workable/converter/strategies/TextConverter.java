@@ -49,7 +49,7 @@ public class TextConverter extends ConverterStrategy {
                 // 编码使用 PdfEncodings.IDENTITY_H
                 PdfFont font = PdfFontFactory.createFont(fontProgram, PdfEncodings.IDENTITY_H, true);
                 // 设置表单域的位置
-                rectangle = new Rectangle(editDTO.getPositionX(), editDTO.getPositionY(), editDTO.getWidth(), editDTO.getHeitht());
+                rectangle = new Rectangle(editDTO.getPositionX(), editDTO.getPositionY(), editDTO.getWidth(), editDTO.getHeight());
                 pdfTextFormField = PdfTextFormField.createText(pdfDocument, rectangle,editDTO.getFieldName(), editDTO.getText());
                 pdfTextFormField.setBorderWidth(0).setReadOnly(true).setColor(ColorConstants.BLACK).setFontAndSize(font,
                         editDTO.getFontSize());
@@ -96,7 +96,7 @@ public class TextConverter extends ConverterStrategy {
                 // 编码使用 PdfEncodings.IDENTITY_H
                 PdfFont font = PdfFontFactory.createFont(fontProgram, PdfEncodings.IDENTITY_H, true);
                 // 设置表单域的位置
-                rectangle = new Rectangle(editDTO.getPositionX(), editDTO.getPositionY(), editDTO.getWidth(), editDTO.getHeitht());
+                rectangle = new Rectangle(editDTO.getPositionX(), editDTO.getPositionY(), editDTO.getWidth(), editDTO.getHeight());
                 pdfTextFormField = PdfTextFormField.createText(pdfDocument, rectangle,editDTO.getFieldName(), editDTO.getText());
                 pdfTextFormField.setBorderWidth(0).setReadOnly(true).setColor(ColorConstants.BLACK).setFontAndSize(font,
                         editDTO.getFontSize());
