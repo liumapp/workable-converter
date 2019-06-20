@@ -26,7 +26,6 @@ public class AddVipUserOnly extends UserDecorator {
         } else {
             return false;
         }
-
     }
 
     private boolean check (RoleEnums role) {

@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.templates;
 
+import com.liumapp.workable.converter.config.EditorRequire;
 import com.liumapp.workable.converter.config.TextRequire;
 import com.liumapp.workable.converter.config.WaterMarkRequire;
 import com.liumapp.workable.converter.core.ConvertPattern;
@@ -98,6 +99,11 @@ public class NormalConvertRequireTemplates implements Templates, Parameter, Conv
     @Override
     public void setTextRequire(TextRequire textRequire) {
         require.setTextRequire(textRequire);
+    }
+
+    @Override
+    public void setEditorRequire(EditorRequire editorRequire) {
+        require.setEditorRequire(editorRequire);
     }
 
     @Override

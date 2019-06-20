@@ -5,7 +5,10 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.enums.Patterns;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
+import com.sun.javafx.scene.text.TextLayout;
+import com.sun.javafx.text.PrismTextLayout;
 import org.jodconverter.JodConverter;
+import org.jodconverter.document.DocumentFormat;
 import org.jodconverter.office.OfficeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +31,7 @@ public class DocToPdfConverter extends ConverterStrategy {
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
         logger.info("doc to pdf converter begin");
-        return accordingRequire( (ConvertRequire) require);
+        return accordingRequire((ConvertRequire) require);
     }
 
     @Override
@@ -40,7 +43,7 @@ public class DocToPdfConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    protected boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
         logger.info("get waiting convert file : " + require.getWaitingFilePath());
         logger.info("get result file path : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());

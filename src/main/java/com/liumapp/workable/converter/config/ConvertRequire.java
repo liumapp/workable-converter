@@ -75,6 +75,9 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Getter
     private TextRequire textRequire;
 
+    @Getter
+    private EditorRequire editorRequire;
+
     public ConvertRequire() {
 
     }
@@ -83,7 +86,7 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
      * set the necessary parameters in convert by file path
      */
     @Override
-    public void setConvertByFilePathRequire (String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
+    public void setConvertByFilePathRequire(String srcWaitingConvertFilePath, String destConvertedFilePath) throws ConvertFailedException {
         this.waitingFilePath = srcWaitingConvertFilePath;
         this.resultFilePath = destConvertedFilePath;
     }
@@ -155,6 +158,11 @@ public class ConvertRequire implements Parameter, Serializable, ConvertPattern {
     @Override
     public void setTextRequire(TextRequire textRequire) {
         this.textRequire = textRequire;
+    }
+
+    @Override
+    public void setEditorRequire(EditorRequire editorRequire) {
+        this.editorRequire = editorRequire;
     }
 
     @Override
