@@ -41,6 +41,7 @@ public abstract class ConverterStrategy implements Converter {
 
     protected abstract boolean byBase64 (ConvertRequire require) throws ConvertFailedException;
 
+
     protected String saveTmpFileByBase64 (String fileBase64, String prefix) throws IOException {
         String tmpName = converterConfig.getTmpPath() + "/" + StrRandomTool.getRandom(12) + "." + prefix;
         Base64FileTool.saveBase64File(fileBase64, tmpName);

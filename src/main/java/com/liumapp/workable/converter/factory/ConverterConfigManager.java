@@ -1,5 +1,6 @@
 package com.liumapp.workable.converter.factory;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import com.liumapp.workable.converter.config.BasicLoadingConfigService;
 import com.liumapp.workable.converter.config.ConverterConfig;
 import com.liumapp.workable.converter.core.LoadingConfig;
@@ -54,6 +55,7 @@ public class ConverterConfigManager implements Manager {
      */
     private static void buildingConverterConfig (ConverterConfigManager INSTANCE) throws Throwable {
         LoadingConfig service = new CreatingFoldersForParamsDecorator(new CheckingUrlSourceForParamsDecorator(new BuildingDefaultParamsDecorator(new BasicLoadingConfigService())));
-        INSTANCE.params = service.loadConfig(service.loadURL());
+        ConfigurationNode configurationNode = service.loadURL();
+        INSTANCE.params = service.loadConfig(configurationNode);
     }
 }

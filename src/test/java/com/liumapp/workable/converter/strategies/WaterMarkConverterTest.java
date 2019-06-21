@@ -84,12 +84,16 @@ public class WaterMarkConverterTest {
         WaterMarkRequire waterMarkRequire = new WaterMarkRequire();
 
         waterMarkRequire.setWaterMarkPage(0);//0 means all age
-        waterMarkRequire.setWaterMarkPDFBase64(Base64FileTool.FileToBase64(new File("./data/watermark02.pdf")));
+        String base64 = Base64FileTool.FileToBase64(new File("./data/watermark.pdf"));
+        System.out.println(base64);
+        waterMarkRequire.setWaterMarkPDFBase64(base64);
 
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.base64ToBase64(Base64FileTool.FileToBase64(new File("./data/test6.pdf")));
+        String base641 = Base64FileTool.FileToBase64(new File("./data/1.pdf"));
+        System.out.println(base641);
+        pattern.base64ToBase64(base641);
 
         boolean result = converter.convert(pattern.getParameter());
         String base64Result = pattern.getBase64Result();

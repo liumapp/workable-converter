@@ -23,7 +23,9 @@
         * [3.6.3 按照base64添加水印](#363-按照base64添加水印)
     * [3.7 itext7编辑pdf](#37-itext7编辑pdf)
         * [3.7.1 按照文件路径编辑pdf](#371-按照文件路径编辑pdf)
-        * [3.7.2 按照base64编辑pdf](#372-按照base64编辑pdf)                
+        * [3.7.2 按照base64编辑pdf](#372-按照base64编辑pdf)
+    * [3.8 使用Itext7 HTML转PDF文件](#38-使用Itext7-HTML转PDF文件)
+        * [3.8.1 按照base64方式](#381-按照base64方式)                
 * [4. 待办事项](#4-待办事项)
 * [5. 注意事项](#5-注意事项)
 * [6. 参考链接](#6-参考链接)
@@ -419,6 +421,39 @@ WorkableConverter converter = new WorkableConverter();
         Base64FileTool.saveBase64File(base64Result,"./data/txt2.pdf");
 ```
 
+
+### 3.8 使用Itext7 HTML转PDF文件
+
+增加ItextConverter策略;
+
+#### 3.8.1 按照base64方式
+
+```java
+
+public class ItextConverterTest {
+    @Test
+    public void testItextConverter() throws ConvertFailedException, IOException {
+        WorkableConverter converter = new WorkableConverter();
+        converter.setConverterType(HtmlToPdfByItextConverterManager.getInstance());
+        ConvertPattern pattern = ConvertPatternManager.getInstance();
+        EditorRequire editorRequire = new EditorRequire();
+        editorRequire.setContent("<html><div>你好,word</div></html>");
+        pattern.setEditorRequire(editorRequire);
+        pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.HTML);
+        pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
+        String base64 = Base64.getEncoder().encodeToString(editorRequire.getContent().getBytes());
+        pattern.base64ToBase64(base64);
+        assertEquals(true,converter.convert(pattern.getParameter()));
+        String base64Result = pattern.getBase64Result();
+        Base64FileTool.saveBase64File(base64Result,"./data/test2.pdf");
+    }
+}
+```
+参数介绍:
+
+   EditorRequire: 在这个对象中的`content`为html内容;
+   
+   base64Result: 为转换结果的PDF文件内容的base64值;   
 
 ## 4. 待办事项
 

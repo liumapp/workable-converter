@@ -37,8 +37,8 @@ public class TextConverterTest {
         pdfEditDTO.setPositionX(0f);
         pdfEditDTO.setPositionY(10f);
         pdfEditDTO.setText("Hello World I am One Field");
-        pdfEditDTO.setWidth(250);
-        pdfEditDTO.setHeitht(20);
+        pdfEditDTO.setWidth(250f);
+        pdfEditDTO.setHeight(20f);
         pdfEditDTO.setPageNum(1);
 
         pdfEditDTOList.add(pdfEditDTO);
@@ -50,8 +50,8 @@ public class TextConverterTest {
         pdfEditDTO2.setPositionX(0f);
         pdfEditDTO2.setPositionY(820f);
         pdfEditDTO2.setText("Hello World I am Two Field");
-        pdfEditDTO2.setWidth(250);
-        pdfEditDTO2.setHeitht(20);
+        pdfEditDTO2.setWidth(250f);
+        pdfEditDTO2.setHeight(20f);
         pdfEditDTO2.setPageNum(2);
 
         pdfEditDTOList.add(pdfEditDTO2);
@@ -84,8 +84,8 @@ public class TextConverterTest {
         pdfEditDTO.setPositionX(0f);
         pdfEditDTO.setPositionY(10f);
         pdfEditDTO.setText("Hello World I am One Field");
-        pdfEditDTO.setWidth(250);
-        pdfEditDTO.setHeitht(20);
+        pdfEditDTO.setWidth(250f);
+        pdfEditDTO.setHeight(20f);
         pdfEditDTO.setPageNum(1);
 
         pdfEditDTOList.add(pdfEditDTO);
@@ -97,8 +97,8 @@ public class TextConverterTest {
         pdfEditDTO2.setPositionX(0f);
         pdfEditDTO2.setPositionY(820f);
         pdfEditDTO2.setText("Hello World I am Two Field");
-        pdfEditDTO2.setWidth(250);
-        pdfEditDTO2.setHeitht(20);
+        pdfEditDTO2.setWidth(250f);
+        pdfEditDTO2.setHeight(20f);
         pdfEditDTO2.setPageNum(2);
 
         pdfEditDTOList.add(pdfEditDTO2);
