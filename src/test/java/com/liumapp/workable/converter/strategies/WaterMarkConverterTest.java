@@ -47,7 +47,7 @@ public class WaterMarkConverterTest {
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.fileToFile("./data/test6.pdf", "./data/test6_with_mark01.pdf");
+        pattern.fileToFile("./data/test5.pdf", "./data/test6_with_mark01.pdf");
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
@@ -69,7 +69,7 @@ public class WaterMarkConverterTest {
         pattern.setWaterMarkRequire(waterMarkRequire);
         pattern.setSrcFilePrefix(DefaultDocumentFormatRegistry.PDF);
         pattern.setDestFilePrefix(DefaultDocumentFormatRegistry.PDF);
-        pattern.streamToStream(new FileInputStream("./data/test6.pdf"), new FileOutputStream("./data/test6_with_mark02.pdf"));
+        pattern.streamToStream(new FileInputStream("./data/test5.pdf"), new FileOutputStream("./data/test6_with_mark02.pdf"));
 
         boolean result = converter.convert(pattern.getParameter());
         assertEquals(true, result);
