@@ -39,7 +39,7 @@ public class HtmlToPdfConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byFilePath (ConvertRequire require) {
+    public boolean byFilePath (ConvertRequire require) {
         logger.info("get waiting convert html file path : " + require.getWaitingFilePath());
         logger.info("get result file path : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
@@ -53,17 +53,17 @@ public class HtmlToPdfConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+    public boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
         return false;
     }
 
     @Override
-    protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
+    public boolean byStream(ConvertRequire require) throws ConvertFailedException {
         return false;
     }
 
     @Override
-    protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
+    public boolean byBase64(ConvertRequire require) throws ConvertFailedException {
         return false;
     }
 

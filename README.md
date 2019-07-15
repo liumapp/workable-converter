@@ -76,7 +76,7 @@ windows跟Mac同样可以在上述文章中拿到下载链接
 <dependency>
   <groupId>com.liumapp.workable.converter</groupId>
   <artifactId>workable-converter</artifactId>
-  <version>v1.2.0</version>
+  <version>v1.4.2</version>
 </dependency>
 ````
 * Gradle
@@ -319,6 +319,8 @@ assertEquals(true, result);
 itext7编辑pdf策略为TextConverter
 
 编辑pdf注意事项
+
+* 请在配置文件添加 com.liumapp.workable-converter=fontsPath: 字体文件目录，resources文件下有所需字体文件
 
 * 请确保输入源文件后缀为PDF，输出源文件后缀也为PDF
 

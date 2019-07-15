@@ -38,7 +38,7 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    public boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         logger.info("input file path is : " + require.getWaitingFilePath());
         logger.info("output file path is : " + require.getResultFilePath());
         File inputFile = new File(require.getWaitingFilePath());
@@ -54,12 +54,12 @@ public class CommonConverter extends ConverterStrategy {
 
     // todo
     @Override
-    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+    public boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("common converter do not support convert by file to folder pattern right now");
     }
 
     @Override
-    protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
+    public boolean byStream (ConvertRequire require) throws ConvertFailedException {
         try {
             JodConverter.convert(require.getSrcStream()).as(require.getSrcFormat())
                     .to(require.getDestStream()).as(require.getDestFormat()).execute();
@@ -73,7 +73,7 @@ public class CommonConverter extends ConverterStrategy {
     }
 
     @Override
-    protected  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
+    public  boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
         ByteArrayInputStream inputStream = null;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
