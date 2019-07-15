@@ -40,7 +40,7 @@ public class WaterMarkConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
+    public boolean byFilePath(ConvertRequire require) throws ConvertFailedException {
         try {
             PDDocument pdfFile = PDDocument.load(new File(require.getWaitingFilePath()));
             HashMap<Integer, String> overlayGuide = new HashMap<>();
@@ -69,12 +69,12 @@ public class WaterMarkConverter extends ConverterStrategy {
 
     @Deprecated
     @Override
-    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+    public boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("waterMark converter do not support by file folder");
     }
 
     @Override
-    protected boolean byStream(ConvertRequire require) throws ConvertFailedException {
+    public boolean byStream(ConvertRequire require) throws ConvertFailedException {
         try {
             PDDocument pdfFile = PDDocument.load(require.getSrcStream());
             HashMap<Integer, String> overlayGuide = new HashMap<>();
@@ -100,7 +100,7 @@ public class WaterMarkConverter extends ConverterStrategy {
     }
 
     @Override
-    protected boolean byBase64(ConvertRequire require) throws ConvertFailedException {
+    public boolean byBase64(ConvertRequire require) throws ConvertFailedException {
         try {
             String tmpFileName = this.saveTmpFileByBase64(require.getSrcBase64(), "pdf");
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

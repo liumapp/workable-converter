@@ -46,12 +46,12 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Deprecated
     @Override
-    protected boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
+    public boolean byFilePath (ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("pdf box converter do not support by file path convert pattern right now");
     }
 
     @Override
-    protected boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
+    public boolean byFileFolder(ConvertRequire require) throws ConvertFailedException {
         logger.info("pdfbox convert by file folder begin(src file must be a pdf file) :");
         try {
             File srcFile = new File(require.getWaitingFilePath());
@@ -75,7 +75,7 @@ public class PdfBoxConverter extends ConverterStrategy {
      */
     @Deprecated
     @Override
-    protected boolean byStream (ConvertRequire require) throws ConvertFailedException {
+    public boolean byStream (ConvertRequire require) throws ConvertFailedException {
         throw new ConvertFailedException("pdf box converter do not support by stream right now");
     }
 
@@ -83,7 +83,7 @@ public class PdfBoxConverter extends ConverterStrategy {
      * convert a pdf base64 file to png pics
      */
     @Override
-    protected boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
+    public boolean byBase64 (ConvertRequire require) throws ConvertFailedException {
         logger.info("pdfbox convert by base64 begin(src file must be a pdf file):");
         try {
             String srcFileTmpName = StrRandomTool.getUuid(true) + ".pdf";

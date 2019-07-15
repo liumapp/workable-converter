@@ -33,13 +33,13 @@ public abstract class ConverterStrategy implements Converter {
         throw new ConvertFailedException("can not found convert patterns .");
     };
 
-    protected abstract boolean byFilePath (ConvertRequire require) throws ConvertFailedException;
+    public abstract boolean byFilePath (ConvertRequire require) throws ConvertFailedException;
 
-    protected abstract boolean byFileFolder (ConvertRequire require) throws ConvertFailedException;
+    public abstract boolean byFileFolder (ConvertRequire require) throws ConvertFailedException;
 
-    protected abstract boolean byStream (ConvertRequire require) throws ConvertFailedException;
+    public abstract boolean byStream (ConvertRequire require) throws ConvertFailedException;
 
-    protected abstract boolean byBase64 (ConvertRequire require) throws ConvertFailedException;
+    public abstract boolean byBase64 (ConvertRequire require) throws ConvertFailedException;
 
 
     protected String saveTmpFileByBase64 (String fileBase64, String prefix) throws IOException {

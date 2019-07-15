@@ -5,9 +5,11 @@ import com.liumapp.workable.converter.config.ConvertRequire;
 import com.liumapp.workable.converter.core.Converter;
 import com.liumapp.workable.converter.core.Parameter;
 import com.liumapp.workable.converter.decorators.CheckPrefixFormatDecorator;
+import com.liumapp.workable.converter.decorators.CheckingParamsForTextConverterDecorator;
 import com.liumapp.workable.converter.decorators.ConnectAndStartLocalLibreOfficeDecorator;
 import com.liumapp.workable.converter.exceptions.ConvertFailedException;
 import com.liumapp.workable.converter.factory.ConverterConfigManager;
+import com.liumapp.workable.converter.strategies.TextConverter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,7 +38,12 @@ public class WorkableConverter implements Converter {
      */
     @Override
     public boolean convert(Parameter require) throws ConvertFailedException {
-        Converter converter = new ConnectAndStartLocalLibreOfficeDecorator(new CheckPrefixFormatDecorator(converterType));
+        Converter converter;
+        if (converterType instanceof TextConverter) {
+            converter = new ConnectAndStartLocalLibreOfficeDecorator(new CheckPrefixFormatDecorator(new CheckingParamsForTextConverterDecorator(converterType)));
+        } else {
+            converter = new ConnectAndStartLocalLibreOfficeDecorator(new CheckPrefixFormatDecorator(converterType));
+        }
         return converter.convert(require);
     }
 }
