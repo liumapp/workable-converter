@@ -13,4 +13,9 @@ public class TextRequire implements Parameter, Serializable {
      * pdf模板表单数据
      */
     private List<PdfEditDTO> pdfEditDTOList;
+
+    /**
+     * 字体文件路径
+     */
+    private String fontsPath;
 }

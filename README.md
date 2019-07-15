@@ -320,6 +320,8 @@ itext7编辑pdf策略为TextConverter
 
 编辑pdf注意事项
 
+* 请在配置文件添加 com.liumapp.workable-converter=fontsPath: 字体文件目录，resources文件下有所需字体文件
+
 * 请确保输入源文件后缀为PDF，输出源文件后缀也为PDF
 
 * 编辑pdf参数需要new一个TextRequire来设置
