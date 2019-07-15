@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.workable.converter</groupId>
   <artifactId>workable-converter</artifactId>
-  <version>v2.4.2</version>
+  <version>v1.4.2</version>
   <packaging>jar</packaging>
 
   <properties>
