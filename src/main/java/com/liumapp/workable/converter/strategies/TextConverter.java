@@ -35,10 +35,6 @@ public class TextConverter extends ConverterStrategy {
 
         String ttfPath = ConverterConfigManager.getInstance().getParams().getFontPath();
 
-        if (ttfPath == null) {
-            throw new ConvertFailedException("fonts path must need");
-        }
-
         try {
             // 编辑后的文件
             PdfWriter pdfWriter = new PdfWriter(require.getResultFilePath());
@@ -86,10 +82,6 @@ public class TextConverter extends ConverterStrategy {
     public boolean byBase64(ConvertRequire require) throws ConvertFailedException {
 
         String ttfPath = ConverterConfigManager.getInstance().getParams().getFontPath();
-
-        if (ttfPath == null) {
-            throw new ConvertFailedException("fonts path must need");
-        }
 
         // 编辑后的文件
         PdfDocument pdfDocument = null;
